@@ -2,6 +2,14 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.10.0 - 2026-11-03
+
+- Published two comprehensive studies: attributed witnesses and independent evidence for Muhammad's miracles (CI-013), and Uthman's Quranic standardisation and the limits of authenticity claims (CI-014).
+- Compared the moon-splitting and water-miracle reports with the historical requirements for corroborating extraordinary events.
+- Distinguished Abu Bakr's collection from Uthman's official codex, documented Uthman's committee, dialect rule and destruction of competing material, and compared early written manuscript evidence with oral tradition.
+- Applied the same evidentiary standards to Quranic and biblical transmission, without treating either oral tradition as automatically conclusive.
+- Added cross-references, public source register entries and required-page validation, and expanded the library to fourteen published analyses.
+
 ## v0.9.0 - 2026-11-03
 
 - Completed both previously planned research studies: Quranic preservation and manuscripts (CI-003) and hadith authentication and historical confidence (CI-004).
