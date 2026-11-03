@@ -2,6 +2,12 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.3.0 - 2026-11-03
+
+- Published new studies of inheritance fractions, Christian Trinitarian doctrine and Mary's family designations.
+- Added direct textual references, worked calculations and documented interpretive responses.
+- Expanded the research library to six published articles and updated the homepage.
+
 ## v0.2.2 - 2026-11-03
 
 - Corrected the homepage link and publication status for the crucifixion study.
