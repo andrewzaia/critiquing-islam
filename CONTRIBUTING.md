@@ -11,7 +11,7 @@ Open a [GitHub issue](https://github.com/andrewzaia/critiquing-islam/issues) wit
 Proposed articles should:
 
 1. State the question being tested.
-2. Identify primary texts using precise citations.
+2. Cite the primary texts directly, not summaries of their contents by other commentators.
 3. Distinguish direct textual evidence from historical inference.
 4. Consider serious alternative interpretations without artificially equalising evidence.
 5. State conclusions proportionate to their supporting material.

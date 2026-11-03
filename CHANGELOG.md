@@ -2,6 +2,17 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.2.1 - 2026-11-03
+
+- Refined article references and source descriptions.
+- Clarified primary-text citations and article methodology.
+
+## v0.2.0 - 2026-11-03
+
+- Published two additional studies covering earlier-scripture authority and Jesus' crucifixion.
+- Expanded direct scriptural and historical references.
+- Expanded research catalogue, filters and the source register.
+
 ## v0.1.0 - 2026-11-03
 
 - Established the website foundation and research navigation.
