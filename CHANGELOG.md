@@ -2,6 +2,15 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.14.0 - 2026-11-03
+
+- Replaced the single-summary CI-020 doctrine article with a navigation guide to ten separate, fully referenced investigations.
+- Published CI-022 to CI-031, covering Tawhid and the Trinity, divine sonship, Jesus' divine identity, crucifixion and substitution, tahrif, Quranic preservation, final prophethood, original sin and atonement, salvation, and Jesus' return.
+- Each investigation includes at least ten substantive analytical sections and a dedicated primary-source register, with opposing interpretations and evidentiary requirements treated individually.
+- Refined the manuscript evidence in the Quranic preservation article with verified scholarship and an official Birmingham manuscript reference.
+- Extended the research library, homepage and sources catalogue, with new automated safeguards requiring each doctrine investigation to meet structural and citation thresholds.
+- Reclassified CI-020 as a research index so the site counts thirty investigations and one guide.
+
 ## v0.13.0 - 2026-11-03
 
 - Published CI-020, a source-based comparative evidence audit covering ten disputed Islamic doctrines and their strongest counter-readings.
