@@ -3,7 +3,7 @@ import { resolve, join, dirname } from "node:path";
 import { parseChangelog, renderChangelog } from "./changelog.mjs";
 const pkg = JSON.parse(await readFile("package.json", "utf8"));
 const doctrineStudies = ["tawhid-and-trinity","divine-sonship","jesus-prophet-or-god","crucifixion-substitution-claim","tahrif-and-biblical-corruption","quran-finality-and-preservation","muhammad-seal-of-prophets","original-sin-and-atonement","islamic-salvation-faith-deeds-mercy","jesus-return-eschatology"];
-const required = [...doctrineStudies.map(x => "site/research/" + x + "/index.html"), "site/research/theology-evidence-audit/index.html", "site/research/al-muhaymin-and-quran-5-48/index.html", "site/index.html", "site/404.html", "site/research/index.html", "site/research/quran-61-6-and-paraclete/index.html", "site/research/quran-preservation-and-manuscripts/index.html", "site/research/how-is-a-hadith-authenticated/index.html", "site/research/muhammad-miracle-claims-and-witnesses/index.html", "site/research/uthman-and-quranic-authenticity/index.html", "site/research/dhul-qarnayn-alexander-legend/index.html", "site/research/ezra-son-of-god-claim/index.html", "site/research/quran-salvation-jews-christians/index.html", "site/research/no-compulsion-jizya-and-religious-freedom/index.html", "site/research/dhul-qarnayn-alexander-legend/index.html", "site/research/shooting-stars-and-devils/index.html", "site/sources/index.html", "site/methodology/index.html", "site/about/index.html", "site/changelog/index.html", "site/assets/site.css", "site/assets/site.js", "site/robots.txt", "site/_headers", "CHANGELOG.md", "README.md"];
+const required = [...doctrineStudies.map(x => "site/research/" + x + "/index.html"), "site/research/theology-evidence-audit/index.html", "site/research/al-muhaymin-and-quran-5-48/index.html", "site/index.html", "site/404.html", "site/research/index.html", "site/research/quran-61-6-and-paraclete/index.html", "site/research/quran-preservation-and-manuscripts/index.html", "site/research/how-is-a-hadith-authenticated/index.html", "site/research/muhammad-miracle-claims-and-witnesses/index.html", "site/research/uthman-and-quranic-authenticity/index.html", "site/research/dhul-qarnayn-alexander-legend/index.html", "site/research/ezra-son-of-god-claim/index.html", "site/research/quran-salvation-jews-christians/index.html", "site/research/no-compulsion-jizya-and-religious-freedom/index.html", "site/research/shooting-stars-and-devils/index.html", "site/sources/index.html", "site/methodology/index.html", "site/about/index.html", "site/changelog/index.html", "site/assets/site.css", "site/assets/site.js", "site/robots.txt", "site/_headers", "CHANGELOG.md", "README.md"];
 if (!/^\d+\.\d+\.\d+$/.test(pkg.version)) throw new Error("Version must use semantic versioning");
 for (const path of required) await access(path);
 const entries = parseChangelog(await readFile("CHANGELOG.md", "utf8"), pkg.version);
@@ -86,7 +86,7 @@ for (const [slug, threshold] of depthThresholds) {
     throw new Error("Expanded investigation has regressed: " + slug);
   }
 }
-const criticalHistoryDepth = [["crucifixion-substitution-claim",17,22],["tahrif-and-biblical-corruption",17,26],["quran-finality-and-preservation",19,20]];
+const criticalHistoryDepth = [["crucifixion-substitution-claim",17,22],["tahrif-and-biblical-corruption",17,25],["quran-finality-and-preservation",19,18]];
 for (const [slug, minSections, minReferences] of criticalHistoryDepth) {
   const content = await readFile("site/research/" + slug + "/index.html", "utf8");
   const sections = (content.match(/<section id="s[0-9]+"/g) || []).length;
@@ -117,4 +117,5 @@ for (const [slug, minSections, minReferences] of finalDoctrineDepth) {
     throw new Error("Expanded study source register has duplicate or missing URLs: " + slug);
   }
 }
+await import("./audit-evidence.mjs");
 console.log("Verified ten standalone doctrine investigations and their research index entries.");

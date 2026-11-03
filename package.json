@@ -1,6 +1,6 @@
 {
   "name": "critiquing-islam",
-  "version": "0.17.0",
+  "version": "0.18.0",
   "private": true,
   "description": "Independent examination of Islamic religious texts and historical claims",
   "type": "module",
@@ -10,6 +10,7 @@
   "scripts": {
     "build": "node scripts/build.mjs",
     "check": "node scripts/check.mjs",
+    "audit:evidence": "node scripts/audit-evidence.mjs",
     "release": "node scripts/release.mjs"
   }
 }
