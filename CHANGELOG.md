@@ -9,7 +9,7 @@ Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 - Anchored the biblical corruption discussion in real Isaiah Scroll variants, the contested long ending of Mark, the uncertain palaeographic dating of P52, and al-Tabari's alternative constructions of Quran 5:47.
 - Incorporated early written Uthmanic archetype scholarship, the Sanaa palimpsest's distinct lower text, Birmingham's exact manuscript scope and parchment dating, and the meaning-level variation of the canonical qiraat of Quran 1:4.
 - Explicitly rejected both unsupported extremes: arbitrary Uthmanic invention without evidence, and the claim that textual stability automatically establishes perfect preservation or supernatural origin.
-- Expanded independent source registers and made the historical, linguistic and theological burdens distinguishable. Added automated depth guards for the three newly expanded studies.
+- Expanded independent source registers and made the historical, linguistic and theological burdens distinguishable. Updated the source directory with direct evidence and study links, and added automated depth guards for the three newly expanded studies.
 
 ## v0.15.0 - 2026-11-03
 
