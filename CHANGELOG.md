@@ -2,6 +2,14 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.12.0 - 2026-11-03
+
+- Expanded the Dhul-Qarnayn and Syriac Alexander study (CI-018) to 17 analysis sections and 22 references.
+- Added direct Corpus Coranicum original-script Syriac evidence with a passage-by-passage audit trail and explicit differences between the Syriac gate and Quranic barrier.
+- Addressed the conflict between the 629-630 dating of the received Syriac legend and the traditionally Meccan chronology of Surah 18, alongside the earlier Justinianic-core proposal.
+- Added a 2026 academic shared-narrative counterargument and clarified the difference between literary parallels and demonstrable direct dependence.
+- Updated research and source listings, methodology, automated checks and the version history, and corrected a stale homepage reference counter.
+
 ## v0.11.0 - 2026-11-03
 
 - Published five substantive studies: Ezra or Uzayr son-of-God allegation (CI-015); religious salvation across Quran 2:62, 5:69 and 3:85 (CI-016); religious liberty and jizya (CI-017); Dhul-Qarnayn and the Syriac Alexander Legend (CI-018); and shooting stars and devils (CI-019).
