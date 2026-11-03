@@ -2,6 +2,14 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.9.0 - 2026-11-03
+
+- Completed both previously planned research studies: Quranic preservation and manuscripts (CI-003) and hadith authentication and historical confidence (CI-004).
+- Expanded source-based analysis in the Paraclete, Trinity, Mary/Imran, inheritance and marriage-law studies.
+- Added research links to early Quranic manuscripts, Uthmanic standardisation reports, classical sahih conditions and critical scholarship on hadith dating.
+- Converted both planned library cards to published entries and brought the research catalogue to twelve published investigations.
+- Updated source registers, homepage, automated required-page checks and the public version history.
+
 ## v0.8.0 - 2026-11-03
 
 - Published two research studies: Quran 7:157 and proposed prophecies about Muhammad, and Quran 65:4 with classical divorce-law interpretations.
