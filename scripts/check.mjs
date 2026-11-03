@@ -57,6 +57,12 @@ for (const slug of doctrineStudies) {
   const sections = (content.match(/<section id="s[0-9]+"/g) || []).length;
   const references = (content.match(/<li id="ref-[0-9]+"/g) || []).length;
   const visibleWords = content.replace(/<[^>]*>/g, " ").trim().split(/\s+/).length;
+  const unresolvedReferences = [...content.matchAll(/href="#ref-([0-9]+)"/g)].filter(
+    match => !content.includes('id="ref-' + match[1] + '"')
+  );
+  if (unresolvedReferences.length) {
+    throw new Error(path + " contains broken source-note anchors");
+  }
   if (sections < 10 || references < 10 || visibleWords < 1100) {
     throw new Error(path + " is not a substantive, independently referenced investigation: " +
       sections + " sections, " + references + " references, " + visibleWords + " words");
