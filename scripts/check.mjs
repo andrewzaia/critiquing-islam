@@ -95,4 +95,26 @@ for (const [slug, minSections, minReferences] of criticalHistoryDepth) {
     throw new Error("Critical-history investigation has regressed: " + slug);
   }
 }
+const finalDoctrineDepth = [["muhammad-seal-of-prophets",16,18],["original-sin-and-atonement",17,18],["islamic-salvation-faith-deeds-mercy",17,22],["jesus-return-eschatology",17,17]];
+for (const [slug, minSections, minReferences] of finalDoctrineDepth) {
+  const html = await readFile("site/research/" + slug + "/index.html", "utf8");
+  const sections = [...html.matchAll(/<section id="s([0-9]+)"/g)].map(match => Number(match[1]));
+  const references = [...html.matchAll(/<li id="ref-([0-9]+)"/g)].map(match => Number(match[1]));
+  if (sections.length < minSections || references.length < minReferences ||
+      !sections.every((n, i) => n === i + 1) ||
+      !references.every((n, i) => n === i + 1)) {
+    throw new Error("Expanded study has incomplete or non-sequential sections/sources: " + slug);
+  }
+  for (const kind of ["s", "ref-"]) {
+    const numbers = kind === "s" ? sections : references;
+    const misses = [...html.matchAll(new RegExp('href="#' + kind + '([0-9]+)"', "g"))]
+      .filter(match => !numbers.includes(Number(match[1])));
+    if (misses.length) throw new Error("Expanded study contains unresolved " + kind + " links: " + slug);
+  }
+  const urls = [...html.matchAll(/<li id="ref-[0-9]+">[\s\S]*?<a href="([^"]+)" target="_blank"/g)]
+    .map(match => match[1].replaceAll("&amp;", "&"));
+  if (urls.length !== references.length || new Set(urls).size !== urls.length) {
+    throw new Error("Expanded study source register has duplicate or missing URLs: " + slug);
+  }
+}
 console.log("Verified ten standalone doctrine investigations and their research index entries.");
