@@ -2,6 +2,16 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.20.0 - 2026-11-03
+
+- Conducted a claim-level verification of primary hadith transmissions, manuscript scholarship and earlier-scripture citations, recording reviewed sources, findings and limits in an evidence audit.
+- Identified shared intermediaries in two Ibn Masud moon reports, two Anas reports, both Aisha breastfeeding recitation reports and the Umar stoning-verse transmissions; differentiated independent companion attributions from personal eyewitness claims.
+- Clarified that Muslim 1452b does not repeat the death-time recitation wording in Muslim 1452a, and that Bukhari 6829's Umar report is shorter than Muslim 1691a.
+- Corrected misassigned references in the Jesus divinity, final prophethood and Quran 65:4 studies, ensuring that named commentaries substantiate the attached claims.
+- Corrected attribution of the Sanaa palimpsest research to Sadeghi and Goudarzi, and narrowed the discussion of Houghton's Mark 16 study to its actual manuscript finding.
+- Updated two Septuagint studies and the source register to cite the specialist Oxford Handbook of the Septuagint.
+- Introduced a site-wide named-scholar citation check and curated claim-reference regression tests, integrated into the standard validation workflow without claiming automatic historical-content verification.
+
 ## v0.19.0 - 2026-11-03
 
 - Published CI-032, an independently referenced twelve-section investigation of Quranic recitation reports omitted from the standard codex, the doctrine of abrogation, and the proof required to distinguish intentional withdrawal from possible omission.

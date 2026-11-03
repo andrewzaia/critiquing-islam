@@ -141,4 +141,5 @@ for (const page of [
 }
 await import("./audit-evidence.mjs");
 await import("./audit-reference-labels.mjs");
+await import("./audit-claim-citations.mjs");
 console.log("Verified ten standalone doctrine investigations and their research index entries.");
