@@ -2,6 +2,16 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.19.0 - 2026-11-03
+
+- Published CI-032, an independently referenced twelve-section investigation of Quranic recitation reports omitted from the standard codex, the doctrine of abrogation, and the proof required to distinguish intentional withdrawal from possible omission.
+- Examined Sahih Muslim 1452a-b on breastfeeding recitations, Muslim 1691a and Bukhari 6829 on the stoning verse, and Bukhari 5005 on Ubayy's recitation, distinguishing multiple transmitted accounts from independent direct witnesses.
+- Integrated primary-source findings into the Quranic preservation and Uthmanic standardisation studies, alongside established evidence for early codification and the separate Sanaa textual tradition.
+- Strengthened the miracle evidence study with separate hadith routes and companion-attributed reports of the moon-splitting narrative, distinguishing an attributed witness from independent historical corroboration.
+- Repaired three research citations in which a source-register title listed multiple Quranic passages but opened only one, providing separate passage references.
+- Added an automated Quranic verse and hadith reference-label concordance check and regression coverage for the new research article.
+- Updated the research library, homepage, local audit commands and release version.
+
 ## v0.18.0 - 2026-11-03
 
 - Audited numbered source registers across the research library, not only the ten standalone doctrine investigations.
