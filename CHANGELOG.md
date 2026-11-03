@@ -2,6 +2,14 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.11.0 - 2026-11-03
+
+- Published five substantive studies: Ezra or Uzayr son-of-God allegation (CI-015); religious salvation across Quran 2:62, 5:69 and 3:85 (CI-016); religious liberty and jizya (CI-017); Dhul-Qarnayn and the Syriac Alexander Legend (CI-018); and shooting stars and devils (CI-019).
+- Compared the Jewish documentary record and Muslim written responses; differentiated formal contradiction from textual qualification and political coercion from forced conversion.
+- Incorporated the Syriac Alexander narrative in Budge's edition and recent Oxford scholarship on contested dating, alongside a passage-level motif comparison.
+- Evaluated classical explanations of celestial projectiles against NASA's physical description of meteors, avoiding inaccurate whole-star arguments.
+- Expanded the library to nineteen published investigations, updated the home page and source register, and extended required-page validation and the version history.
+
 ## v0.10.0 - 2026-11-03
 
 - Published two comprehensive studies: attributed witnesses and independent evidence for Muhammad's miracles (CI-013), and Uthman's Quranic standardisation and the limits of authenticity claims (CI-014).
