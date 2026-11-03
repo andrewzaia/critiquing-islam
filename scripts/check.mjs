@@ -139,6 +139,23 @@ for (const page of [
     throw new Error(page + " lacks the CI-032 cross-reference");
   }
 }
+const expandedEarlyStudies = [
+  ["inheritance-shares-and-awl", 4, 6],
+  ["quran-5-116-and-trinity", 4, 10],
+  ["mary-sister-of-aaron", 4, 10]
+];
+for (const [slug, requiredSections, requiredSources] of expandedEarlyStudies) {
+  const html = await readFile("site/research/" + slug + "/index.html", "utf8");
+  const depth = [...html.matchAll(/<section id="depth([0-9]+)"/g)].map(match => Number(match[1]));
+  const refs = [...html.matchAll(/<li id="ref-([0-9]+)"/g)].map(match => Number(match[1]));
+  const navLinks = [...html.matchAll(/href="#depth([0-9]+)"/g)].map(match => Number(match[1]));
+  if (depth.length < requiredSections || refs.length < requiredSources ||
+      !depth.every((id, i) => id === i + 1) ||
+      !depth.every(id => navLinks.includes(id)) ||
+      !refs.every((id, i) => id === i + 1)) {
+    throw new Error("Early investigation research depth has regressed: " + slug);
+  }
+}
 await import("./audit-evidence.mjs");
 await import("./audit-reference-labels.mjs");
 await import("./audit-claim-citations.mjs");

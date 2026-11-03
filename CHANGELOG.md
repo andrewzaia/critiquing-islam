@@ -2,6 +2,14 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.21.0 - 2026-11-04
+
+- Expanded the inheritance, Quran 5:116 and Mary-Aaron-Imran investigations with twelve additional source-led research sections.
+- Added a second inheritance over-allocation example, legal distinction between awl and residual distribution, and the historical disagreement over priority among fixed-share heirs.
+- Distinguished the Quran's condemnation of taking Jesus and Mary as deities from its separate statements about three; assessed the interpretation that Marian veneration is the target rather than a formal Trinity definition.
+- Examined the Najran exchange, classical kinship interpretations, the double Aaron-Imran name parallel and earlier Christian references to Aaronic family connections.
+- Expanded the source registers, updated research catalogue descriptions, and added regression checks for each study's new sections and references.
+
 ## v0.20.0 - 2026-11-03
 
 - Conducted a claim-level verification of primary hadith transmissions, manuscript scholarship and earlier-scripture citations, recording reviewed sources, findings and limits in an evidence audit.
