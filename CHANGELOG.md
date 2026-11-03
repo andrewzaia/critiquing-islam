@@ -2,6 +2,15 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.22.0 - 2026-11-04
+
+- Established an explicit primary-text evidence hierarchy in the methodology and project introduction, distinguishing Quranic wording, attributed hadith reports, later exegesis and independent historical witnesses.
+- Revised the inheritance, Trinity and Mary-Aaron investigations to focus their conclusions on the Quran's words and independently dated evidence rather than treating subsequent legal or theological explanations as resolutions.
+- Replaced a modern interpretive source in the Trinity investigation with a pre-Islamic account by Epiphanius and added an early Christian council text for the doctrine being compared.
+- Strengthened the scriptural corruption and crucifixion investigations by separating their direct Quranic assertions from historical details introduced by later traditions.
+- Applied the same source priority to Quranic preservation, final prophethood, salvation, Jesus' return, al-muhaymin and the question of earlier biblical scripture.
+- Clarified source use across the ten-doctrine research guide and added automated regression checks for the primary-text findings.
+
 ## v0.21.0 - 2026-11-04
 
 - Expanded the inheritance, Quran 5:116 and Mary-Aaron-Imran investigations with twelve additional source-led research sections.

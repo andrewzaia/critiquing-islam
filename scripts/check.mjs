@@ -156,6 +156,36 @@ for (const [slug, requiredSections, requiredSources] of expandedEarlyStudies) {
     throw new Error("Early investigation research depth has regressed: " + slug);
   }
 }
+const evidenceMethodology = await readFile("site/methodology/index.html", "utf8");
+for (const required of [
+  "Quran-first research standard",
+  "Hadith and commentary: limited evidentiary roles",
+  "Distortion claims and an equal standard"
+]) {
+  if (!evidenceMethodology.includes(required)) {
+    throw new Error("Primary-text evidence standard is missing: " + required);
+  }
+}
+const primaryTextFindings = [
+  ["inheritance-shares-and-awl", "Direct textual finding:"],
+  ["quran-5-116-and-trinity", "Direct textual finding:"],
+  ["mary-sister-of-aaron", "Direct textual finding:"],
+  ["tahrif-and-biblical-corruption", "Quran-first verdict:"],
+  ["crucifixion-substitution-claim", "Quran-first verdict:"],
+  ["quran-finality-and-preservation", "Quran-first finding:"],
+  ["islamic-salvation-faith-deeds-mercy", "Quran-first finding:"],
+  ["jesus-return-eschatology", "Quran-first finding:"],
+  ["muhammad-seal-of-prophets", "Quran-first finding:"],
+  ["al-muhaymin-and-quran-5-48", "What the Quran establishes:"],
+  ["quran-and-earlier-scriptures", "Textual standard:"],
+  ["theology-evidence-audit", "Reading standard:"]
+];
+for (const [slug, assertion] of primaryTextFindings) {
+  const html = await readFile("site/research/" + slug + "/index.html", "utf8");
+  if (!html.includes(assertion)) {
+    throw new Error("Research reverted to an unsupported later-source resolution: " + slug);
+  }
+}
 await import("./audit-evidence.mjs");
 await import("./audit-reference-labels.mjs");
 await import("./audit-claim-citations.mjs");

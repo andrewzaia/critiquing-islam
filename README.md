@@ -6,6 +6,8 @@ An independent, evidence-based examination of Islamic scripture, theology, histo
 
 Critiquing Islam is a public research website. Its articles distinguish direct textual observations, historical inference, disputed interpretation and unresolved questions. Claims are supported by traceable references, and meaningful corrections are documented.
 
+**Source priority:** Quranic claims are tested against the Quranic text and context first. Hadith is evidence of attributed reports and later transmitted beliefs, not independent verification of extraordinary events or proof of unwritten Quranic clauses. Tafsir records proposed interpretations, not binding amendments to the text. All source claims, including inconvenient ones, are subjected to the same checks; a convenient conclusion is not a reason to accept a weak source.
+
 The subject of scrutiny is religious claims, texts, institutions and ideas, not the identity or dignity of Muslims as people.
 
 ## Explore
