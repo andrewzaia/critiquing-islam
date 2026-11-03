@@ -2,6 +2,16 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.17.0 - 2026-11-03
+
+- Substantially expanded all four remaining standalone doctrine investigations, CI-028 through CI-031, with primary Quranic, hadith and classical commentary evidence.
+- CI-028: distinguished al-Tabari's interpretation of finality and explicit no-prophet-after-me reports from independently proving a divine prohibition on future prophets; analysed the adoption-law context and claims of prophecies in earlier scriptures.
+- CI-029: compared inherited consequences and inherited guilt using Quran 2:36-38 and the Adam-Moses narration, and evaluated the additional-burden texts and Ibn Kathir's response.
+- CI-030: examined the classical reconciliation of broad and exclusive salvation passages; added sources on mercy, the judgement scales, intercession, the encounter with Hell and adequate prophetic warning.
+- CI-031: documented classical alternative readings of Quran 4:159 and 43:61 and evaluated the relationship between Quranic statements, later Jesus-return predictions and the finality doctrine.
+- Deduplicated the four source registers so distinct references are not inflated by repeated URLs. Extended regression checks for section counts, note resolution and complete source coverage in the ten-study series.
+- Updated the research catalogue descriptions.
+
 ## v0.16.0 - 2026-11-03
 
 - Deepened the separate crucifixion, tahrif and Quran preservation critiques (CI-025 to CI-027) with original Arabic, early manuscript witnesses and source-critical scholarship.
