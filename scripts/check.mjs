@@ -86,4 +86,13 @@ for (const [slug, threshold] of depthThresholds) {
     throw new Error("Expanded investigation has regressed: " + slug);
   }
 }
+const criticalHistoryDepth = [["crucifixion-substitution-claim",17,22],["tahrif-and-biblical-corruption",17,26],["quran-finality-and-preservation",19,20]];
+for (const [slug, minSections, minReferences] of criticalHistoryDepth) {
+  const content = await readFile("site/research/" + slug + "/index.html", "utf8");
+  const sections = (content.match(/<section id="s[0-9]+"/g) || []).length;
+  const references = (content.match(/<li id="ref-[0-9]+"/g) || []).length;
+  if (sections < minSections || references < minReferences) {
+    throw new Error("Critical-history investigation has regressed: " + slug);
+  }
+}
 console.log("Verified ten standalone doctrine investigations and their research index entries.");
