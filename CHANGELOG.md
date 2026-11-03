@@ -2,6 +2,13 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.6.1 - 2026-11-03
+
+- Strengthened the pre-Islamic manuscript argument in the earlier-scripture and Jesus' divinity studies.
+- Distinguished documentary proof that biblical texts predate Islam from proof of an unchanged original or theological truth.
+- Examined the Quran's instruction to use the Gospel alongside its role as a criterion, setting out the evidentiary burden for specific corruption allegations.
+- Clarified that surviving fourth-century codices do not establish the precise books held by every seventh-century community.
+
 ## v0.6.0 - 2026-11-03
 
 - Added Codex Vaticanus, Codex Sinaiticus and the Septuagint as distinguished manuscript and translation witnesses in the public source register.
