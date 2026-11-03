@@ -4,7 +4,7 @@ Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
 ## v0.7.0 - 2026-11-03
 
-- Expanded the crucifixion study to eighteen analytical sections and 27 textual and historical references.
+- Expanded the crucifixion study to seventeen analytical sections and 27 textual and historical references.
 - Distinguished Quran 4:157 from later, differing substitute accounts and examined the pre-Islamic Basilidean substitute tradition.
 - Added early Pauline evidence, qualified Gospel and Josephus analysis, Ignatius, Greek codices, a chronology, a substitution hypothesis test and evidence matrix.
 - Updated the homepage and research library to reflect the expanded study.
