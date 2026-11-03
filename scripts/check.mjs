@@ -86,7 +86,7 @@ for (const [slug, threshold] of depthThresholds) {
     throw new Error("Expanded investigation has regressed: " + slug);
   }
 }
-const criticalHistoryDepth = [["crucifixion-substitution-claim",17,22],["tahrif-and-biblical-corruption",17,25],["quran-finality-and-preservation",19,20]];
+const criticalHistoryDepth = [["crucifixion-substitution-claim",17,22],["tahrif-and-biblical-corruption",17,26],["quran-finality-and-preservation",19,20]];
 for (const [slug, minSections, minReferences] of criticalHistoryDepth) {
   const content = await readFile("site/research/" + slug + "/index.html", "utf8");
   const sections = (content.match(/<section id="s[0-9]+"/g) || []).length;
