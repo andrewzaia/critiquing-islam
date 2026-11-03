@@ -73,4 +73,17 @@ for (const slug of doctrineStudies) {
     }
   }
 }
+const depthThresholds = new Map([
+  ["tawhid-and-trinity", { sections: 16, references: 19 }],
+  ["divine-sonship", { sections: 16, references: 21 }],
+  ["jesus-prophet-or-god", { sections: 15, references: 22 }]
+]);
+for (const [slug, threshold] of depthThresholds) {
+  const content = await readFile("site/research/" + slug + "/index.html", "utf8");
+  const sections = (content.match(/<section id="s[0-9]+"/g) || []).length;
+  const references = (content.match(/<li id="ref-[0-9]+"/g) || []).length;
+  if (sections < threshold.sections || references < threshold.references) {
+    throw new Error("Expanded investigation has regressed: " + slug);
+  }
+}
 console.log("Verified ten standalone doctrine investigations and their research index entries.");

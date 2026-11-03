@@ -2,6 +2,17 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.15.0 - 2026-11-03
+
+- Substantially deepened the first three individual doctrinal studies, CI-022 (Tawhid and Trinity), CI-023 (divine sonship) and CI-024 (Jesus as prophet or God).
+- Added Arabic morphology for Quran 4:171, 5:73, 5:116, 6:101 and 112:3, with separate grammatical conclusions rather than conflating the Quranic challenges.
+- Incorporated al-Qurtubi's recognition that orthodox Christians profess one God and his distinct argument that three gods would nevertheless follow; contrasted al-Tabari's different reported explanations.
+- Added pre-Nicene sources from Justin Martyr, Tertullian and Ignatius to constrain claims about when high Christology and distinct-person language arose.
+- Compared Ibn Kathir's consort and offspring argument with the non-physical claim of eternal generation, and addressed the Quran's broader rejection beyond biology.
+- Disclosed the competing ancient readings of John 1:18 rather than relying on a single unqualified English rendering.
+- Added separate tests for historical dating, original-language meaning, doctrinal identification, philosophical entailment, manuscript variants and the authority of a later corrective revelation.
+- Added automated structural checks that each of the three expanded investigations retains all added sections and references.
+
 ## v0.14.0 - 2026-11-03
 
 - Replaced the single-summary CI-020 doctrine article with a navigation guide to ten separate, fully referenced investigations.
