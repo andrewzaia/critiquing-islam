@@ -2,6 +2,12 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.6.0 - 2026-11-03
+
+- Added Codex Vaticanus, Codex Sinaiticus and the Septuagint as distinguished manuscript and translation witnesses in the public source register.
+- Expanded manuscript evidence and source citations in the studies of Jesus' divine status, scriptural authority, Jesus' historical identity and the Paraclete.
+- Clarified the dates, preservation limits, manuscript scope, textual variants and image-use restrictions, without treating manuscript survival as proof of theology.
+
 ## v0.5.0 - 2026-11-03
 
 - Published a comprehensive textual study of Jesus' divine identity in early Christianity and its rejection in the Quran.
