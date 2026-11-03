@@ -15,7 +15,7 @@ const reviewed = [
   ["is-jesus-god", "The Septuagint is a family of translation texts", [32]],
   ["is-jesus-god", "The classical commentary of Ibn Kathir explicitly", [33]],
   ["muhammad-seal-of-prophets", "Ibn Kathir's argument assumes", [2]],
-  ["quran-65-4-and-marriage-age", "That possible application does not erase", [5, 6]],
+  ["quran-65-4-and-marriage-age", "An adult with absent menstruation may be within the wording", [1, 5, 6]],
   ["quran-preservation-and-manuscripts", "Sadeghi and Goudarzi examine", [12]],
   ["tahrif-and-biblical-corruption", "Houghton's specific finding", [18, 19]],
   ["abrogated-quranic-recitation", "Chain-level qualification", [3, 4]],
