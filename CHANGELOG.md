@@ -2,6 +2,15 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.16.0 - 2026-11-03
+
+- Deepened the separate crucifixion, tahrif and Quran preservation critiques (CI-025 to CI-027) with original Arabic, early manuscript witnesses and source-critical scholarship.
+- Clarified the passive shubbiha in Quran 4:157, differing reports in al-Tabari, Ignatius's early testimony, the non-eyewitness limits of Tacitus and a historically defensible death date range.
+- Anchored the biblical corruption discussion in real Isaiah Scroll variants, the contested long ending of Mark, the uncertain palaeographic dating of P52, and al-Tabari's alternative constructions of Quran 5:47.
+- Incorporated early written Uthmanic archetype scholarship, the Sanaa palimpsest's distinct lower text, Birmingham's exact manuscript scope and parchment dating, and the meaning-level variation of the canonical qiraat of Quran 1:4.
+- Explicitly rejected both unsupported extremes: arbitrary Uthmanic invention without evidence, and the claim that textual stability automatically establishes perfect preservation or supernatural origin.
+- Expanded independent source registers and made the historical, linguistic and theological burdens distinguishable. Added automated depth guards for the three newly expanded studies.
+
 ## v0.15.0 - 2026-11-03
 
 - Substantially deepened the first three individual doctrinal studies, CI-022 (Tawhid and Trinity), CI-023 (divine sonship) and CI-024 (Jesus as prophet or God).
