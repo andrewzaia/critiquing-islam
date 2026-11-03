@@ -2,6 +2,17 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.18.0 - 2026-11-03
+
+- Audited numbered source registers across the research library, not only the ten standalone doctrine investigations.
+- Removed repeated URLs that were presented under separate reference numbers, and updated in-text citation anchors to retain accurate source-to-claim tracing.
+- Integrated previously unused references into explicit, claim-specific analysis, including the crucifixion, hadith authentication, Quranic preservation, tahrif, eschatological and earlier-scripture investigations.
+- Corrected the Sanaa palimpsest citation to use Sadeghi and Goudarzi's dedicated manuscript study instead of a duplicate reference to van Putten's written-archetype research.
+- Added distinct hadith evidence on seven ahruf and early reported recitation differences, carefully separated from later canonical qiraat and from independent proof of historical revelation.
+- Added a site-wide automated evidence audit checking sequential source IDs, citation links, unused or repeated sources, outbound reference formats and analysis-section anchors.
+- Documented the distinction between source attestation, historical independence, doctrinal interpretation and independent corroboration, with an independently runnable audit command.
+- Adjusted minimum source counts for two investigations to reflect verified distinct references rather than duplicated source entries.
+
 ## v0.17.0 - 2026-11-03
 
 - Substantially expanded all four remaining standalone doctrine investigations, CI-028 through CI-031, with primary Quranic, hadith and classical commentary evidence.
