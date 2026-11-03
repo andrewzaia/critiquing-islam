@@ -23,10 +23,11 @@ Requires Node.js 20 or later. The site has no runtime dependencies.
 npm run check
 npm run audit:evidence
 npm run audit:references
+npm run audit:claims
 npm run build
 ```
 
-The evidence audit checks every research article for sequential, resolved and non-duplicated numbered references, including whether each listed source is cited. A separate primary-reference audit checks that directly named Quran and hadith identifiers agree with their linked destinations. Neither check establishes the factual accuracy of a reference or checks every external website in real time.
+The evidence audit checks every research article for sequential, resolved and non-duplicated numbered references, including whether each listed source is cited. A separate primary-reference audit checks that directly named Quran and hadith identifiers agree with their linked destinations. Neither check establishes the factual accuracy of a reference or checks every external website in real time. The claim citation check detects incorrect scholar-to-reference attribution and protects a curated set of reviewed claims. See [the v0.20.0 source-content audit](docs/source-content-audit-v0.20.0.md) for what was checked directly and the limitations of those checks.
 
 The generated static site is in `dist/`. Serve it with any local static HTTP server, such as `python3 -m http.server 8000 --directory dist`.
 
