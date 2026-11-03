@@ -2,6 +2,15 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.23.0 - 2026-11-04
+
+- Rebuilt the Quran 65:4 investigation around the Arabic clause, the Quranic waiting-period rules and the specific limits of what the text states; added two independent research sections and revised its source-weighted verdict.
+- Distinguished the historical reception of the marriage-age interpretation from the actual textual wording, and classified the absence of a specified age threshold separately from claims about particular historical practices.
+- Re-examined Quran 2:62, 5:69 and 3:85 without treating later chronological or abrogation theories as a demonstrated exception to the stated salvation promises.
+- Refined the Quran 2:256 and 9:29 critique to distinguish freedom of belief from unequal political treatment directly from the verses without accepting a commentator's claim of abrogation.
+- Clarified the difference between Quran 2:106's general statement, transmitted reports and independently observable manuscript evidence in the Quran preservation investigation.
+- Added primary-reference regression checks, updated a reviewed citation mapping, and refreshed the research catalogue descriptions for these findings.
+
 ## v0.22.0 - 2026-11-04
 
 - Established an explicit primary-text evidence hierarchy in the methodology and project introduction, distinguishing Quranic wording, attributed hadith reports, later exegesis and independent historical witnesses.

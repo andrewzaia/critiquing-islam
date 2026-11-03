@@ -186,6 +186,38 @@ for (const [slug, assertion] of primaryTextFindings) {
     throw new Error("Research reverted to an unsupported later-source resolution: " + slug);
   }
 }
+const revisedPrimaryStudies = [
+  ["quran-65-4-and-marriage-age", "language", "scope", "An adult-only limitation is not written into Quran 65:4", 11],
+  ["quran-salvation-jews-christians", null, null, "Text-first finding:", 10],
+  ["no-compulsion-jizya-and-religious-freedom", null, null, "Text-first finding:", 12],
+  ["quran-preservation-and-manuscripts", null, null, "Text-first finding:", 15]
+];
+for (const [slug, firstSection, secondSection, finding, minSources] of revisedPrimaryStudies) {
+  const html = await readFile("site/research/" + slug + "/index.html", "utf8");
+  const sourceNumbers = [...html.matchAll(/<li id="ref-([0-9]+)"/g)]
+    .map(match => Number(match[1]));
+  if (sourceNumbers.length < minSources || !html.includes(finding)) {
+    throw new Error("Primary-text audit regression: " + slug);
+  }
+  for (const id of [firstSection, secondSection].filter(Boolean)) {
+    if (!html.includes('<section id="' + id + '">') ||
+        !html.includes('href="#' + id + '"')) {
+      throw new Error("Primary-text investigation section or navigation missing: " + slug + "/" + id);
+    }
+  }
+}
+const ageStudy = await readFile("site/research/quran-65-4-and-marriage-age/index.html", "utf8");
+const ageConclusionStart = ageStudy.indexOf('<section id="conclusion">');
+const ageReferencesStart = ageStudy.indexOf('<section id="references">');
+if (ageConclusionStart < 0 || ageReferencesStart <= ageConclusionStart) {
+  throw new Error("Quran 65:4 conclusion missing");
+}
+const ageConclusion = ageStudy.slice(ageConclusionStart, ageReferencesStart);
+for (const citation of ['href="#ref-1"', 'href="#ref-2"', 'href="#ref-4"', 'href="#ref-7"']) {
+  if (!ageConclusion.includes(citation)) {
+    throw new Error("Quran 65:4 verdict lost Quranic wording or translation evidence: " + citation);
+  }
+}
 await import("./audit-evidence.mjs");
 await import("./audit-reference-labels.mjs");
 await import("./audit-claim-citations.mjs");
