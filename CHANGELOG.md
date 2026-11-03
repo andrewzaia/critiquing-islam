@@ -2,6 +2,12 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.4.0 - 2026-11-03
+
+- Published a comprehensive examination of the claim that Jesus was a Muslim.
+- Compared the earliest Christian texts, Quranic portrayal, Jewish historical setting and key doctrinal differences.
+- Added a primary-source register, cross-references and prominent access from the homepage and research library.
+
 ## v0.3.0 - 2026-11-03
 
 - Published new studies of inheritance fractions, Christian Trinitarian doctrine and Mary's family designations.
