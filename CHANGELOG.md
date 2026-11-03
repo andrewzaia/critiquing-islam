@@ -2,6 +2,10 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.2.2 - 2026-11-03
+
+- Corrected the homepage link and publication status for the crucifixion study.
+
 ## v0.2.1 - 2026-11-03
 
 - Refined article references and source descriptions.
