@@ -2,6 +2,13 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.6.2 - 2026-11-03
+
+- Expanded the Gospel authenticity critique with pre-Islamic documentary continuity for specific Johannine passages and a detailed-verses evidentiary test.
+- Added Quran 12:111, 16:89 and 6:114, early papyrus evidence and classical tafsir, distinguishing explanatory adequacy from a formal logical contradiction.
+- Documented the Johannine Comma as a genuine later textual addition rather than suggesting every biblical manuscript is identical.
+- Updated the Christology analysis, manuscript source register and editorial methodology.
+
 ## v0.6.1 - 2026-11-03
 
 - Strengthened the pre-Islamic manuscript argument in the earlier-scripture and Jesus' divinity studies.
