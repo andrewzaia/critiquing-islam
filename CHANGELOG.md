@@ -2,6 +2,13 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.8.0 - 2026-11-03
+
+- Published two research studies: Quran 7:157 and proposed prophecies about Muhammad, and Quran 65:4 with classical divorce-law interpretations.
+- Added clear, claim-specific evidence verdicts to every existing published critique, distinguishing failed identifications, unsupported claims and genuine interpretive uncertainty.
+- Added primary textual citations and classical Islamic interpretations, without introducing online commentator attribution.
+- Updated the research library, homepage, methodology and public release history.
+
 ## v0.7.0 - 2026-11-03
 
 - Expanded the crucifixion study to seventeen analytical sections and 27 textual and historical references.
