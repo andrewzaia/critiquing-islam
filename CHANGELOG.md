@@ -2,6 +2,15 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.13.0 - 2026-11-03
+
+- Published CI-020, a source-based comparative evidence audit covering ten disputed Islamic doctrines and their strongest counter-readings.
+- Published CI-021, an independent Al-Muhaymin investigation grounded in Arabic morphology, Lisan al-Arab and the tafsir of al-Tabari, Ibn Kathir and al-Qurtubi.
+- Distinguished internal scriptural authority from independent historical corroboration, and identified the precise burdens for any particular biblical corruption allegation.
+- Corrected common overstatements about the Christian Trinity, divine sonship, unnamed crucifixion substitutes, salvation through works, and the Quran versus hadith on Jesus' return.
+- Connected the new studies in the research library, homepage, source register and earlier-scripture analysis; extended required-file checks to cover both articles.
+- Expanded the catalogue from 19 to 21 investigations. Future dedicated deep dives are identified for sonship, prophetic finality, atonement and eschatology.
+
 ## v0.12.0 - 2026-11-03
 
 - Expanded the Dhul-Qarnayn and Syriac Alexander study (CI-018) to 17 analysis sections and 22 references.
