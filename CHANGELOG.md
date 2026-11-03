@@ -2,6 +2,12 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.4.1 - 2026-11-03
+
+- Added a dedicated public version history page with expandable release notes.
+- Linked the footer version and About page to the release history.
+- Generated public release history from the canonical changelog and added automated version consistency checks.
+
 ## v0.4.0 - 2026-11-03
 
 - Published a comprehensive examination of the claim that Jesus was a Muslim.

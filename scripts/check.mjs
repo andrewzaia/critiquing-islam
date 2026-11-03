@@ -1,9 +1,19 @@
 import { access, readFile, readdir, stat } from "node:fs/promises";
 import { resolve, join, dirname } from "node:path";
+import { parseChangelog, renderChangelog } from "./changelog.mjs";
 const pkg = JSON.parse(await readFile("package.json", "utf8"));
-const required = ["site/index.html", "site/404.html", "site/research/index.html", "site/research/quran-61-6-and-paraclete/index.html", "site/sources/index.html", "site/methodology/index.html", "site/about/index.html", "site/assets/site.css", "site/assets/site.js", "site/robots.txt", "site/_headers", "CHANGELOG.md", "README.md"];
+const required = ["site/index.html", "site/404.html", "site/research/index.html", "site/research/quran-61-6-and-paraclete/index.html", "site/sources/index.html", "site/methodology/index.html", "site/about/index.html", "site/changelog/index.html", "site/assets/site.css", "site/assets/site.js", "site/robots.txt", "site/_headers", "CHANGELOG.md", "README.md"];
 if (!/^\d+\.\d+\.\d+$/.test(pkg.version)) throw new Error("Version must use semantic versioning");
 for (const path of required) await access(path);
+const entries = parseChangelog(await readFile("CHANGELOG.md", "utf8"), pkg.version);
+if (entries.length < 2 || !renderChangelog(entries).includes("v" + pkg.version)) {
+  throw new Error("Invalid public release history");
+}
+const historyTemplate = await readFile("site/changelog/index.html", "utf8");
+if (!historyTemplate.includes("{{CHANGELOG_ENTRIES}}") ||
+    !historyTemplate.includes("{{CHANGELOG_COUNT}}")) {
+  throw new Error("Changelog template placeholders are missing");
+}
 const htmlFiles = [];
 async function list(dir) {
   for (const item of await readdir(dir, { withFileTypes: true })) {
