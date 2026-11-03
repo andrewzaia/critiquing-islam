@@ -2,6 +2,13 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.5.0 - 2026-11-03
+
+- Published a comprehensive textual study of Jesus' divine identity in early Christianity and its rejection in the Quran.
+- Compared first-century Christian passages with Quranic descriptions of Jesus, earlier Gospel authority and preservation claims.
+- Examined the distinction between the Injil and canonical Gospels, competing interpretations, and documentary chronology.
+- Added direct scriptural references and linked the study from the homepage and research library.
+
 ## v0.4.1 - 2026-11-03
 
 - Added a dedicated public version history page with expandable release notes.
