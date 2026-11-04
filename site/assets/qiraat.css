@@ -46,3 +46,11 @@
 .qiraat-jump select,.qiraat-jump input{width:100%}.qiraat-jump button{grid-column:1/-1}
 .qiraat-result-list,.qiraat-method-grid{grid-template-columns:1fr}.qiraat-navigation{width:100%}.qiraat-navigation button{flex:1}
 .qiraat-reader{padding:12px}.qiraat-transmission{padding:11px}.qiraat-arabic{font-size:28px}}
+
+.qf-live{margin-top:38px;padding-top:24px;border-top:1px solid var(--line)}
+.qf-live-results{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:16px}
+.qf-juncture{min-width:0;border:1px solid var(--line);background:var(--panel);padding:18px}
+.qf-juncture h4{margin:0 0 12px;font-size:16px}
+.qf-reading{padding:13px 0;border-top:1px solid var(--line)}
+.qf-arabic{font:clamp(22px,2.5vw,30px)/1.9 Georgia,"Traditional Arabic",serif;text-align:right;overflow-wrap:anywhere}
+@media(max-width:760px){.qf-live-results{grid-template-columns:1fr}.qf-juncture{padding:14px}}
