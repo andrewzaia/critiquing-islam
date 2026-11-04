@@ -36,6 +36,17 @@ assert.ok(labels("Quran 4:157-158").length);
 const sources = await readFile("site/methodology/index.html", "utf8");
 assert.ok(sources.includes("https://quran.com/3/78"));
 
+// Prevent broad preview targeting on clickable research cards.
+// Card navigation stays on the parent anchor; only the verse-text span previews.
+const previewScript = await readFile("site/assets/quran-previews.js", "utf8");
+assert.ok(previewScript.includes('document.createElement(parentLink ? "span" : "a")'));
+assert.ok(previewScript.includes('.closest?.(".quran-preview-reference, a.quran-preview-source")'));
+assert.ok(!previewScript.includes('parentLink.dataset.quranReference ='),
+  "Never annotate a whole research card with a Quran hover target");
+const homePage = await readFile("site/index.html", "utf8");
+assert.ok(homePage.includes('research-card is-live') && homePage.includes("Quran 65:4"),
+  "The homepage research-card regression fixture has changed");
+
 const builder = await readFile("scripts/build.mjs", "utf8");
 assert.ok(builder.includes('src="/assets/quran-previews.js"'),
   "Generated pages must install Quran previews sitewide");
