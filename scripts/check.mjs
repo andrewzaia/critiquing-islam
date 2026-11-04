@@ -303,9 +303,6 @@ for (const path of ["site/index.html", "site/research/index.html", "site/sources
     throw new Error("CI-020 or doctrine guide navigation missing: " + path);
   }
 }
-if (!doctrineIndex.includes("34 published investigations / 1 research guide")) {
-  throw new Error("Research counts are outdated after CI-020 repurposing");
-}
 
 
 const samiriDoc = await readFile("site/research/al-samiri-and-golden-calf/index.html", "utf8");
@@ -348,8 +345,41 @@ for (const doc of [doctrineIndex, newSources]) {
     throw new Error("CI-034 absent from library or source register");
   }
 }
-if (!doctrineIndex.includes("34 published investigations / 1 research guide")) {
-  throw new Error("Research catalogue count is out of date");
+
+
+const joseph = await readFile("site/research/joseph-dirhams-and-coinage/index.html", "utf8");
+const josephBody = joseph.slice(joseph.indexOf('<article class="prose'), joseph.indexOf('<section id="references">'));
+const josephSections = [...joseph.matchAll(/<section id="([^"]+)"><span class="section-index">/g)].map(m => m[1]).filter(id => id !== "references");
+const josephSources = [...joseph.matchAll(/<li id="ref-(\d+)"/g)].map(m => Number(m[1]));
+const josephCites = [...josephBody.matchAll(/href="#ref-(\d+)"/g)].map(m => Number(m[1]));
+const josephWords = josephBody.replace(/<[^>]*>/g, " ").trim().split(/\s+/).length;
+if (josephSections.length < 17 || josephSources.length < 17 || josephWords < 2100 ||
+    !josephSources.every((n, i) => n === i + 1) ||
+    josephSources.some(n => !josephCites.includes(n)) ||
+    josephCites.some(n => !josephSources.includes(n))) {
+  throw new Error("CI-035 regression in research depth or reference integrity");
+}
+for (const section of ["arabic", "counted", "genesis", "egypt", "coinage", "etymology", "lexical-bridge", "matrix", "verdict"]) {
+  if (!joseph.includes('<section id="' + section + '">') || !joseph.includes('href="#' + section + '"')) {
+    throw new Error("CI-035 table of contents missing section: " + section);
+  }
+}
+for (const text of ["Text-first verdict:", "Historical verdict:", "unit of weight", "Genesis 37:28", "minted coinage"]) {
+  if (!joseph.includes(text)) throw new Error("CI-035 evidence qualification was lost: " + text);
+}
+const v028Home = await readFile("site/index.html", "utf8");
+const v028Sources = await readFile("site/sources/index.html", "utf8");
+if (v028Home.includes('class="wrap editorial-note"')) {
+  throw new Error("The old homepage editorial panels were reintroduced");
+}
+for (const route of ["/research/joseph-dirhams-and-coinage/", "/research/al-samiri-and-golden-calf/", "/research/abrogated-quranic-recitation/", "/research/theology-evidence-audit/"]) {
+  if (!v028Home.includes('href="' + route + '"')) throw new Error("Homepage navigation regression: " + route);
+}
+for (const doc of [doctrineIndex, v028Sources]) {
+  if (!doc.includes('href="/research/joseph-dirhams-and-coinage/"')) throw new Error("CI-035 missing from the library or source register");
+}
+if (!doctrineIndex.includes("35 published investigations / 1 research guide")) {
+  throw new Error("Research count not updated for v0.28.0");
 }
 
 await import("./audit-evidence.mjs");

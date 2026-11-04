@@ -2,6 +2,15 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.28.0 - 2026-11-05
+
+- Added CI-035, a 17-section, 17-reference investigation of counted dirhams in Quran 12:20, examining the Arabic noun, historical currency etymology and the difference between minted coins and Bronze Age weighed silver.
+- Compared Quran 12:19-21 with Genesis 37:28 and Genesis 23:16, as well as Harvard, UCL and museum artefacts, numismatic dating and published archaeological research.
+- Separated conditional claims of coin anachronism from the possibility of retrospective monetary vocabulary or a weight-based unit, with explicit criteria for what the wording proves and fails to prove.
+- Updated the homepage research cards, library catalogue and source register while preserving the v0.27.0 responsive layout and removal of homepage announcement panels.
+- Added regression checks for CI-035 section depth, source integrity, evidentiary distinctions, catalogue references and prior homepage protections.
+- Documented source and archaeological verification boundaries in the v0.28.0 audit note.
+
 ## v0.27.0 - 2026-11-05
 
 - Added CI-034, a standalone 18-section, 21-reference historical investigation into al-Samiri, Aaron and the golden calf. The study separates the Quran's direct attribution from the debated Samaritan identification and its conditional chronological problem.
