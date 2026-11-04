@@ -11,7 +11,9 @@ async function injectVersion(path) {
     if (item.isDirectory()) await injectVersion(target);
     else if (item.name.endsWith(".html")) {
       const original = await readFile(target, "utf8");
-      await writeFile(target, original.replaceAll("{{VERSION}}", packageData.version));
+      const tagged = original.replaceAll("{{VERSION}}", packageData.version)
+        .replace("</body>", '<script type="module" src="/assets/quran-previews.js"></script>\n</body>');
+      await writeFile(target, tagged);
     }
   }
 }
