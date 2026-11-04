@@ -29,6 +29,8 @@ npm run audit:claims
 npm run build
 ```
 
+The v0.28.0 research release adds CI-035 on Quran 12:20 and Joseph's counted dirhams. The investigation checks the exact Arabic term against evidence for pre-coinage weighed silver, the emergence of minted coins and the possibility of later vocabulary being used in an earlier narrative. See [the monetary history audit](docs/joseph-dirhams-audit-v0.28.0.md).
+
 The v0.27.0 release adds the al-Samiri and golden-calf investigation, corrects homepage link wrapping on narrow screens and removes repetitive homepage announcement panels. The historical audit explains why identifying al-Samiri with later Samaritans is a hypothesis rather than a fact established by the Quran's wording. See [the audit](docs/samiri-source-audit-v0.27.0.md).
 
 The v0.26.0 research revision assigns CI-020 to the historicity of Haman in Pharaoh's court and retains the existing doctrinal guide without an investigation identifier. See [the source audit](docs/haman-historical-audit-v0.26.0.md) for evidence boundaries, source dates and outstanding authentication requirements.
