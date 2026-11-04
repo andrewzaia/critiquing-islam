@@ -423,8 +423,8 @@ for (const id of ["question","arabic","context","genesis","mishnah","bloods","ad
     throw new Error("CI-037 section or navigation missing: "+id);
   }
 }
-for (const phrase of ["Quran 5:32","Mishnah Sanhedrin 4:5","Genesis 4:10",
-  "of Israel","capital","corruption","first introduced","not established"]) {
+for (const phrase of ["Quran 5:32","Mishnah Sanhedrin 4:5","Genesis 4:8-10",
+  "of Israel","capital","corruption","uniquely Quranic","remains a separate historical question"]) {
   if (!ci037.includes(phrase)) throw new Error("CI-037 textual evidence check lost: "+phrase);
 }
 for (const path of ["site/index.html","site/research/index.html","site/sources/index.html"]) {
