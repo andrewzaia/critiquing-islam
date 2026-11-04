@@ -2,6 +2,14 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.31.0 - 2026-11-05
+
+- Added sitewide Quran reference hovercards, using the local Cairo/Hafs Arabic verse and scholarly transliteration corpus rather than a live API request on hover.
+- Recognise explicit Quran citations and grouped references, direct Quran.com source links, single verses, same-chapter ranges and consecutive cross-chapter ranges while avoiding automatic misidentification of Bible citations.
+- Added mouse hover, keyboard focus, mobile tap-to-preview, Escape/close controls, bounded scrollable range views and links to the Quran reading explorer and Quran.com translations.
+- Included one preview engine per generated HTML page without changing editorial content or existing source-link targets. Added dedicated regression checks for reference parsing, validation and multi-verse boundaries.
+- The hovercard presents the locally verified Hafs Arabic and transliteration only; it does not claim to be an English translation or another independently attested reading.
+
 ## v0.30.1 - 2026-11-05
 
 - Consolidated Quran verse lookup and Arabic/transliteration keyword search into one field, removing the redundant surah and verse picker and its associated JavaScript and styling.
