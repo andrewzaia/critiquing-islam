@@ -274,6 +274,39 @@ for (const p of ["site/index.html", "site/research/index.html", "site/sources/in
 for (const text of ["Quran 21:30", "Quran 51:47", "Quran 23:12-14", "Quran 86:5-7", "Text-first verdict:"]) {
   if (!scientificClaims.includes(text)) throw new Error("Missing primary scientific study evidence: " + text);
 }
+
+const ci020Html = await readFile("site/research/haman-in-pharaohs-court/index.html", "utf8");
+const ci020Body = ci020Html.slice(ci020Html.indexOf('<article class="prose'), ci020Html.indexOf('<section id="references">'));
+const ci020Sections = [...ci020Html.matchAll(/<section id="([^"]+)"><span class="section-index">/g)].map(m => m[1]).filter(x => x !== "references");
+const ci020Sources = [...ci020Html.matchAll(/<li id="ref-(\d+)"/g)].map(m => Number(m[1]));
+const ci020Cited = [...ci020Body.matchAll(/href="#ref-(\d+)"/g)].map(m => Number(m[1]));
+const ci020Words = ci020Body.replace(/<[^>]*>/g, " ").trim().split(/\s+/).length;
+if (ci020Sections.length < 17 || ci020Sources.length < 20 || ci020Words < 1700 ||
+    !ci020Sources.every((n, i) => n === i + 1) ||
+    ci020Cited.some(n => !ci020Sources.includes(n)) || ci020Sources.some(n => !ci020Cited.includes(n)) ||
+    !ci020Body.includes("Text-first verdict:")) {
+  throw new Error("CI-020 failed historical research depth, verdict or reference checks");
+}
+for (const id of ["claim", "six", "esther", "chronology", "babel", "distinct", "epigraphy", "evidence-matrix", "verdict"]) {
+  if (!ci020Html.includes('<section id="' + id + '">') || !ci020Html.includes('href="#' + id + '"')) {
+    throw new Error("CI-020 section missing from its navigation: " + id);
+  }
+}
+const ci020Guide = await readFile("site/research/theology-evidence-audit/index.html", "utf8");
+if (ci020Guide.includes("CI-020") || !ci020Guide.includes("RESEARCH GUIDE / TEN DOCTRINES")) {
+  throw new Error("The former CI-020 guide must remain accessible but unnumbered");
+}
+for (const path of ["site/index.html", "site/research/index.html", "site/sources/index.html"]) {
+  const html = await readFile(path, "utf8");
+  if (!html.includes('href="/research/haman-in-pharaohs-court/"') ||
+      !html.includes('href="/research/theology-evidence-audit/"')) {
+    throw new Error("CI-020 or doctrine guide navigation missing: " + path);
+  }
+}
+if (!doctrineIndex.includes("33 published investigations / 1 research guide")) {
+  throw new Error("Research counts are outdated after CI-020 repurposing");
+}
+
 await import("./audit-evidence.mjs");
 await import("./audit-reference-labels.mjs");
 await import("./audit-claim-citations.mjs");
