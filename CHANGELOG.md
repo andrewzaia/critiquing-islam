@@ -2,6 +2,13 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.31.2 - 2026-11-05
+
+- Updated the optional Quran Foundation live Qira'at proxy to support the approved parent `qiraat` scope as an alternative to the `qiraat.read` scope, using an explicit allowlist.
+- Strengthened matrix response validation to reject malformed attribution structures and mismatched verse identifiers.
+- Improved live comparison display of verse-boundary context, provider glosses and provider-specific error messages without changing the locally hosted Quran data.
+- Expanded automated tests to verify both OAuth scope paths and exercise the browser renderer against the provider's published matrix schema. Real production permissions and connectivity remain separate verification requirements.
+
 ## v0.31.1 - 2026-11-05
 
 - Limited Quran verse previews in linked research cards to the verse text itself, rather than the entire card hover area.

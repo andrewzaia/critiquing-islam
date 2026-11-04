@@ -36,7 +36,11 @@ export async function onRequestGet({request, env}) {
   const hosts = production
     ? {oauth:"https://oauth2.quran.foundation", api:"https://apis.quran.foundation"}
     : {oauth:"https://prelive-oauth2.quran.foundation", api:"https://apis-prelive.quran.foundation"};
-  const scope = kind === "qiraat" ? "qiraat.read" : (env.QF_CONTENT_SCOPE || "content");
+  // Some approved clients receive the parent "qiraat" scope, not "qiraat.read".
+  // Keep this strictly allowlisted so configuration cannot request unrelated scopes.
+  const scope = kind === "qiraat"
+    ? (env.QF_QIRAAT_SCOPE === "qiraat" ? "qiraat" : "qiraat.read")
+    : (env.QF_CONTENT_SCOPE || "content");
   const path = kind === "qiraat"
     ? "/content/api/v4/qiraat/matrix/by_verse/" + verse + "?language=en"
     : "/content/api/v4/verses/by_key/" + verse + "?fields=text_uthmani&language=en";
@@ -55,7 +59,15 @@ export async function onRequestGet({request, env}) {
     if (upstream.status === 429) return json({status:"rate_limited"}, 503);
     if (!upstream.ok) return json({status:"upstream_unavailable"}, 502);
     const data = await upstream.json();
-    if (kind === "qiraat" && (!Array.isArray(data.junctures) || !Array.isArray(data.readers))) {
+    if (kind === "qiraat" && (
+      data?.verse?.verse_key !== verse ||
+      !Array.isArray(data.junctures) ||
+      !Array.isArray(data.readers) ||
+      !Array.isArray(data.transmitters) ||
+      data.junctures.some(j => !Array.isArray(j.readings) ||
+        j.readings.some(r => !r.matrix ||
+          !Array.isArray(r.matrix.readers) || !Array.isArray(r.matrix.transmitters)))
+    )) {
       return json({status:"invalid_upstream_response"}, 502);
     }
     if (kind === "verse" && !data.verse) return json({status:"invalid_upstream_response"}, 502);
