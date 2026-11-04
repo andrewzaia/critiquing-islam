@@ -2,6 +2,14 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.26.0 - 2026-11-04
+
+- Repurposed CI-020 as a standalone, 17-section historical investigation of Haman at Pharaoh's court, with 20 references and a source-specific evidence verdict.
+- Compared all six Quranic occurrences with Persian Esther, the Genesis tower motif, Korah's Moses-era story, Arabic morphology and the limits of alleged hieroglyphic corroboration.
+- Retained the ten-doctrine navigation guide at its original URL while removing its CI-020 identifier, preserving the independent CI-022 to CI-031 investigations.
+- Updated the homepage, research index, source register and regression checks for CI-020 depth, references and the distinct unnumbered guide.
+- Recorded historical verification limitations and the outstanding Egyptian epigraphic requirements in a separate audit note.
+
 ## v0.25.0 - 2026-11-04
 
 - Expanded the Ezra and Uzayr investigation, CI-015, to 14 sections and 15 references, with the Arabic wording, the Fourth Ezra passages and a falsifiable burden for the alleged local sect.
