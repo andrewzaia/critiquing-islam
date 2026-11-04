@@ -218,6 +218,37 @@ for (const citation of ['href="#ref-1"', 'href="#ref-2"', 'href="#ref-4"', 'href
     throw new Error("Quran 65:4 verdict lost Quranic wording or translation evidence: " + citation);
   }
 }
+const expandedClaimStudies = [
+  ["quran-61-6-and-paraclete", 10, 11, ["quran-claim", "greek-word", "burden"], "Text-first verdict:"],
+  ["muhammad-in-torah-and-gospel", 13, 17, ["claim-scope", "moses-kinship", "missing-evidence"], "Text-first verdict:"],
+  ["muhammad-miracle-claims-and-witnesses", 16, 21, ["requested-signs", "named-witnesses", "evidence-threshold"], "Quran-first verdict:"],
+  ["shooting-stars-and-devils", 14, 14, ["arabic", "physical-test", "scientific-claim"], "Text-first finding:"]
+];
+for (const [slug, minSections, minReferences, requiredIds, finding] of expandedClaimStudies) {
+  const html = await readFile("site/research/" + slug + "/index.html", "utf8");
+  const sections = [...html.matchAll(/<section id="([^"]+)"><span class="section-index">/g)]
+    .map(match => match[1]).filter(id => id !== "references");
+  const sources = [...html.matchAll(/<li id="ref-([0-9]+)"/g)]
+    .map(match => Number(match[1]));
+  const body = html.slice(html.indexOf('<article class="prose'), html.indexOf('<section id="references">'));
+  const words = body.replace(/<[^>]*>/g, " ").trim().split(/\\s+/).length;
+  if (sections.length < minSections || sources.length < minReferences ||
+      words < 1150 || !body.includes(finding) ||
+      !sources.every((n, i) => n === i + 1)) {
+    throw new Error("Primary-text depth or reference regression: " + slug);
+  }
+  for (const id of requiredIds) {
+    if (!html.includes('<section id="' + id + '">') ||
+        !html.includes('href="#' + id + '"')) {
+      throw new Error("Primary-text study lost a section or navigation: " + slug + "/" + id);
+    }
+  }
+  const citations = [...body.matchAll(/href="#ref-([0-9]+)"/g)]
+    .map(match => Number(match[1]));
+  if (citations.some(n => !sources.includes(n))) {
+    throw new Error("Expanded study has an unresolved reference: " + slug);
+  }
+}
 await import("./audit-evidence.mjs");
 await import("./audit-reference-labels.mjs");
 await import("./audit-claim-citations.mjs");

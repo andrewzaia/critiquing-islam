@@ -35,6 +35,8 @@ The evidence audit checks every research article for sequential, resolved and no
 
 The generated static site is in `dist/`. Serve it with any local static HTTP server, such as `python3 -m http.server 8000 --directory dist`.
 
+The v0.24.0 review deepens four previously published Quran-first investigations into prophetic identification, miracle testimony and celestial claims. Structural tests enforce research depth, anchored citations and retained verdicts; they are not substitutes for philological or historical verification. See [the evidence audit](docs/prophecy-miracles-science-audit-v0.24.0.md).
+
 ## Versioning
 
 This project follows Semantic Versioning: `MAJOR.MINOR.PATCH`.
