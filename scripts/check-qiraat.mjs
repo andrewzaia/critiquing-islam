@@ -74,20 +74,20 @@ for (const token of ["qiraat-search-form", "qiraat-readings", "qiraat-show-all",
   "CC BY-SA 4.0", "reconstructed scholarly transliteration", "/assets/qiraat.js", "/assets/qiraat.css"]) {
   if (!ui.includes(token)) throw new Error("Quran comparison UI lost " + token);
 }
-if ((ui.match(/<form\\b/g) || []).length !== 1 || !ui.includes('role="search"') ||
+if (ui.split("<form ").length - 1 !== 1 || !ui.includes('role="search"') ||
     !ui.includes('id="qiraat-query"') || !ui.includes('id="qiraat-prev"') || !ui.includes('id="qiraat-next"') ||
-    /qiraat-jump-form|qiraat-surah|qiraat-ayah|>Open verse<\//.test(ui)) {
+    ["qiraat-jump-form", "qiraat-surah", "qiraat-ayah", ">Open verse<"].some(token => ui.includes(token))) {
   throw new Error("Quran explorer must use one search form with previous/next navigation");
 }
 const browserScript = await readFile("site/assets/qiraat.js", "utf8");
-if (/qiraat-jump-form|qiraat-surah|qiraat-ayah/.test(browserScript) ||
+if (["qiraat-jump-form", "qiraat-surah", "qiraat-ayah"].some(token => browserScript.includes(token)) ||
     !browserScript.includes("searchInput(") || !browserScript.includes("parseRef(")) {
   throw new Error("Quran verse lookup is no longer consolidated");
 }
 new Script(browserScript);
 const css = await readFile("site/assets/qiraat.css", "utf8");
 if (!css.includes("@media(max-width:600px)")) throw new Error("Quran mobile CSS missing");
-if (/\.qiraat-jump\b/.test(css)) throw new Error("Unused Quran jump layout was retained");
+if (css.includes(".qiraat-jump")) throw new Error("Unused Quran jump layout was retained");
 const home = await readFile("site/index.html", "utf8");
 if (home.includes('class="wrap editorial-note"')) throw new Error("Old home editorial panels restored");
 if (!home.includes('href="/quran/"')) throw new Error("Quran explorer not linked from home");
