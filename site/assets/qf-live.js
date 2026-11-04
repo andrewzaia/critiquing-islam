@@ -29,7 +29,8 @@
         base.lang = "ar"; base.dir = "rtl"; base.translate = false;
         item.append(base);
       }
-      if (junction.verse_range) item.append(note("Position: " + junction.verse_range));
+      if (junction.verse_range) item.append(note("Verse coverage: " + junction.verse_range));
+      if (junction.cross_verse) item.append(note("This variation crosses a verse boundary."));
       for (const reading of junction.readings || []) {
         const row = element("div", "qf-reading");
         const arabic = element("p", "qf-arabic", reading.text || reading.text_uthmani || "");
@@ -40,8 +41,12 @@
         if ((axis.readers || []).length) row.append(note("Readers: " + names(axis.readers, readers)));
         if (reading.translation) row.append(note("Provided meaning: " + reading.translation));
         if (reading.transliteration) row.append(note("Transliteration: " + reading.transliteration));
+        if (reading.explanation?.text) row.append(note("Provider explanation: " + reading.explanation.text));
         item.append(row);
       }
+      if (junction.combined_translation) item.append(note(
+        "Provider's combined rendering of this variation: " + junction.combined_translation
+      ));
       result.append(item);
     }
   }
@@ -63,8 +68,9 @@
         const labels = {
           production_required:"Live Qira'at comparisons require production API access.",
           not_configured:"Live API credentials are not configured. The locally hosted comparison remains available.",
-          scope_required:"The API application requires approved qiraat.read permission.",
-          scope_or_credentials:"The API credentials or their approved scopes need attention.",
+          scope_required:"The API application requires approved qiraat.read or parent qiraat permission.",
+          scope_or_credentials:"The API credentials or requested scope need attention.",
+          invalid_upstream_response:"The provider returned an unexpected response structure. Local comparison remains available.",
           rate_limited:"The provider is rate limiting requests. Local data remain available.",
           upstream_unavailable:"The live source is currently unavailable. Local data remain available."
         };
