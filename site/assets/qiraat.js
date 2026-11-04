@@ -129,6 +129,7 @@
         history.replaceState(null, "", url.toString());
       }
       setStatus("Showing " + s + ":" + v + ". Source: local, attributed dataset.");
+      document.dispatchEvent(new CustomEvent("qiraat:verse", {detail: {key: s + ":" + v}}));
     } catch (e) { if (token === serial) setStatus(e.message, true); }
   }
   function norm(value) {
