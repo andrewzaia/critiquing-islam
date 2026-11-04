@@ -231,7 +231,7 @@ for (const [slug, minSections, minReferences, requiredIds, finding] of expandedC
   const sources = [...html.matchAll(/<li id="ref-([0-9]+)"/g)]
     .map(match => Number(match[1]));
   const body = html.slice(html.indexOf('<article class="prose'), html.indexOf('<section id="references">'));
-  const words = body.replace(/<[^>]*>/g, " ").trim().split(/\\s+/).length;
+  const words = body.replace(/<[^>]*>/g, " ").trim().split(/\s+/).length;
   if (sections.length < minSections || sources.length < minReferences ||
       words < 1150 || !body.includes(finding) ||
       !sources.every((n, i) => n === i + 1)) {
