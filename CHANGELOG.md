@@ -2,6 +2,14 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.25.0 - 2026-11-04
+
+- Expanded the Ezra and Uzayr investigation, CI-015, to 14 sections and 15 references, with the Arabic wording, the Fourth Ezra passages and a falsifiable burden for the alleged local sect.
+- Added CI-033, a dedicated Quranic scientific miracle investigation with 13 substantive sections and 18 sources comparing cosmological, embryological and anatomical arguments against the Quranic wording and scientific observations.
+- Expanded CI-013 to 21 sections and 25 references, distinguishing Quranic sign requests, attributed witnesses, independent observations and literary development of moon-splitting accounts.
+- Updated research navigation, source catalogue, changelog and automated source and section regression checks.
+- Automated checks test structure, references and navigation, not the historical occurrence or supernatural truth of religious claims.
+
 ## v0.24.0 - 2026-11-04
 
 - Expanded the independent Ahmad and Paraclete investigation with six additional sections, direct Quranic language checks, John 14-16 context, the Greek word's use in 1 John, and documentary requirements for claims about lost readings.

@@ -249,6 +249,31 @@ for (const [slug, minSections, minReferences, requiredIds, finding] of expandedC
     throw new Error("Expanded study has an unresolved reference: " + slug);
   }
 }
+
+const scientificClaims = await readFile("site/research/quran-scientific-miracles/index.html", "utf8");
+for (const [slug, secMinimum, refMinimum, anchors] of [
+  ["ezra-son-of-god-claim", 14, 15, ["arabic", "fourth-ezra", "sect-test"]],
+  ["muhammad-miracle-claims-and-witnesses", 21, 25, ["contemporaries", "more-signs", "lunar-test"]],
+  ["quran-scientific-miracles", 13, 18, ["joined", "expansion", "embryology", "fluid", "verdict"]]
+]) {
+  const doc = await readFile("site/research/" + slug + "/index.html", "utf8");
+  const sections = [...doc.matchAll(/<section id="([^"]+)"><span class="section-index">/g)].map(x => x[1]).filter(x => x !== "references");
+  const refs = [...doc.matchAll(/<li id="ref-(\d+)"/g)].map(x => Number(x[1]));
+  const links = [...doc.matchAll(/href="#ref-(\d+)"/g)].map(x => Number(x[1]));
+  if (sections.length < secMinimum || refs.length < refMinimum || !refs.every((n, i) => n === i + 1) ||
+      links.some(n => !refs.includes(n)) || refs.some(n => !links.includes(n))) {
+    throw new Error("v0.25.0 research depth or citation regression: " + slug);
+  }
+  for (const id of anchors) if (!doc.includes('<section id="' + id + '">') || !doc.includes('href="#' + id + '"'))
+    throw new Error("v0.25.0 missing section navigation: " + slug + "/" + id);
+}
+for (const p of ["site/index.html", "site/research/index.html", "site/sources/index.html"]) {
+  const html = await readFile(p, "utf8");
+  if (!html.includes('href="/research/quran-scientific-miracles/"')) throw new Error("CI-033 missing from " + p);
+}
+for (const text of ["Quran 21:30", "Quran 51:47", "Quran 23:12-14", "Quran 86:5-7", "Text-first verdict:"]) {
+  if (!scientificClaims.includes(text)) throw new Error("Missing primary scientific study evidence: " + text);
+}
 await import("./audit-evidence.mjs");
 await import("./audit-reference-labels.mjs");
 await import("./audit-claim-citations.mjs");
