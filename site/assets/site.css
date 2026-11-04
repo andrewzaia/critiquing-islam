@@ -65,3 +65,6 @@
 /* Direct evidence assessment in research conclusions */
 .prose .evidence-verdict{padding:18px 20px;border-left:3px solid var(--accent);background:var(--panel2);margin:24px 0;line-height:1.75}
 .prose .evidence-verdict strong{display:block;margin-bottom:6px;color:var(--text)}
+
+/* Let research titles wrap on narrow screens instead of overflowing. */
+@media(max-width:760px){.inline-link{white-space:normal;overflow-wrap:anywhere}.section-head{flex-wrap:wrap}}

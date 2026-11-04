@@ -2,6 +2,15 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.27.0 - 2026-11-05
+
+- Added CI-034, a standalone 18-section, 21-reference historical investigation into al-Samiri, Aaron and the golden calf. The study separates the Quran's direct attribution from the debated Samaritan identification and its conditional chronological problem.
+- Compared Quran 20:83-97 and 7:148-152 with Exodus 32, Deuteronomy 9, Samaria under Omri, the Assyrian setting and academic work on Samaritan history and possible name etymologies.
+- Removed five stacked editorial-note panels from the homepage. The research library already provides full access to those subjects, while the abrogated recitation study and ten-doctrine guide retain direct homepage links in more appropriate sections.
+- Added responsive CSS so long text links can wrap on narrow screens and section headings accommodate their adjacent links.
+- Updated research navigation, source register, release documentation and automated regression checks for article depth, references, homepage cleanup and retained research routes.
+- Documented historical identification and source review limitations separately from structural CI validation.
+
 ## v0.26.0 - 2026-11-04
 
 - Repurposed CI-020 as a standalone, 17-section historical investigation of Haman at Pharaoh's court, with 20 references and a source-specific evidence verdict.
