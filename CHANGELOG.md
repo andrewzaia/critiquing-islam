@@ -2,6 +2,12 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.30.1 - 2026-11-05
+
+- Consolidated Quran verse lookup and Arabic/transliteration keyword search into one field, removing the redundant surah and verse picker and its associated JavaScript and styling.
+- Preserved reference ranges, example shortcuts, previous/next verse navigation, shareable verse URLs and the optional live Qira'at comparison.
+- Extended regression checks to protect the single-search layout and removed unused controls.
+
 ## v0.30.0 - 2026-11-05
 
 - Added an optional Quran Foundation Qira'at matrix view below the existing locally hosted Quran readings, keeping source provenance and comparison limitations distinct.
