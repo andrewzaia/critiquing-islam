@@ -367,6 +367,39 @@ for (const section of ["arabic", "counted", "genesis", "egypt", "coinage", "etym
 for (const text of ["Text-first verdict:", "Historical verdict:", "unit of weight", "Genesis 37:28", "minted coinage"]) {
   if (!joseph.includes(text)) throw new Error("CI-035 evidence qualification was lost: " + text);
 }
+// CI-036 must remain a substantive, individually sourced investigation.
+const abrahamStudy = await readFile("site/research/abraham-father-azar-terah/index.html", "utf8");
+const abrahamBody = abrahamStudy.slice(abrahamStudy.indexOf('<article class="prose'), abrahamStudy.indexOf('<section id="references">'));
+const abrahamSections = [...abrahamStudy.matchAll(/<section id="([^"]+)"><span class="section-index">/g)]
+  .map(m => m[1]).filter(id => id !== "references");
+const abrahamRefs = [...abrahamStudy.matchAll(/<li id="ref-(\d+)">/g)].map(m => Number(m[1]));
+const abrahamCited = [...abrahamBody.matchAll(/href="#ref-(\d+)"/g)].map(m => Number(m[1]));
+const abrahamWords = abrahamBody.replace(/<[^>]*>/g, " ").trim().split(/\s+/).length;
+if (abrahamSections.length < 18 || abrahamRefs.length < 20 || abrahamWords < 2600 ||
+    !abrahamRefs.every((number, i) => number === i + 1) ||
+    abrahamCited.some(number => !abrahamRefs.includes(number)) ||
+    abrahamRefs.some(number => !abrahamCited.includes(number)) ||
+    !abrahamBody.includes("Text-first verdict:") ||
+    !abrahamBody.includes("Historical verdict:")) {
+  throw new Error("CI-036 lost research depth, complete citations or independent verdicts");
+}
+for (const id of ["claim","arabic","genesis","joshua","greek","josephus","jubilees","manuscripts",
+  "midrash","uncle","alias","parents","matrix","verdict"]) {
+  if (!abrahamStudy.includes('<section id="' + id + '">') ||
+      !abrahamStudy.includes('href="#' + id + '"')) {
+    throw new Error("CI-036 source-critical section missing: " + id);
+  }
+}
+for (const item of ["Quran 6:74","Genesis 11","Joshua 24:2","Jubilees 12:1-8",
+  "4Q216","possible reconciliations","unverified"]) {
+  if (!abrahamStudy.includes(item)) throw new Error("CI-036 evidence limitation lost: " + item);
+}
+for (const path of ["site/index.html", "site/research/index.html", "site/sources/index.html"]) {
+  if (!(await readFile(path,"utf8")).includes('href="/research/abraham-father-azar-terah/"')) {
+    throw new Error("CI-036 must be discoverable through main research navigation: " + path);
+  }
+}
+
 const v028Home = await readFile("site/index.html", "utf8");
 const v028Sources = await readFile("site/sources/index.html", "utf8");
 if (v028Home.includes('class="wrap editorial-note"')) {
@@ -378,7 +411,7 @@ for (const route of ["/research/joseph-dirhams-and-coinage/", "/research/al-sami
 for (const doc of [doctrineIndex, v028Sources]) {
   if (!doc.includes('href="/research/joseph-dirhams-and-coinage/"')) throw new Error("CI-035 missing from the library or source register");
 }
-if (!doctrineIndex.includes("35 published investigations / 1 research guide")) {
+if (!doctrineIndex.includes("36 published investigations / 1 research guide")) {
   throw new Error("Research count not updated for v0.28.0");
 }
 

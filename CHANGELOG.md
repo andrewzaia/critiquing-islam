@@ -2,6 +2,14 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.32.0 - 2026-11-05
+
+- Published CI-036, a standalone 19-section, 20-source critical investigation into the identification of Abraham's father as Azar in Quran 6:74 versus Terah in earlier Jewish and Christian textual traditions.
+- Analysed the Quranic father-address in Arabic; compared Genesis, Joshua, Chronicles, Septuagint, Josephus, Jubilees, Genesis Rabbah and the Apocalypse of Abraham; examined what pre-Islamic manuscript and literary witnesses can actually establish.
+- Tested the uncle, alternate-name, title and parent-prayer reconciliations against source-specific proof requirements, distinguishing an attested naming discrepancy from a claim to know the patriarch's actual biological parent independently of the texts.
+- Updated homepage and research catalogue navigation to 36 investigations, expanded the source register, and added new release checks for research depth, section links and citation use.
+- Documented the early textual evidence and limitations, including the distinction between a Qumran witness to Jubilees as a work and the later complete chapter 12 wording. No Quran data or API integration files changed.
+
 ## v0.31.2 - 2026-11-05
 
 - Updated the optional Quran Foundation live Qira'at proxy to support the approved parent `qiraat` scope as an alternative to the `qiraat.read` scope, using an explicit allowlist.
