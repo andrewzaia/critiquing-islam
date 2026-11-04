@@ -400,6 +400,39 @@ for (const path of ["site/index.html", "site/research/index.html", "site/sources
   }
 }
 
+// CI-037: protect a complete source-critical rather than a source-directory article.
+const ci037 = await readFile("site/research/quran-5-32-mishnah-sanhedrin/index.html", "utf8");
+const ci037Body = ci037.slice(ci037.indexOf('<article class="prose'), ci037.indexOf('<section id="references">'));
+const ci037Sections = [...ci037.matchAll(/<section id="([^"]+)"><span class="section-index">/g)]
+  .map(m => m[1]).filter(id => id !== "references");
+const ci037Refs = [...ci037.matchAll(/<li id="ref-(\d+)">/g)].map(m => Number(m[1]));
+const ci037Cited = [...ci037Body.matchAll(/href="#ref-(\d+)"/g)].map(m => Number(m[1]));
+const ci037Words = ci037Body.replace(/<[^>]*>/g," ").trim().split(/\s+/).length;
+if (ci037Sections.length < 19 || ci037Refs.length < 23 || ci037Words < 3200 ||
+    !ci037Refs.every((n,i) => n === i+1) ||
+    ci037Cited.some(n => !ci037Refs.includes(n)) ||
+    ci037Refs.some(n => !ci037Cited.includes(n)) ||
+    !ci037Body.includes("Text-first verdict:") ||
+    !ci037Body.includes("Historical verdict:")) {
+  throw new Error("CI-037 lost substantive research, cited source coverage or independent verdicts");
+}
+for (const id of ["question","arabic","context","genesis","mishnah","bloods","adam",
+  "dating","source-parallel","numbering","variants","language","exceptions",
+  "next-verse","transmission","academic","originality","matrix","verdict"]) {
+  if (!ci037.includes('<section id="' + id + '">') || !ci037.includes('href="#' + id + '"')) {
+    throw new Error("CI-037 section or navigation missing: "+id);
+  }
+}
+for (const phrase of ["Quran 5:32","Mishnah Sanhedrin 4:5","Genesis 4:8-10",
+  "of Israel","capital","corruption","uniquely Quranic","remains a separate historical question"]) {
+  if (!ci037.includes(phrase)) throw new Error("CI-037 textual evidence check lost: "+phrase);
+}
+for (const path of ["site/index.html","site/research/index.html","site/sources/index.html"]) {
+  if (!(await readFile(path,"utf8")).includes('href="/research/quran-5-32-mishnah-sanhedrin/"')) {
+    throw new Error("CI-037 missing from website navigation: "+path);
+  }
+}
+
 const v028Home = await readFile("site/index.html", "utf8");
 const v028Sources = await readFile("site/sources/index.html", "utf8");
 if (v028Home.includes('class="wrap editorial-note"')) {
@@ -411,7 +444,7 @@ for (const route of ["/research/joseph-dirhams-and-coinage/", "/research/al-sami
 for (const doc of [doctrineIndex, v028Sources]) {
   if (!doc.includes('href="/research/joseph-dirhams-and-coinage/"')) throw new Error("CI-035 missing from the library or source register");
 }
-if (!doctrineIndex.includes("36 published investigations / 1 research guide")) {
+if (!doctrineIndex.includes("37 published investigations / 1 research guide")) {
   throw new Error("Research count not updated for v0.28.0");
 }
 

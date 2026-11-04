@@ -2,6 +2,15 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.33.0 - 2026-11-05
+
+- Published CI-037, a 19-section, 23-source investigation of the earlier one-life/whole-world maxim in Mishnah Sanhedrin 4:5 and its relationship to Quran 5:32.
+- Compared the Quran's Arabic decree addressed to the Children of Israel with the Mishnah's judicial warning concerning false capital testimony and the Hebrew interpretation of Abel's blood in Genesis 4:10.
+- Examined the circa 190-230 CE Mishnah compilation date, later manuscript transmission, the contested wording 'of Israel', alternative Mishnah numbering and limits on claims of word-for-word copying.
+- Separated the documented earlier Jewish source from an unproven specific oral or written intermediary, and assessed the Quran's explicit homicide and corruption exceptions alongside 5:33-34.
+- Added the new study to the homepage, research library and source register, bringing the total to 37 investigations and one research guide.
+- Expanded release checks for article length, all 23 references, section navigation and discoverability. Documented the scope of textual and chronological verification separately. Quran reader, Quran.Foundation API and infrastructure are unchanged.
+
 ## v0.32.0 - 2026-11-05
 
 - Published CI-036, a standalone 19-section, 20-source critical investigation into the identification of Abraham's father as Azar in Quran 6:74 versus Terah in earlier Jewish and Christian textual traditions.
