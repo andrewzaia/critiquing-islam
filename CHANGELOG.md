@@ -2,6 +2,15 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.24.0 - 2026-11-04
+
+- Expanded the independent Ahmad and Paraclete investigation with six additional sections, direct Quranic language checks, John 14-16 context, the Greek word's use in 1 John, and documentary requirements for claims about lost readings.
+- Deepened the Torah and Gospel prophecy investigation with five sections covering Quran 7:157, the Mosaic kinship setting, Isaiah 42's Kedar reference, the Johannine identity claim and evidentiary demands for an alleged altered prophecy.
+- Expanded the historical miracle-witness investigation with five sections comparing Quranic responses to requests for signs, transmission chains, independent observations, public-crowd reports and suitable corroboration standards.
+- Added four substantial sections to the Quranic meteor investigation, comparing the Arabic translation issues, the repeated heavenly-eavesdropping motif, NASA meteor science and the limits of calling an unseen supernatural purpose a scientific discovery.
+- Added specialist and primary references, expanded article metadata, cross-links and research summaries, and regression tests for textual depth, source registers, relevant section anchors and evidence verdicts.
+- Recorded the source-verification scope and outstanding historical uncertainties in a separate audit note.
+
 ## v0.23.0 - 2026-11-04
 
 - Rebuilt the Quran 65:4 investigation around the Arabic clause, the Quranic waiting-period rules and the specific limits of what the text states; added two independent research sections and revised its source-weighted verdict.
