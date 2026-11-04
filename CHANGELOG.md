@@ -2,6 +2,11 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.31.1 - 2026-11-05
+
+- Limited Quran verse previews in linked research cards to the verse text itself, rather than the entire card hover area.
+- Preserved standard card navigation and existing Quran.com source-link previews; added a regression check for the hover target.
+
 ## v0.31.0 - 2026-11-05
 
 - Added sitewide Quran reference hovercards, using the local Cairo/Hafs Arabic verse and scholarly transliteration corpus rather than a live API request on hover.

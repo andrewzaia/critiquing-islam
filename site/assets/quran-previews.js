@@ -88,10 +88,9 @@ function startPreviews() {
       tag.className = "quran-preview-reference";
       tag.dataset.quranReference = ref.label;
       tag.textContent = node.nodeValue.slice(start, end);
-      if (parentLink) {
-        // An existing linked card remains a single link, never a nested anchor.
-        if (!parentLink.dataset.quranReference) parentLink.dataset.quranReference = ref.label;
-      } else {
+      // Preserve existing card links without attaching a preview to their whole surface.
+      // Only the citation span is a hover target inside a linked card.
+      if (!parentLink) {
         tag.href = link(ref);
         tag.setAttribute("aria-label", "Preview Quran " + ref.label + "; open reading explorer");
       }
@@ -227,7 +226,7 @@ function startPreviews() {
     }
   }
 
-  const refTarget = node => node?.closest?.("[data-quran-reference]");
+  const refTarget = node => node?.closest?.(".quran-preview-reference, a.quran-preview-source");
   document.addEventListener("pointerover", event => {
     if (event.pointerType !== "mouse" && event.pointerType !== "pen") return;
     const target = refTarget(event.target);
