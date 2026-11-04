@@ -303,8 +303,53 @@ for (const path of ["site/index.html", "site/research/index.html", "site/sources
     throw new Error("CI-020 or doctrine guide navigation missing: " + path);
   }
 }
-if (!doctrineIndex.includes("33 published investigations / 1 research guide")) {
+if (!doctrineIndex.includes("34 published investigations / 1 research guide")) {
   throw new Error("Research counts are outdated after CI-020 repurposing");
+}
+
+
+const samiriDoc = await readFile("site/research/al-samiri-and-golden-calf/index.html", "utf8");
+const samiriBody = samiriDoc.slice(samiriDoc.indexOf('<article class="prose'), samiriDoc.indexOf('<section id="references">'));
+const samiriSections = [...samiriDoc.matchAll(/<section id="([^"]+)"><span class="section-index">/g)].map(m => m[1]).filter(x => x !== "references");
+const samiriRefs = [...samiriDoc.matchAll(/<li id="ref-(\d+)"/g)].map(m => Number(m[1]));
+const samiriCitations = [...samiriBody.matchAll(/href="#ref-(\d+)"/g)].map(m => Number(m[1]));
+const samiriWordCount = samiriBody.replace(/<[^>]*>/g, " ").trim().split(/\s+/).length;
+if (samiriSections.length < 18 || samiriRefs.length < 21 || samiriWordCount < 1900 ||
+    !samiriRefs.every((n, i) => n === i + 1) ||
+    samiriCitations.some(n => !samiriRefs.includes(n)) ||
+    samiriRefs.some(n => !samiriCitations.includes(n))) {
+  throw new Error("CI-034 depth or reference regression");
+}
+for (const id of ["assertion", "exodus", "arabic-name", "conditional", "omri", "other-meanings", "matrix", "verdict"]) {
+  if (!samiriDoc.includes('<section id="' + id + '">') || !samiriDoc.includes('href="#' + id + '"')) {
+    throw new Error("CI-034 section or navigation missing: " + id);
+  }
+}
+for (const phrase of ["Text-first verdict:", "Historical verdict:", "Exodus 32:1-6", "I Kings 16:24"]) {
+  if (!samiriDoc.includes(phrase)) throw new Error("CI-034 source finding missing: " + phrase);
+}
+const newHome = await readFile("site/index.html", "utf8");
+const newCss = await readFile("site/assets/site.css", "utf8");
+const newSources = await readFile("site/sources/index.html", "utf8");
+if (newHome.includes('class="wrap editorial-note"') ||
+    !newCss.includes(".inline-link{white-space:normal;overflow-wrap:anywhere}") ||
+    !newCss.includes(".section-head{flex-wrap:wrap}")) {
+  throw new Error("Homepage simplification or mobile wrapping is incomplete");
+}
+for (const url of [
+  "/research/al-samiri-and-golden-calf/",
+  "/research/abrogated-quranic-recitation/",
+  "/research/theology-evidence-audit/"
+]) {
+  if (!newHome.includes('href="' + url + '"')) throw new Error("Homepage lost a key research route: " + url);
+}
+for (const doc of [doctrineIndex, newSources]) {
+  if (!doc.includes('href="/research/al-samiri-and-golden-calf/"')) {
+    throw new Error("CI-034 absent from library or source register");
+  }
+}
+if (!doctrineIndex.includes("34 published investigations / 1 research guide")) {
+  throw new Error("Research catalogue count is out of date");
 }
 
 await import("./audit-evidence.mjs");

@@ -29,6 +29,8 @@ npm run audit:claims
 npm run build
 ```
 
+The v0.27.0 release adds the al-Samiri and golden-calf investigation, corrects homepage link wrapping on narrow screens and removes repetitive homepage announcement panels. The historical audit explains why identifying al-Samiri with later Samaritans is a hypothesis rather than a fact established by the Quran's wording. See [the audit](docs/samiri-source-audit-v0.27.0.md).
+
 The v0.26.0 research revision assigns CI-020 to the historicity of Haman in Pharaoh's court and retains the existing doctrinal guide without an investigation identifier. See [the source audit](docs/haman-historical-audit-v0.26.0.md) for evidence boundaries, source dates and outstanding authentication requirements.
 
 The v0.25.0 research revision deepens CI-015 and CI-013 and adds CI-033 on scientific miracle claims. Automated checks validate structure, citations and navigability, not the substantive historical or scientific verdicts.
