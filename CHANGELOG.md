@@ -2,6 +2,13 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.30.0 - 2026-11-05
+
+- Added an optional Quran Foundation Qira'at matrix view below the existing locally hosted Quran readings, keeping source provenance and comparison limitations distinct.
+- Introduced a Cloudflare Pages Function to retrieve approved production-only matrices through server-side OAuth2 Client Credentials with cached tokens and no browser access to secrets.
+- Provided explicit fallback statuses when credentials, production permission or provider availability prevent a live comparison; retained the v0.29.0 local corpus unchanged.
+- Added responsive matrix styling, regression checks using mocked provider responses and deployment/permission documentation. Live production connectivity remains unverified pending approved credentials.
+
 ## v0.29.0 - 2026-11-05
 
 - Added /quran/, a locally hosted Quran reading browser supporting verse and short-range references, Arabic and scholarly-transliteration keyword search, shareable verse URLs, sequential navigation and responsive comparison of available transmitted variants.

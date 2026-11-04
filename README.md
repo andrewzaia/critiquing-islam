@@ -14,6 +14,8 @@ The subject of scrutiny is religious claims, texts, institutions and ideas, not 
 
 The [Quran reading browser](/site/quran/index.html) searches all 6,236 verses in the Cairo 1924 Hafs reference numbering and displays documented word-level variations for seven canonical readers and fourteen transmitters. Arabic base text and scholarly transliteration differences are locally hosted; non-Hafs lines are reconstructed transliteration, not independent full Arabic editions. The three additional canonical readers and their transmissions are not supplied by the current dataset.
 
+An optional live Quran Foundation matrix is displayed separately when server-side API credentials and production `qiraat.read` permission are available. The local corpus remains functional without an API. Configure Cloudflare Pages secrets `QF_CLIENT_ID` and `QF_CLIENT_SECRET`, plus `QF_ENV=production`. See [integration and deployment notes](docs/quran-foundation-api-v0.30.0.md).
+
 The underlying data derive from Corpus Coranicum and Abdul Rahim Nizamani's 2026 variant corpus and are adapted under **CC BY-SA 4.0**. Two missing variant CSV positions are flagged explicitly. See [source provenance and limitations](docs/qiraat-source-provenance-v0.29.0.md).
 
 ## Explore
@@ -29,6 +31,7 @@ Requires Node.js 20 or later. The site has no runtime dependencies.
 
 ```sh
 npm run check
+npm run check:qf
 npm run audit:evidence
 npm run audit:references
 npm run audit:claims
