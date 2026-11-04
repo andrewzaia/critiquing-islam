@@ -10,6 +10,12 @@ Critiquing Islam is a public research website. Its articles distinguish direct t
 
 The subject of scrutiny is religious claims, texts, institutions and ideas, not the identity or dignity of Muslims as people.
 
+## Quran readings comparison
+
+The [Quran reading browser](/site/quran/index.html) searches all 6,236 verses in the Cairo 1924 Hafs reference numbering and displays documented word-level variations for seven canonical readers and fourteen transmitters. Arabic base text and scholarly transliteration differences are locally hosted; non-Hafs lines are reconstructed transliteration, not independent full Arabic editions. The three additional canonical readers and their transmissions are not supplied by the current dataset.
+
+The underlying data derive from Corpus Coranicum and Abdul Rahim Nizamani's 2026 variant corpus and are adapted under **CC BY-SA 4.0**. Two missing variant CSV positions are flagged explicitly. See [source provenance and limitations](docs/qiraat-source-provenance-v0.29.0.md).
+
 ## Explore
 
 - [Research library](https://github.com/andrewzaia/critiquing-islam/tree/main/site/research)

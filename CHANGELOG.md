@@ -2,6 +2,15 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.29.0 - 2026-11-05
+
+- Added /quran/, a locally hosted Quran reading browser supporting verse and short-range references, Arabic and scholarly-transliteration keyword search, shareable verse URLs, sequential navigation and responsive comparison of available transmitted variants.
+- Adapted 6,236 Cairo/Hafs reference verses and attributed word-level differences from a Corpus Coranicum-derived dataset recording seven canonical readers and fourteen transmitters. Sharded the material by surah and added a separate search index.
+- Distinguished full Hafs Arabic source text from reconstructed comparative scholarly transliteration. Other Arabic riwaya editions, the three additional canonical readers, differing verse numbering and general pronunciation rules are not misrepresented as covered.
+- Verified 77,432 Cairo reference words against 77,430 variant CSV word records, preserving two missing attribution records as explicitly marked unknowns. The adapted local files retain CC BY-SA 4.0 attribution and provenance.
+- Added Quran readings to the sitewide header and footer navigation, a homepage discovery link, the source register and automated corpus and navigation checks.
+- No external runtime API, credential, subscription or additional CI job is required. Approved access to the broader Quran Foundation Qiraat API remains a separate potential enhancement.
+
 ## v0.28.0 - 2026-11-05
 
 - Added CI-035, a 17-section, 17-reference investigation of counted dirhams in Quran 12:20, examining the Arabic noun, historical currency etymology and the difference between minted coins and Bronze Age weighed silver.

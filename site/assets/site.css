@@ -68,3 +68,6 @@
 
 /* Let research titles wrap on narrow screens instead of overflowing. */
 @media(max-width:760px){.inline-link{white-space:normal;overflow-wrap:anywhere}.section-head{flex-wrap:wrap}}
+
+.qiraat-home-link{margin:18px 0 0}.qiraat-home-link .inline-link{white-space:normal;overflow-wrap:anywhere}
+@media (min-width:761px) and (max-width:1050px){.masthead-inner{gap:16px}.navigation{gap:15px}.identity{gap:10px}.identity-type{font-size:12px}}
