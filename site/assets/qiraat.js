@@ -96,9 +96,6 @@
       const words = verses[v - 1];
       if (!words || !words.length) throw new Error("This verse has no data");
       current = { s, v, words };
-      $("qiraat-surah").value = String(s);
-      $("qiraat-ayah").max = String(manifest.counts[s - 1]);
-      $("qiraat-ayah").value = String(v);
       $("qiraat-query").value = s + ":" + v;
       $("qiraat-title").textContent = "Surah " + s + ", verse " + v;
       $("qiraat-external").href = "https://quran.com/" + s + "/" + v;
@@ -212,22 +209,8 @@
     try {
       manifest = await fetchJson(prefix + "manifest.json");
       if (manifest.counts.length !== 114 || manifest.transmitters.length !== 14) throw new Error("Source metadata invalid");
-      const surah = $("qiraat-surah");
-      surah.replaceChildren();
-      manifest.counts.forEach((_, i) => {
-        const opt = make("option", "", i + 1); opt.value = String(i + 1); surah.append(opt);
-      });
-      surah.addEventListener("change", () => {
-        $("qiraat-ayah").max = String(manifest.counts[+surah.value - 1]);
-        $("qiraat-ayah").value = "1";
-      });
       $("qiraat-search-form").addEventListener("submit", event => {
         event.preventDefault(); searchInput($("qiraat-query").value.trim());
-      });
-      $("qiraat-jump-form").addEventListener("submit", event => {
-        event.preventDefault();
-        $("qiraat-search-results").hidden = true;
-        openVerse(+surah.value, +$("qiraat-ayah").value);
       });
       document.querySelectorAll("[data-verse]").forEach(button => button.addEventListener("click", () => {
         const [s, v] = button.dataset.verse.split(":").map(Number);
