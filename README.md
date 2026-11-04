@@ -20,7 +20,9 @@ The underlying data derive from Corpus Coranicum and Abdul Rahim Nizamani's 2026
 
 ## Latest research
 
-The v0.32.0 release introduces [CI-036: Abraham's father, Azar or Terah?](site/research/abraham-father-azar-terah/index.html). The article compares Quran 6:74 with Genesis, Joshua, Greek biblical transmission, pre-Islamic Jewish retellings and the source evidence required by competing uncle or second-name hypotheses. See the [evidence audit and limitations](docs/abraham-azar-terah-audit-v0.32.0.md). The research library contains 36 published investigations and one unnumbered research guide.
+The v0.33.0 release adds [CI-037: Quran 5:32 and Mishnah Sanhedrin 4:5](site/research/quran-5-32-mishnah-sanhedrin/index.html), comparing the Cain-Abel life maxim, original Hebrew and Arabic, differing legal contexts, textual variants and chronological claims. See the [source verification audit](docs/quran-5-32-mishnah-audit-v0.33.0.md). The library now contains 37 published investigations and one unnumbered guide.
+
+The v0.32.0 release introduces [CI-036: Abraham's father, Azar or Terah?](site/research/abraham-father-azar-terah/index.html). The article compares Quran 6:74 with Genesis, Joshua, Greek biblical transmission, pre-Islamic Jewish retellings and the source evidence required by competing uncle or second-name hypotheses. See the [evidence audit and limitations](docs/abraham-azar-terah-audit-v0.32.0.md). This release expanded the research collection from 35 to 36 published investigations.
 
 ## Explore
 
