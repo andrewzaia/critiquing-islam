@@ -71,3 +71,25 @@
 
 .qiraat-home-link{margin:18px 0 0}.qiraat-home-link .inline-link{white-space:normal;overflow-wrap:anywhere}
 @media (min-width:761px) and (max-width:1050px){.masthead-inner{gap:16px}.navigation{gap:15px}.identity{gap:10px}.identity-type{font-size:12px}}
+
+/* Sitewide Quran verse and verse-range previews. */
+.quran-preview-reference{cursor:help;text-decoration:underline;text-decoration-style:dotted;text-decoration-color:var(--accent);text-underline-offset:3px}
+a.quran-preview-reference{cursor:pointer}
+.quran-preview-reference:hover,.quran-preview-reference:focus-visible,.quran-preview-source:focus-visible{color:var(--accent);outline-offset:3px}
+.quran-preview-card{position:fixed;z-index:1000;width:min(480px,calc(100vw - 20px));max-height:min(66vh,540px);overflow-y:auto;overscroll-behavior:contain;border:1px solid var(--line);border-radius:12px;background:var(--panel);color:var(--ink);box-shadow:0 16px 50px rgba(0,0,0,.30);padding:17px 19px;line-height:1.5}
+.quran-preview-card[hidden]{display:none}
+.quran-preview-header{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.quran-preview-heading{color:var(--accent);font-size:17px}
+.quran-preview-close{border:1px solid var(--line);border-radius:6px;background:transparent;color:var(--ink);min-height:34px;padding:4px 10px;font-size:12px}
+.quran-preview-close:hover,.quran-preview-close:focus-visible{border-color:var(--accent)}
+.quran-preview-source-note,.quran-preview-summary,.quran-preview-provenance{color:var(--muted);font-size:12px;margin:9px 0}
+.quran-preview-body{margin:12px 0}
+.quran-preview-verse{border-top:1px solid var(--line);padding:10px 0}
+.quran-preview-verse h3{font-size:12px;color:var(--accent);margin:0}
+.quran-preview-arabic{font:clamp(23px,3.3vw,30px)/1.85 Georgia,"Traditional Arabic",serif;text-align:right;overflow-wrap:anywhere;margin:8px 0}
+.quran-preview-latin{font-size:13px;color:var(--muted);overflow-wrap:anywhere;margin:5px 0}
+.quran-preview-loading,.quran-preview-error{color:var(--muted);font-size:13px}
+.quran-preview-actions{display:flex;flex-wrap:wrap;gap:8px;border-top:1px solid var(--line);padding-top:12px}
+.quran-preview-actions a{display:inline-flex;align-items:center;min-height:38px;padding:7px 10px;border:1px solid var(--line);border-radius:6px;color:var(--ink);font-size:12px;font-weight:600;overflow-wrap:anywhere}
+.quran-preview-actions a:hover,.quran-preview-actions a:focus-visible{border-color:var(--accent);color:var(--accent)}
+@media(max-width:600px){.quran-preview-card{max-height:min(72vh,580px);padding:13px 14px}.quran-preview-arabic{font-size:25px}}
