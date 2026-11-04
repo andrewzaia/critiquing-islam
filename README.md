@@ -18,6 +18,10 @@ An optional live Quran Foundation matrix is displayed separately when server-sid
 
 The underlying data derive from Corpus Coranicum and Abdul Rahim Nizamani's 2026 variant corpus and are adapted under **CC BY-SA 4.0**. Two missing variant CSV positions are flagged explicitly. See [source provenance and limitations](docs/qiraat-source-provenance-v0.29.0.md).
 
+## Latest research
+
+The v0.32.0 release introduces [CI-036: Abraham's father, Azar or Terah?](site/research/abraham-father-azar-terah/index.html). The article compares Quran 6:74 with Genesis, Joshua, Greek biblical transmission, pre-Islamic Jewish retellings and the source evidence required by competing uncle or second-name hypotheses. See the [evidence audit and limitations](docs/abraham-azar-terah-audit-v0.32.0.md). The research library contains 36 published investigations and one unnumbered research guide.
+
 ## Explore
 
 - [Research library](https://github.com/andrewzaia/critiquing-islam/tree/main/site/research)
