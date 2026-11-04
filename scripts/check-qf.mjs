@@ -106,7 +106,7 @@ await new Promise(resolve => setTimeout(resolve, 15));
 const texts = node => [node.textContent,...node.children.flatMap(texts)].filter(Boolean).join(" ");
 const rendered = texts(elements.get("qf-live-results"));
 for (const expected of ["Nafi","Qalun","Arabic alternative","maliki","Supplied meaning",
-  "Combined source gloss","Meaning-affecting"]) {
+  "Combined source gloss","meaning-affecting"]) {
   assert.ok(rendered.includes(expected),"The provider matrix view did not render " + expected);
 }
 assert.equal(elements.get("qf-live-panel").hidden,false);
