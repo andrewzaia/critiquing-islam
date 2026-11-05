@@ -2,6 +2,15 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.34.0 - 2026-11-06
+
+- Published CI-038, a standalone first-revelation investigation comparing the Quran's messenger-identification claims with the later cave narrative, Khadijah's reassurance and Waraqah's interpretation.
+- Tested alleged Gabriel identification, a deceptive supernatural visitor and non-supernatural alternatives against the same burden of evidence without inventing numerical probabilities.
+- Examined Galatians 1:8 against the earlier apostolic gospel and the Quran's different account of the crucifixion, while distinguishing theological conflict from proof of a particular supernatural agent.
+- Published CI-039, a separate comparison of Quran 18:9-26 with earlier Syriac Christian Seven Sleepers traditions, manuscript attestation, variable counts and competing transmission models.
+- Added homepage, research-library and source-register navigation, and updated the published count to 39 investigations and one guide.
+- Strengthened release checks for investigation depth, citations and discovery. Quran explorer, Qira'at corpus, API and infrastructure remain unchanged.
+
 ## v0.33.0 - 2026-11-05
 
 - Published CI-037, a 19-section, 23-source investigation of the earlier one-life/whole-world maxim in Mishnah Sanhedrin 4:5 and its relationship to Quran 5:32.
