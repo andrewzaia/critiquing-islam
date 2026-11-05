@@ -444,8 +444,34 @@ for (const route of ["/research/joseph-dirhams-and-coinage/", "/research/al-sami
 for (const doc of [doctrineIndex, v028Sources]) {
   if (!doc.includes('href="/research/joseph-dirhams-and-coinage/"')) throw new Error("CI-035 missing from the library or source register");
 }
-if (!doctrineIndex.includes("37 published investigations / 1 research guide")) {
+if (!doctrineIndex.includes("39 published investigations / 1 research guide")) {
   throw new Error("Research count not updated for v0.28.0");
+}
+
+
+const newStudies = [
+  {slug:"first-revelation-gabriel-waraqah",code:"038",sections:20,references:26,words:2500,wordsToKeep:["Khadijah","Waraqah","Galatians 1:8","1 Corinthians 15:3-4","Text-first verdict:","Historical verdict:"]},
+  {slug:"companions-of-the-cave-seven-sleepers",code:"039",sections:17,references:18,words:1500,wordsToKeep:["Syriac","Jacob of Serugh","Text-first verdict:","Historical verdict:"]}
+];
+for (const study of newStudies) {
+  const html = await readFile("site/research/" + study.slug + "/index.html","utf8");
+  const article = html.slice(0,html.indexOf('<section id="references">'));
+  const sectionIds = [...article.matchAll(/<section id="([^"]+)"><span class="section-index">/g)].map(m => m[1]);
+  const sourceIds = [...html.matchAll(/<li id="ref-([0-9]+)">/g)].map(m => Number(m[1]));
+  const citedIds = [...article.matchAll(/href="#ref-([0-9]+)"/g)].map(m => Number(m[1]));
+  const wordCount = article.replace(/<[^>]*>/g," ").trim().split(/\s+/).length;
+  if (sectionIds.length < study.sections || sourceIds.length < study.references || wordCount < study.words)
+    throw new Error("CI-" + study.code + " lost expected research depth");
+  if (!sourceIds.every((n,i) => n === i+1) || sourceIds.some(n => !citedIds.includes(n)) || citedIds.some(n => !sourceIds.includes(n)))
+    throw new Error("CI-" + study.code + " citations are incomplete or inconsistent");
+  for (const id of sectionIds) if (!html.includes('href="#' + id + '"'))
+    throw new Error("CI-" + study.code + " section missing navigation: " + id);
+  for (const phrase of study.wordsToKeep) if (!html.includes(phrase))
+    throw new Error("CI-" + study.code + " lost required content: " + phrase);
+  for (const page of ["site/index.html","site/research/index.html","site/sources/index.html"]) {
+    if (!(await readFile(page,"utf8")).includes('href="/research/' + study.slug + '/"'))
+      throw new Error("CI-" + study.code + " missing in navigation: " + page);
+  }
 }
 
 await import("./check-qiraat.mjs");
