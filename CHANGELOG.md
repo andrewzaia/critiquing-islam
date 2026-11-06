@@ -2,6 +2,15 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.35.0 - 2026-11-06
+
+- Expanded CI-008, Mary, Aaron and Imran, from 10 to 20 original-language, source-critical sections and from 10 to 25 distinct cited references.
+- Compared Quran 19:28, 3:35-37 and 66:12 with Exodus 15:20, Numbers 26:59 and 1 Chronicles 6:3, separating historical genealogy from literary reuse.
+- Added the pre-Islamic Joachim-and-Anna parentage account in the Protevangelium of James, its Papyrus Bodmer V witness, Gregory of Nyssa's earlier Miriam-Mary typology and current specialist debates.
+- Examined the scope of Sahih Muslim 2135, Luke's Aaronic Elizabeth, Greek kinship wording and the independent evidence required by each proposed reconciliation.
+- Updated the homepage, research catalogue and source register while preserving CI-008's URL and the total of 39 published investigations. Added depth, citation and navigation regression checks and an evidence audit.
+- Quran explorer, Qira'at data, Quran.Foundation API and Cloudflare infrastructure are unchanged.
+
 ## v0.34.1 - 2026-11-06
 
 - Clarified the research methodology to prefer evidence-weighted conclusions on the balance of probabilities, while making the assumptions underlying conditional theological judgements explicit.
