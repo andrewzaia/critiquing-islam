@@ -556,6 +556,47 @@ for (const page of ["site/index.html", "site/research/index.html", "site/sources
   }
 }
 
+
+ 
+// CI-006 v0.37.0: exact fractions, alternative legal methods and documented evidence.
+const ci006 = await readFile("site/research/inheritance-shares-and-awl/index.html", "utf8");
+const ci006Body = ci006.slice(ci006.indexOf('<article class="prose'), ci006.indexOf('<section id="references">'));
+const ci006Sections = [...ci006Body.matchAll(/<section id="([^"]+)"><span class="section-index">/g)].map(m => m[1]);
+const ci006Refs = [...ci006.matchAll(/<li id="ref-(\d+)">/g)].map(m => Number(m[1]));
+const ci006Citations = [...ci006Body.matchAll(/href="#ref-(\d+)"/g)].map(m => Number(m[1]));
+const ci006Words = ci006Body.replace(/<[^>]*>/g," ").trim().split(/\s+/).length;
+if (ci006Sections.length < 20 || ci006Refs.length < 21 || ci006Words < 3200 ||
+    !ci006Refs.every((n,i) => n === i + 1) ||
+    ci006Refs.some(n => !ci006Citations.includes(n)) ||
+    ci006Citations.some(n => !ci006Refs.includes(n))) {
+  throw new Error("CI-006 research depth or references regressed");
+}
+for (const id of ci006Sections) if (!ci006.includes('href="#' + id + '"')) {
+  throw new Error("CI-006 section navigation missing: " + id);
+}
+for (const phrase of ["27/24","112.5%","15/12","125 percent","Imami","Sunni",
+  "thumun","fawqa","Direct textual finding:","Comparative legal verdict:"]) {
+  if (!ci006.toLowerCase().includes(phrase.toLowerCase())) {
+    throw new Error("CI-006 missing required research finding: " + phrase);
+  }
+}
+const widow24 = 16 + 4 + 4 + 3;
+const husband12 = 8 + 2 + 2 + 3;
+const sunni27 = 16 + 4 + 4 + 3;
+const imami24 = 13 + 4 + 4 + 3;
+const sunni15 = 8 + 2 + 2 + 3;
+const imami12 = 5 + 2 + 2 + 3;
+if (widow24 !== 27 || husband12 !== 15 || sunni27 !== 27 ||
+    imami24 !== 24 || sunni15 !== 15 || imami12 !== 12 ||
+    100 * widow24 / 24 !== 112.5 || 100 * husband12 / 12 !== 125) {
+  throw new Error("CI-006 inheritance mathematics check failed");
+}
+for (const page of ["site/index.html","site/research/index.html","site/sources/index.html"]) {
+  if (!(await readFile(page,"utf8")).includes('href="/research/inheritance-shares-and-awl/"')) {
+    throw new Error("CI-006 discovery link missing: " + page);
+  }
+}
+
 await import("./check-qiraat.mjs");
 await import("./check-quran-previews.mjs");
 await import("./check-qf.mjs");

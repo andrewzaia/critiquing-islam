@@ -2,6 +2,15 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.37.0 - 2026-11-07
+
+- Expanded CI-006 from nine to 20 substantive sections and from six to 21 cited primary, legal and academic sources, preserving its original URL.
+- Verified worked examples where Quran 4:11-12's face-value fractions require 27/24 (112.5 percent) or 15/12 (125 percent) of one estate.
+- Compared proportional Sunni awl with Imami priority reduction, documenting different payable outcomes under otherwise identical family configurations.
+- Examined the Arabic daughter, parent and spouse terms, the separate two-daughter interpretive question, debts, bequests, residual property and transmitted early legal disagreements.
+- Updated homepage, research library, source register and evidence-audit documentation. Strengthened regression checks with exact fraction calculations, research depth, citations and navigation.
+- Kept the Quran explorer, Qira'at corpus, Quran.Foundation API and Cloudflare infrastructure unchanged.
+
 ## v0.36.0 - 2026-11-07
 
 - Expanded CI-007, Quran 5:116 and the Trinity, from nine to 20 substantive research sections and from 11 to 28 numbered references.
