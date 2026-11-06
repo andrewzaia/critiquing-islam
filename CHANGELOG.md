@@ -2,6 +2,14 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.34.1 - 2026-11-06
+
+- Clarified the research methodology to prefer evidence-weighted conclusions on the balance of probabilities, while making the assumptions underlying conditional theological judgements explicit.
+- Strengthened the CI-038 comparison of Gabriel, deceptive agency and alternative interpretations of the Hira encounter, separating the earlier gospel-content test from the reported physical treatment and from independent historical proof of a supernatural visitor.
+- Revised CI-008, CI-011 and CI-015 to give unsupported genealogical, lost-prophecy and undocumented-sect explanations their appropriate evidentiary weight.
+- Completed and documented a verdict-level editorial review of all 39 investigations, distinguishing firm textual failures from genuine linguistic and chronological limitations.
+- Added regression checks for the revised methodological and evidentiary conclusions. No Quran explorer, Qira'at corpus, API or infrastructure modifications.
+
 ## v0.34.0 - 2026-11-06
 
 - Published CI-038, a standalone first-revelation investigation comparing the Quran's messenger-identification claims with the later cave narrative, Khadijah's reassurance and Waraqah's interpretation.
