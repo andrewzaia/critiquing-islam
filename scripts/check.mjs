@@ -597,6 +597,38 @@ for (const page of ["site/index.html","site/research/index.html","site/sources/i
   }
 }
 
+
+
+// CI-005 v0.38.0: Quran-first manuscript chronology, original Arabic and evidentiary depth.
+const ci005 = await readFile("site/research/quran-and-earlier-scriptures/index.html", "utf8");
+const ci005Body = ci005.slice(ci005.indexOf('<article class="prose'), ci005.indexOf('<section id="references">'));
+const ci005Sections = [...ci005Body.matchAll(/<section id="([^"]+)"><span class="section-index">/g)].map(x => x[1]);
+const ci005Sources = [...ci005.matchAll(/<li id="ref-(\d+)">/g)].map(x => Number(x[1]));
+const ci005Citations = [...ci005Body.matchAll(/href="#ref-(\d+)"/g)].map(x => Number(x[1]));
+const ci005Words = ci005Body.replace(/<[^>]*>/g," ").trim().split(/\s+/).length;
+const ci005Urls = [...ci005.matchAll(/<li id="ref-\d+">[\s\S]*?<a href="([^"]+)" target="_blank"/g)].map(x => x[1].replaceAll("&amp;","&"));
+if (ci005Sections.length < 23 || ci005Sources.length < 34 || ci005Words < 4500 ||
+    !ci005Sources.every((n,i) => n === i + 1) ||
+    ci005Sources.some(n => !ci005Citations.includes(n)) ||
+    ci005Citations.some(n => !ci005Sources.includes(n)) ||
+    ci005Urls.length !== ci005Sources.length || new Set(ci005Urls).size !== ci005Urls.length) {
+  throw new Error("CI-005 lost article depth, source uniqueness or citation integrity");
+}
+for (const id of ci005Sections) if (!ci005.includes('href="#' + id + '"')) {
+  throw new Error("CI-005 research navigation missing: " + id);
+}
+for (const phrase of ["Textual standard:","Historical verdict, on the balance of probabilities:",
+  "Quran 5:43","Quran 5:47","Quran 5:48","Quran 2:79","Quran 3:78",
+  "4Q11","4Q22","Great Isaiah Scroll","Codex Vaticanus","Codex Sinaiticus",
+  "Codex Alexandrinus","Papyrus 66","John 20:28", "universal"]) {
+  if (!ci005.includes(phrase)) throw new Error("CI-005 lost essential source or assessment: " + phrase);
+}
+for (const page of ["site/index.html","site/research/index.html","site/sources/index.html"]) {
+  if (!(await readFile(page,"utf8")).includes('href="/research/quran-and-earlier-scriptures/"')) {
+    throw new Error("CI-005 missing from discovery: " + page);
+  }
+}
+
 await import("./check-qiraat.mjs");
 await import("./check-quran-previews.mjs");
 await import("./check-qf.mjs");
