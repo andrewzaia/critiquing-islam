@@ -526,6 +526,36 @@ for (const page of ["site/index.html","site/research/index.html","site/sources/i
   }
 }
 
+
+// CI-007 v0.36.0: original-language, fourth-century creed, Marian devotion and historical verdict coverage.
+const ci007 = await readFile("site/research/quran-5-116-and-trinity/index.html", "utf8");
+const ci007Body = ci007.slice(ci007.indexOf('<article class="prose'), ci007.indexOf('<section id="references">'));
+const ci007Sections = [...ci007Body.matchAll(/<section id="([^"]+)"><span class="section-index">/g)].map(m => m[1]);
+const ci007Refs = [...ci007.matchAll(/<li id="ref-(\d+)">/g)].map(m => Number(m[1]));
+const ci007Cited = [...ci007Body.matchAll(/href="#ref-(\d+)"/g)].map(m => Number(m[1]));
+const ci007Words = ci007Body.replace(/<[^>]*>/g, " ").trim().split(/\s+/).length;
+if (ci007Sections.length < 20 || ci007Refs.length < 28 || ci007Words < 3200 ||
+    !ci007Refs.every((n,i) => n === i + 1) ||
+    ci007Refs.some(n => !ci007Cited.includes(n)) ||
+    ci007Cited.some(n => !ci007Refs.includes(n))) {
+  throw new Error("CI-007 lost research depth or has incomplete source references");
+}
+for (const id of ci007Sections) if (!ci007.includes('href="#' + id + '"')) {
+  throw new Error("CI-007 is missing its anchor navigation: " + id);
+}
+for (const text of [
+  "Quran 5:116", "Quran 5:73", "Quran 4:171", "Nicaea",
+  "Constantinople", "Epiphanius", "Mohsen Goudarzi",
+  "Original", "two deities", "Historical verdict, on the balance of probabilities:"
+]) {
+  if (!ci007.includes(text)) throw new Error("CI-007 lost essential evidence: " + text);
+}
+for (const page of ["site/index.html", "site/research/index.html", "site/sources/index.html"]) {
+  if (!(await readFile(page, "utf8")).includes('href="/research/quran-5-116-and-trinity/"')) {
+    throw new Error("CI-007 navigation missing from " + page);
+  }
+}
+
 await import("./check-qiraat.mjs");
 await import("./check-quran-previews.mjs");
 await import("./check-qf.mjs");
