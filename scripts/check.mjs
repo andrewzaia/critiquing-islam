@@ -142,7 +142,7 @@ for (const page of [
 const expandedEarlyStudies = [
   ["inheritance-shares-and-awl", 4, 6],
   ["quran-5-116-and-trinity", 4, 10],
-  ["mary-sister-of-aaron", 4, 10]
+  
 ];
 for (const [slug, requiredSections, requiredSources] of expandedEarlyStudies) {
   const html = await readFile("site/research/" + slug + "/index.html", "utf8");
@@ -169,7 +169,7 @@ for (const required of [
 const primaryTextFindings = [
   ["inheritance-shares-and-awl", "Direct textual finding:"],
   ["quran-5-116-and-trinity", "Direct textual finding:"],
-  ["mary-sister-of-aaron", "Direct textual finding:"],
+  ["mary-sister-of-aaron", "Text-first verdict:"],
   ["tahrif-and-biblical-corruption", "Quran-first verdict:"],
   ["crucifixion-substitution-claim", "Quran-first verdict:"],
   ["quran-finality-and-preservation", "Quran-first finding:"],
@@ -488,12 +488,41 @@ for (const phrase of ["Comparative theological verdict, on the balance of probab
   if (!ci038a.includes(phrase)) throw new Error("CI-038 comparative verdict lost: " + phrase);
 }
 for (const [slug, requiredPhrase] of [
-  ["mary-sister-of-aaron", "Balance-of-probabilities assessment:"],
+  ["mary-sister-of-aaron", "Historical verdict, on the balance of probabilities:"],
   ["muhammad-in-torah-and-gospel", "Balance-of-probabilities assessment:"],
   ["ezra-son-of-god-claim", "Balance-of-probabilities assessment:"]
 ]) {
   if (!(await readFile("site/research/" + slug + "/index.html","utf8")).includes(requiredPhrase)) {
     throw new Error("Evidence-weighted interpretation missing: " + slug);
+  }
+}
+
+
+// CI-008 v0.35.0: protect primary sources, original-language scrutiny and substantial depth.
+const ci008 = await readFile("site/research/mary-sister-of-aaron/index.html", "utf8");
+const ci008Body = ci008.slice(ci008.indexOf('<article class="prose'), ci008.indexOf('<section id="references">'));
+const ci008Sections = [...ci008.matchAll(/<section id="([^"]+)"><span class="section-index">/g)]
+  .map(x => x[1]).filter(id => id !== "references");
+const ci008References = [...ci008.matchAll(/<li id="ref-(\d+)">/g)].map(x => Number(x[1]));
+const ci008Citations = [...ci008Body.matchAll(/href="#ref-(\d+)"/g)].map(x => Number(x[1]));
+const ci008Words = ci008Body.replace(/<[^>]*>/g, " ").trim().split(/\s+/).length;
+if (ci008Sections.length < 20 || ci008References.length < 25 || ci008Words < 3200 ||
+    !ci008References.every((n,i) => n === i + 1) ||
+    ci008References.some(n => !ci008Citations.includes(n)) ||
+    ci008Citations.some(n => !ci008References.includes(n))) {
+  throw new Error("CI-008 lacks complete source-critical analysis or citations");
+}
+for (const id of ci008Sections) if (!ci008.includes('href="#' + id + '"')) {
+  throw new Error("CI-008 is missing section navigation: " + id);
+}
+for (const phrase of ["Quran 19:28", "Quran 66:12", "Exodus 15:20",
+  "Numbers 26:59", "Joachim", "Papyrus Bodmer V", "Gregory of Nyssa",
+  "Sahih Muslim 2135", "Text-first verdict:", "Historical verdict, on the balance of probabilities:"]) {
+  if (!ci008.includes(phrase)) throw new Error("CI-008 lost required evidence: " + phrase);
+}
+for (const page of ["site/index.html","site/research/index.html","site/sources/index.html"]) {
+  if (!(await readFile(page,"utf8")).includes('href="/research/mary-sister-of-aaron/"')) {
+    throw new Error("CI-008 missing from site navigation: " + page);
   }
 }
 
