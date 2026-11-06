@@ -2,6 +2,16 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.36.0 - 2026-11-07
+
+- Expanded CI-007, Quran 5:116 and the Trinity, from nine to 20 substantive research sections and from 11 to 28 numbered references.
+- Examined the original Arabic of Quran 5:116, 5:73 and 4:171 alongside the Greek Christian creeds of Nicaea (325) and Constantinople (381) and the earlier Christian triadic biblical passages.
+- Compared Epiphanius's pre-Islamic report of Marian offerings with the official Christian distinctions between Mary's honour and divine worship, and investigated the historically proposed cultic target.
+- Incorporated competing published scholarship, including Mohsen Goudarzi's 2025 practice-focused interpretation, without treating modern scholarship as ancient eyewitness evidence.
+- Clarified that the accusation involving Mary's deity does not describe the orthodox Trinity while Quran 5:116 itself does not explicitly list Mary's membership among the three.
+- Updated homepage navigation, the research library and source register, added a source-critical evidence audit and extended existing quality checks for research depth and citations.
+- Preserved CI-007's URL, existing research count, the Quran explorer, Qira'at corpus, Quran.Foundation integration and deployment configuration.
+
 ## v0.35.0 - 2026-11-06
 
 - Expanded CI-008, Mary, Aaron and Imran, from 10 to 20 original-language, source-critical sections and from 10 to 25 distinct cited references.
