@@ -478,8 +478,8 @@ for (const study of newStudies) {
 // v0.34.1: protect evidence-weighted rather than merely possibility-led conclusions.
 const method34 = await readFile("site/methodology/index.html", "utf8");
 const ci038a = await readFile("site/research/first-revelation-gabriel-waraqah/index.html", "utf8");
-for (const phrase of ["balance of probabilities", "unsupported hypothetical reconciliation", "independent historical assessment"]) {
-  if (!method34.includes(phrase) && !method34.includes(phrase.replace("unsupported hypothetical reconciliation", "unsupported rescue hypotheses"))) {
+for (const phrase of ["balance of probabilities", "rescue hypothesis", "independent historical assessment"]) {
+  if (!method34.includes(phrase)) {
     throw new Error("Methodological evidence standard lost: " + phrase);
   }
 }
