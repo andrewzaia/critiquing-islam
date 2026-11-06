@@ -2,6 +2,15 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.38.0 - 2026-11-07
+
+- Expanded CI-005 under its existing URL from nine to 23 research sections and from 18 to 34 numbered references, preserving primary-text and historical source distinctions.
+- Compared Quran 5:43-48, 5:68, 3:93 and 10:94 with original Arabic and distinguished the Quranic charges of written falsification, oral misrepresentation and concealment.
+- Added pre-Islamic Torah witnesses from Qumran, the Great Isaiah Scroll, Codex Alexandrinus, P66 and an identifiable Codex Sinaiticus witness to John 20:28 alongside existing Vaticanus and Sinaiticus analysis.
+- Strengthened the conclusion that specific textual variants need manuscript-level evidence and that manuscript priority does not demonstrate the historicity or theological truth of every narrated event.
+- Integrated CI-005 with homepage, research index, source register, cross-references, evidence audit and automated content and citation checks, without altering published article URLs or research counts.
+- Left Quran explorer, Qira'at corpus, Quran.Foundation API, dependencies and Cloudflare deployment infrastructure unchanged.
+
 ## v0.37.0 - 2026-11-07
 
 - Expanded CI-006 from nine to 20 substantive sections and from six to 21 cited primary, legal and academic sources, preserving its original URL.
