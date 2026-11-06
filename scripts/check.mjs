@@ -474,6 +474,29 @@ for (const study of newStudies) {
   }
 }
 
+
+// v0.34.1: protect evidence-weighted rather than merely possibility-led conclusions.
+const method34 = await readFile("site/methodology/index.html", "utf8");
+const ci038a = await readFile("site/research/first-revelation-gabriel-waraqah/index.html", "utf8");
+for (const phrase of ["balance of probabilities", "unsupported hypothetical reconciliation", "independent historical assessment"]) {
+  if (!method34.includes(phrase) && !method34.includes(phrase.replace("unsupported hypothetical reconciliation", "unsupported rescue hypotheses"))) {
+    throw new Error("Methodological evidence standard lost: " + phrase);
+  }
+}
+for (const phrase of ["Comparative theological verdict, on the balance of probabilities:",
+ "a deceptive, non-divine messenger", "Galatians 1:8", "Historical verdict:"]) {
+  if (!ci038a.includes(phrase)) throw new Error("CI-038 comparative verdict lost: " + phrase);
+}
+for (const [slug, requiredPhrase] of [
+  ["mary-sister-of-aaron", "Balance-of-probabilities assessment:"],
+  ["muhammad-in-torah-and-gospel", "Balance-of-probabilities assessment:"],
+  ["ezra-son-of-god-claim", "Balance-of-probabilities assessment:"]
+]) {
+  if (!(await readFile("site/research/" + slug + "/index.html","utf8")).includes(requiredPhrase)) {
+    throw new Error("Evidence-weighted interpretation missing: " + slug);
+  }
+}
+
 await import("./check-qiraat.mjs");
 await import("./check-quran-previews.mjs");
 await import("./check-qf.mjs");
