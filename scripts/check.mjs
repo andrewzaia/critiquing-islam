@@ -735,6 +735,41 @@ for (const page of ["site/index.html","site/research/index.html","site/sources/i
   }
 }
 
+
+
+// CI-001 v0.42.0: original-language, manuscript and attribution evidence regression checks.
+const ci001 = await readFile("site/research/quran-61-6-and-paraclete/index.html","utf8");
+const ci001Body = ci001.slice(ci001.indexOf('<article class="prose'), ci001.indexOf('<section id="references">'));
+const ci001Sections = [...ci001Body.matchAll(/<section id="([^"]+)"><span class="section-index">/g)].map(x=>x[1]);
+const ci001Refs = [...ci001.matchAll(/<li id="ref-(\d+)">/g)].map(x=>Number(x[1]));
+const ci001Cites = [...ci001Body.matchAll(/href="#ref-(\d+)"/g)].map(x=>Number(x[1]));
+const ci001Urls = [...ci001.matchAll(/<li id="ref-\d+">[\s\S]*?<a href="([^"]+)" target="_blank"/g)].map(x=>x[1].replaceAll("&amp;","&"));
+const ci001Words = ci001Body.replace(/<[^>]*>/g," ").trim().split(/\s+/).length;
+if (ci001Sections.length < 25 || ci001Refs.length < 30 || ci001Words < 4200 ||
+    !ci001Refs.every((x,i)=>x===i+1) ||
+    ci001Refs.some(x=>!ci001Cites.includes(x)) ||
+    ci001Cites.some(x=>!ci001Refs.includes(x)) ||
+    ci001Urls.length !== ci001Refs.length ||
+    new Set(ci001Urls).size !== ci001Urls.length) {
+  throw new Error("CI-001 depth, reference numbering, source uniqueness or citation coverage regressed");
+}
+for (const id of ci001Sections) if (!ci001.includes('href="#'+id+'"')) {
+  throw new Error("CI-001 missing navigation anchor: " + id);
+}
+for (const term of ["Text-first verdict:", "Historical verdict, on the balance of probabilities:",
+  "John 14:26", "Papyrus 66", "Papyrus 75", "Holy Spirit", "Ibn Ishaq",
+  "Sean W. Anthony", "Raymond E. Brown", "parakletos", "periklutos", "John 14:17",
+  "Quran 61:6", "Spirit of truth", "First John 2:1", "falsification"]) {
+  if (!ci001.toLowerCase().includes(term.toLowerCase())) {
+    throw new Error("CI-001 lost a crucial linguistic or historical finding: " + term);
+  }
+}
+for (const p of ["site/index.html","site/research/index.html","site/sources/index.html"]) {
+  if (!(await readFile(p,"utf8")).includes('href="/research/quran-61-6-and-paraclete/"')) {
+    throw new Error("CI-001 missing discovery link from " + p);
+  }
+}
+
 await import("./check-qiraat.mjs");
 await import("./check-quran-previews.mjs");
 await import("./check-qf.mjs");
