@@ -1,10 +1,10 @@
 # Critiquing Islam
 
-An independent, evidence-based examination of Islamic scripture, theology, history and religious claims through primary sources, textual criticism and historical research.
+A biblical-Christian critique of Islamic scripture, theology, history and claimed divine authority, grounded in original-language primary texts, textual criticism and historical research.
 
 ## Purpose
 
-Critiquing Islam is a public research website. Its articles distinguish direct textual observations, historical inference, disputed interpretation and unresolved questions. Claims are supported by traceable references, and meaningful corrections are documented.
+Critiquing Islam is a public research website working from an expressly biblical-Christian theological framework. The Bible is the doctrinal benchmark for competing claims about Jesus, revelation and salvation. Historical and manuscript claims are independently evaluated rather than presumed true merely because the Christian framework affirms a doctrine. Articles distinguish direct textual observations, historical inference, biblical theological verdicts, disputed interpretation and unresolved questions. Claims are supported by traceable references, and meaningful corrections are documented.
 
 **Source priority:** Quranic claims are tested against the Quranic text and context first. Hadith is evidence of attributed reports and later transmitted beliefs, not independent verification of extraordinary events or proof of unwritten Quranic clauses. Tafsir records proposed interpretations, not binding amendments to the text. All source claims, including inconvenient ones, are subjected to the same checks; a convenient conclusion is not a reason to accept a weak source.
 
