@@ -700,6 +700,41 @@ for (const page of ["site/index.html","site/research/index.html","site/sources/i
   }
 }
 
+
+
+// CI-002 v0.41.0: original Arabic, early witnesses and historical source independence.
+const ci002 = await readFile("site/research/crucifixion-and-quran-4-157/index.html", "utf8");
+const ci002Body = ci002.slice(ci002.indexOf('<article class="prose'), ci002.indexOf('<section id="references">'));
+const ci002Sections = [...ci002Body.matchAll(/<section id="([^"]+)"><span class="section-index">/g)].map(x=>x[1]);
+const ci002Sources = [...ci002.matchAll(/<li id="ref-(\d+)">/g)].map(x=>Number(x[1]));
+const ci002Citations = [...ci002Body.matchAll(/href="#ref-(\d+)"/g)].map(x=>Number(x[1]));
+const ci002Words = ci002Body.replace(/<[^>]*>/g," ").trim().split(/\s+/).length;
+const ci002Urls = [...ci002.matchAll(/<li id="ref-\d+">[\s\S]*?<a href="([^"]+)" target="_blank"/g)].map(x=>x[1].replaceAll("&amp;","&"));
+if (ci002Sections.length < 31 || ci002Sources.length < 44 || ci002Words < 4700 ||
+    !ci002Sources.every((n,i)=>n===i+1) ||
+    ci002Sources.some(n=>!ci002Citations.includes(n)) ||
+    ci002Citations.some(n=>!ci002Sources.includes(n)) ||
+    ci002Urls.length!==ci002Sources.length || new Set(ci002Urls).size!==ci002Urls.length) {
+  throw new Error("CI-002 research depth, source uniqueness or citation coverage regressed");
+}
+for (const id of ci002Sections) if (!ci002.includes('href="#' + id + '"')) {
+  throw new Error("CI-002 missing navigation anchor: " + id);
+}
+for (const phrase of ["Historical verdict, on the balance of probabilities:",
+  "shubbiha", "Paul", "Galatians 1:18-19", "Papyrus 46",
+  "Tacitus", "Yehohanan", "Irenaeus", "Basilides", "Ignatius",
+  "Pilate", "Quran 4:157", "Codex Sinaiticus",
+  "agency", "Roman", "theological"]) {
+  if (!ci002.toLowerCase().includes(phrase.toLowerCase())) {
+    throw new Error("CI-002 lost original language or historical evidence: " + phrase);
+  }
+}
+for (const page of ["site/index.html","site/research/index.html","site/sources/index.html"]) {
+  if (!(await readFile(page,"utf8")).includes('href="/research/crucifixion-and-quran-4-157/"')) {
+    throw new Error("CI-002 missing from site discovery: " + page);
+  }
+}
+
 await import("./check-qiraat.mjs");
 await import("./check-quran-previews.mjs");
 await import("./check-qf.mjs");
