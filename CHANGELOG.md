@@ -2,6 +2,16 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.42.0 - 2026-11-07
+
+- Expanded CI-001 under its existing URL from 10 to 25 substantive analytical sections and from 11 to 30 numbered references.
+- Compared Quran 61:6's proper name Ahmad with the Greek Paraclete title and explicit Holy Spirit designation in John 14:26, also testing immediate-disciples language, Spirit of truth and received speech in John 14-16.
+- Examined P66 and P75 manuscripts and scholarly transcriptions, fourth-century codices, a documented variant at John 14:17, and the distinction between parakletos and the conjectured periklutos.
+- Added critical treatment of Ibn Ishaq's later Arabic Gospel adaptation and Sean Anthony's study of its Christian Palestinian Aramaic background, separating reception history from first-century independent attestation.
+- Added a direct evidence matrix, falsification criteria, manuscript chronology and the difference between documentary identification and an unrecorded possible saying.
+- Updated homepage, research catalogue, sources register, related investigations, README, release audit and automated citation and navigation checks.
+- Left Quran explorer, Qira'at corpus, Quran.Foundation, dependencies and production infrastructure unchanged.
+
 ## v0.41.0 - 2026-11-07
 
 - Expanded CI-002 under its existing URL from 17 to 31 substantive sections and from 29 to 44 numbered sources.
