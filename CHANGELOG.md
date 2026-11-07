@@ -2,6 +2,15 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.40.0 - 2026-11-07
+
+- Expanded CI-003 from 13 to 23 sections and from 15 to 31 numbered references, preserving its original URL.
+- Compared Quran 15:9's protection assertion with textual categories of consonantal archetype, vocalisation, canonical recitation, early competing texts and complete original revelation.
+- Added source-critical analysis of the early regional Uthmanic codices, Sanaa palimpsest textual layers, Birmingham parchment radiocarbon limits and documented variants at Quran 2:184 and 10:22.
+- Assessed transmitted omitted-recitation reports in Sahih Muslim and Sahih al-Bukhari separately from material manuscript witnesses and unproved explanations by abrogation.
+- Updated homepage, research library, sources register, cross-links, README and a standalone source audit. Added automated research-depth, citation, source-uniqueness and navigation checks.
+- Left Quran explorer, Qira'at corpus, Quran.Foundation API, dependencies, Cloudflare configuration and release workflows unchanged.
+
 ## v0.39.0 - 2026-11-07
 
 - Expanded CI-004 from 13 to 25 analytical sections and from 13 numbered reference entries to 29, preserving its established URL.

@@ -665,6 +665,41 @@ for (const page of ["site/index.html","site/research/index.html","site/sources/i
   }
 }
 
+
+
+// CI-003 v0.40.0: preservation must distinguish manuscript evidence from oral claims.
+const ci003 = await readFile("site/research/quran-preservation-and-manuscripts/index.html", "utf8");
+const ci003Body = ci003.slice(ci003.indexOf('<article class="prose'), ci003.indexOf('<section id="references">'));
+const ci003Sections = [...ci003Body.matchAll(/<section id="([^"]+)"><span class="section-index">/g)].map(x=>x[1]);
+const ci003Refs = [...ci003.matchAll(/<li id="ref-(\d+)">/g)].map(x=>Number(x[1]));
+const ci003Cites = [...ci003Body.matchAll(/href="#ref-(\d+)"/g)].map(x=>Number(x[1]));
+const ci003Words = ci003Body.replace(/<[^>]*>/g," ").trim().split(/\s+/).length;
+const ci003Urls = [...ci003.matchAll(/<li id="ref-\d+">[\s\S]*?<a href="([^"]+)" target="_blank"/g)].map(x=>x[1].replaceAll("&amp;","&"));
+if (ci003Sections.length < 23 || ci003Refs.length < 31 || ci003Words < 3500 ||
+    !ci003Refs.every((n,i)=>n===i+1) ||
+    ci003Refs.some(n=>!ci003Cites.includes(n)) ||
+    ci003Cites.some(n=>!ci003Refs.includes(n)) ||
+    ci003Urls.length!==ci003Refs.length ||
+    new Set(ci003Urls).size!==ci003Urls.length) {
+  throw new Error("CI-003 manuscript depth, citation coverage or source uniqueness regressed");
+}
+for (const id of ci003Sections) if (!ci003.includes('href="#' + id + '"')) {
+  throw new Error("CI-003 missing section navigation: " + id);
+}
+for (const phrase of ["Text-first finding:","Historical verdict, on the balance of probabilities:",
+  "Birmingham","Sanaa","Mingana","Marijn van Putten","Hythem Sidky",
+  "Quran 2:184","Quran 10:22","regional","consonantal","Sahih Muslim 1452a",
+  "Sahih Muslim 1050","Sahih al-Bukhari 6829"]) {
+  if (!ci003.toLowerCase().includes(phrase.toLowerCase())) {
+    throw new Error("CI-003 missing essential primary source or verdict: " + phrase);
+  }
+}
+for (const page of ["site/index.html","site/research/index.html","site/sources/index.html"]) {
+  if (!(await readFile(page,"utf8")).includes('href="/research/quran-preservation-and-manuscripts/"')) {
+    throw new Error("CI-003 missing site discovery: " + page);
+  }
+}
+
 await import("./check-qiraat.mjs");
 await import("./check-quran-previews.mjs");
 await import("./check-qf.mjs");
