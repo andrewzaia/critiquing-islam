@@ -2,6 +2,16 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.41.0 - 2026-11-07
+
+- Expanded CI-002 under its existing URL from 17 to 31 substantive sections and from 29 to 44 numbered sources.
+- Scrutinised the Arabic of Quran 4:157-159, separating the denial of named speakers' agency, appearance language and later proposed substitute identities.
+- Added the Greek of 1 Corinthians 15:3-5, Paul's reported contacts with Cephas and James, Papyrus 46, and a direct Codex Sinaiticus witness to Mark's crucifixion narrative.
+- Strengthened comparison with Tacitus, Pilate's inscription, a first-century crucifixion burial, Ignatius and the Basilidean substitute account; distinguished each source's historical limits and dependence.
+- Tested the narrow agency-only Quranic reading and the traditional non-crucifixion interpretation against earlier evidence without treating scriptural disagreement as independent proof of historical alteration.
+- Added site discovery updates, substantive cross-links, a standalone evidence audit and regression checks for article depth, navigation and source integrity.
+- Kept Quran explorer, Qira'at corpus, Quran.Foundation integration, dependencies and deployment configuration unchanged.
+
 ## v0.40.0 - 2026-11-07
 
 - Expanded CI-003 from 13 to 23 sections and from 15 to 31 numbered references, preserving its original URL.
