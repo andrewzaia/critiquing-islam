@@ -2,6 +2,15 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.43.0 - 2026-11-07
+
+- Published new CI-040, Paul versus Muhammad: who speaks for God?, as a standalone investigation with 24 substantial sections and 38 cited reference entries, increasing the library to 40 numbered studies and one guide.
+- Compared Paul's claimed commission by the risen Jesus with Muhammad's Quranic prophetic and final-messenger claims using explicitly identified biblical criteria in Deuteronomy 13 and 18, Galatians 1, 1 John 4 and 2 Corinthians 11.
+- Assessed Paul's early letters, reported contact and disagreement with Cephas and James, later Acts accounts, and disputed authorship alongside Quranic visionary passages, hadith transmission and early Islamic inscription evidence.
+- Gave separate biblical-Christian and historical verdicts concerning the divine Christ, crucifixion, rival gospel and limits of verifying claimed supernatural experiences.
+- Clarified the project's stated biblical-Christian theological framework on the public Methodology, About and README pages while retaining independent historical source tests and corrections.
+- Updated homepage, research library, source register, cross-links and structural regression checks. Quran explorer, Qira'at corpus, Quran.Foundation API, credentials, dependencies and Cloudflare configuration remain unchanged.
+
 ## v0.42.0 - 2026-11-07
 
 - Expanded CI-001 under its existing URL from 10 to 25 substantive analytical sections and from 11 to 30 numbered references.

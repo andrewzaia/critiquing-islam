@@ -444,7 +444,7 @@ for (const route of ["/research/joseph-dirhams-and-coinage/", "/research/al-sami
 for (const doc of [doctrineIndex, v028Sources]) {
   if (!doc.includes('href="/research/joseph-dirhams-and-coinage/"')) throw new Error("CI-035 missing from the library or source register");
 }
-if (!doctrineIndex.includes("39 published investigations / 1 research guide")) {
+if (!doctrineIndex.includes("40 published investigations / 1 research guide")) {
   throw new Error("Research count not updated for v0.28.0");
 }
 
@@ -768,6 +768,43 @@ for (const p of ["site/index.html","site/research/index.html","site/sources/inde
   if (!(await readFile(p,"utf8")).includes('href="/research/quran-61-6-and-paraclete/"')) {
     throw new Error("CI-001 missing discovery link from " + p);
   }
+}
+
+
+// CI-040 v0.43.0: explicit biblical perspective with independent historical evidence.
+const ci040 = await readFile("site/research/paul-vs-muhammad-prophetic-authority/index.html", "utf8");
+const ci040Body = ci040.slice(ci040.indexOf('<article class="prose'), ci040.indexOf('<section id="references">'));
+const ci040Sections = [...ci040Body.matchAll(/<section id="([^"]+)"><span class="section-index">/g)].map(x=>x[1]);
+const ci040Refs = [...ci040.matchAll(/<li id="ref-(\d+)">/g)].map(x=>Number(x[1]));
+const ci040Cites = [...ci040Body.matchAll(/href="#ref-(\d+)"/g)].map(x=>Number(x[1]));
+const ci040Urls = [...ci040.matchAll(/<li id="ref-\d+">[\s\S]*?<a href="([^"]+)" target="_blank"/g)].map(x=>x[1].replaceAll("&amp;","&"));
+const ci040Words = ci040Body.replace(/<[^>]*>/g, " ").trim().split(/\s+/).length;
+if (ci040Sections.length < 24 || ci040Refs.length < 38 || ci040Words < 3600 ||
+    !ci040Refs.every((x,i)=>x===i+1) ||
+    ci040Refs.some(x=>!ci040Cites.includes(x)) ||
+    ci040Cites.some(x=>!ci040Refs.includes(x)) ||
+    ci040Urls.length !== ci040Refs.length || new Set(ci040Urls).size !== ci040Urls.length) {
+  throw new Error("CI-040 depth, source numbering, citation coverage or URL uniqueness regressed");
+}
+for (const id of ci040Sections) if (!ci040.includes('href="#'+id+'"')) {
+  throw new Error("CI-040 missing section navigation: " + id);
+}
+for (const term of ["Biblical theological verdict:", "Historical verdict:",
+  "Galatians", "Cephas", "James", "Gabriel", "Bukhari", "Deuteronomy",
+  "Tacitus", "Philippians", "crucifixion", "Quran 33:40", "falsification"]) {
+  if (!ci040.toLowerCase().includes(term.toLowerCase())) {
+    throw new Error("CI-040 missing required source or verdict: " + term);
+  }
+}
+for (const p of ["site/index.html","site/research/index.html","site/sources/index.html"]) {
+  if (!(await readFile(p,"utf8")).includes('href="/research/paul-vs-muhammad-prophetic-authority/"')) {
+    throw new Error("CI-040 missing research discovery: " + p);
+  }
+}
+const ciFramework = await readFile("site/methodology/index.html", "utf8");
+if (!ciFramework.includes("Our stated biblical-Christian framework") ||
+    !(await readFile("site/about/index.html", "utf8")).includes("Our perspective is stated openly.")) {
+  throw new Error("Project-wide biblical framework must remain explicit");
 }
 
 await import("./check-qiraat.mjs");
