@@ -2,6 +2,14 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.44.0 - 2026-11-08
+
+- Expanded CI-009 from 14 to 24 analytical sections and 30 to 44 numbered sources at its established URL.
+- Added Quranic Arabic morphology, universal submission, first-century Jewish context, Paul and Jerusalem evidence, physical manuscript history, competing explanations and falsification criteria.
+- Distinguished the historical assessment from the stated Biblical-Christian theological verdict.
+- Updated homepage, research catalogue, sources register, related article, README and a new evidence audit; added CI-009 regression checks.
+- Quran explorer, Qira'at corpus, Quran.Foundation API, credentials and infrastructure remain unchanged.
+
 ## v0.43.1 - 2026-11-08
 
 - Standardised capitalisation of "Biblical" throughout publicly displayed site content, page metadata, article navigation and editorial documentation.

@@ -20,6 +20,8 @@ The underlying data derive from Corpus Coranicum and Abdul Rahim Nizamani's 2026
 
 ## Latest research
 
+v0.44.0 expands [CI-009, Was Jesus a Muslim?](site/research/was-jesus-a-muslim/index.html) to 24 substantive sections and 44 references. The study examines Quranic Arabic morphology, universal submission, first-century Jewish identity, early Pauline and Jerusalem sources, manuscripts, serious alternatives and falsification criteria. Separate Biblical theological and historical verdicts are provided. See [the v0.44.0 evidence audit](docs/jesus-muslim-original-language-audit-v0.44.0.md). The library remains at 40 numbered investigations and one guide.
+
 v0.43.1 is an editorial patch standardising capitalisation of **Biblical** across published pages and public documentation without changing research URLs or substantive findings. The case convention is enforced by the existing build checks.
 
 v0.43.0 adds [CI-040, Paul versus Muhammad: who speaks for God?](site/research/paul-vs-muhammad-prophetic-authority/index.html), a standalone Biblical-Christian critique with 24 analytical sections and 38 numbered references. It compares Paul's first-person apostleship claims and early contacts with Cephas and James, Muhammad's Quranic prophetic authority, the Biblical criteria of Deuteronomy 13 and 18 and Galatians 1, the historically attested crucifixion, Jesus' identity, visionary claims and early Islamic material witnesses. The Christian theological verdict and independent historical verdict are stated separately. The research library now contains **40 published numbered investigations and one research guide**. See the [CI-040 evidence audit](docs/paul-muhammad-biblical-evidence-audit-v0.43.0.md).
