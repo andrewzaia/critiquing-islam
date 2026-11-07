@@ -2,6 +2,15 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.50.0 - 2026-11-08
+
+- Expanded CI-012 from 10 to 25 analytical sections and 11 to 30 numbered references without changing its URL.
+- Analysed the Quran 65:4 non-menstruation wording alongside 33:49, 2:236-237, 2:228 and 65:1, distinguishing a divorce waiting period, marriage contract and consummation.
+- Tested Quran 4:6 and 24:58-59 on maturity, examined adult primary amenorrhea and reviewed Arabic readings in al-Tabari and al-Qurtubi.
+- Compared guardianship and consent doctrines using Kecia Ali and Wael Hallaq, and later court records using Judith Tucker, without projecting the evidence indiscriminately across centuries.
+- Added competing interpretations, a fuller evidence matrix, falsification criteria, Biblical ethical comparison and modern child-protection standards as a distinct assessment.
+- Updated homepage, research library, source register, related legal article, README, source audit and automated regression checks. No Quran explorer, Qiraat corpus, Quran.Foundation integration, credentials, dependencies or infrastructure changes.
+
 ## v0.49.0 - 2026-11-08
 
 - Expanded CI-033 from 13 to 25 substantive analytical sections and 18 to 34 references without changing its URL.
