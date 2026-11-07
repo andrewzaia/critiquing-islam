@@ -881,6 +881,30 @@ for(const path of ["site/index.html","site/research/index.html","site/sources/in
   if(!(await readFile(path,"utf8")).includes('href="/research/is-jesus-god/"'))
     throw new Error("CI-010 missing discovery from "+path);
 
+
+// CI-011 v0.46.0: source-specific claims, citations and navigation.
+const ci011 = await readFile("site/research/muhammad-in-torah-and-gospel/index.html","utf8");
+const ci011Body = ci011.slice(ci011.indexOf('<article class="prose'), ci011.indexOf('<section id="references">'));
+const ci011Sections = [...ci011Body.matchAll(/<section id="([^"]+)"><span class="section-index">/g)].map(m=>m[1]);
+const ci011Refs = [...ci011.matchAll(/<li id="ref-(\d+)">/g)].map(m=>Number(m[1]));
+const ci011Cites = [...ci011Body.matchAll(/href="#ref-(\d+)"/g)].map(m=>Number(m[1]));
+const ci011Urls = [...ci011.matchAll(/<li id="ref-\d+">[\s\S]*?<a href="([^"]+)" target="_blank"/g)].map(m=>m[1].replaceAll("&amp;","&"));
+const ci011Words = ci011Body.replace(/<[^>]*>/g," ").trim().split(/\s+/).length;
+if(ci011Sections.length<26||ci011Refs.length<34||ci011Words<4150||
+  !ci011Refs.every((n,i)=>n===i+1)||
+  ci011Refs.some(n=>!ci011Cites.includes(n))||
+  ci011Cites.some(n=>!ci011Refs.includes(n))||
+  ci011Urls.length!==ci011Refs.length||new Set(ci011Urls).size!==ci011Urls.length)
+  throw new Error("CI-011 source coverage, depth or reference numbering regressed");
+for(const id of ci011Sections)if(!ci011.includes('href="#'+id+'"'))
+  throw new Error("CI-011 missing navigation "+id);
+for(const term of ["maktuban","miqqirbekha","Paran","machamadim","Kedar","Isaiah 29",
+ "Spirit of truth","John 14:26","Falsification","Historical verdict:","Biblical theological verdict:"])
+ if(!ci011.toLowerCase().includes(term.toLowerCase()))throw new Error("CI-011 missing argument: "+term);
+for(const path of ["site/index.html","site/research/index.html","site/sources/index.html"])
+ if(!(await readFile(path,"utf8")).includes('href="/research/muhammad-in-torah-and-gospel/"'))
+  throw new Error("CI-011 discovery missing "+path);
+
 await import("./check-qiraat.mjs");
 await import("./check-quran-previews.mjs");
 await import("./check-qf.mjs");
