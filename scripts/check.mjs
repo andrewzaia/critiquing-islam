@@ -934,7 +934,7 @@ for(const path of ["site/index.html","site/research/index.html","site/sources/in
     throw new Error("CI-016 missing site discovery: "+path);
 
 
-// CI-017 v0.48.0: original-language compulsion, jizya, law and citation integrity.
+// CI-017 v0.49.0: original Arabic, abrogation, jizya and citation integrity.
 const ci017 = await readFile("site/research/no-compulsion-jizya-and-religious-freedom/index.html","utf8");
 const ci017Body = ci017.slice(ci017.indexOf('<article class="prose'),ci017.indexOf('<section id="references">'));
 const ci017Sections = [...ci017Body.matchAll(/<section id="([^"]+)"><span class="section-index">/g)].map(m=>m[1]);
@@ -942,7 +942,7 @@ const ci017Refs = [...ci017.matchAll(/<li id="ref-(\d+)">/g)].map(m=>Number(m[1]
 const ci017Cites = [...ci017Body.matchAll(/href="#ref-(\d+)"/g)].map(m=>Number(m[1]));
 const ci017Urls = [...ci017.matchAll(/<li id="ref-\d+">[\s\S]*?<a href="([^"]+)" target="_blank"/g)].map(m=>m[1].replaceAll("&amp;","&"));
 const ci017Words = ci017Body.replace(/<[^>]*>/g," ").trim().split(/\s+/).length;
-if(ci017Sections.length<24 || ci017Refs.length<34 || ci017Words<4350 ||
+if(ci017Sections.length<26 || ci017Refs.length<39 || ci017Words<5000 ||
     !ci017Refs.every((n,i)=>n===i+1) ||
     ci017Refs.some(n=>!ci017Cites.includes(n)) ||
     ci017Cites.some(n=>!ci017Refs.includes(n)) ||
@@ -953,14 +953,42 @@ for(const id of ci017Sections)if(!ci017.includes('href="#'+id+'"'))
   throw new Error("CI-017 missing section navigation "+id);
 for(const term of ["ikraha","qatilu","saghirun","an yadin","jizya","4:90",
  "2:217","4:137","Levy-Rubin","Friedmann","Falsification",
- "Biblical theological verdict:","Historical verdict:","Pact of Umar"])
+ "Biblical theological verdict:","Historical verdict:","Pact of Umar","2:106","16:101",
+ "Al-Tabari","al-Khoei","abrogation","naskh"])
  if(!ci017.toLowerCase().includes(term.toLowerCase()))
    throw new Error("CI-017 lost significant evidence "+term);
-if(!ci017.includes("<span>24 sections</span><span>34 references</span>"))
+if(!ci017.includes("<span>26 sections</span><span>39 references</span>"))
   throw new Error("CI-017 metadata drift");
 for(const path of ["site/index.html","site/research/index.html","site/sources/index.html"])
  if(!(await readFile(path,"utf8")).includes('href="/research/no-compulsion-jizya-and-religious-freedom/"'))
    throw new Error("CI-017 discovery missing "+path);
+
+
+// CI-033 v0.49.0: original Arabic, pre-Islamic analogues and scientific evidence.
+const ci033 = await readFile("site/research/quran-scientific-miracles/index.html","utf8");
+const ci033Body = ci033.slice(ci033.indexOf('<article class="prose'),ci033.indexOf('<section id="references">'));
+const ci033Sections = [...ci033Body.matchAll(/<section id="([^"]+)"><span class="section-index">/g)].map(m=>m[1]);
+const ci033Refs = [...ci033.matchAll(/<li id="ref-(\d+)">/g)].map(m=>Number(m[1]));
+const ci033Cites = [...ci033Body.matchAll(/href="#ref-(\d+)"/g)].map(m=>Number(m[1]));
+const ci033Urls = [...ci033.matchAll(/<li id="ref-\d+">[\s\S]*?<a href="([^"]+)" target="_blank"/g)].map(m=>m[1].replaceAll("&amp;","&"));
+const ci033Words = ci033Body.replace(/<[^>]*>/g," ").trim().split(/\s+/).length;
+if(ci033Sections.length<25||ci033Refs.length<34||ci033Words<4700||
+  !ci033Refs.every((n,i)=>n===i+1)||
+  ci033Refs.some(n=>!ci033Cites.includes(n))||
+  ci033Cites.some(n=>!ci033Refs.includes(n))||
+  ci033Urls.length!==ci033Refs.length||new Set(ci033Urls).size!==ci033Urls.length)
+  throw new Error("CI-033 research depth, numbering or citation integrity regressed");
+for(const id of ci033Sections)if(!ci033.includes('href="#'+id+'"'))
+  throw new Error("CI-033 missing section navigation "+id);
+for(const term of ["ratqan","lamusi'una","Galen","De Semine","rawasiya",
+  "awtadan","barzakh","testes","NOAA","Falsification","Scientific verdict:","Historical verdict:"])
+  if(!ci033.toLowerCase().includes(term.toLowerCase()))
+    throw new Error("CI-033 missing original-language or scientific control "+term);
+if(!ci033.includes("<span>25 sections</span><span>34 references</span>"))
+  throw new Error("CI-033 metadata drift");
+for(const path of ["site/index.html","site/research/index.html","site/sources/index.html"])
+  if(!(await readFile(path,"utf8")).includes('href="/research/quran-scientific-miracles/"'))
+    throw new Error("CI-033 site discovery missing "+path);
 
 await import("./check-qiraat.mjs");
 await import("./check-quran-previews.mjs");
