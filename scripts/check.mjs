@@ -990,6 +990,35 @@ for(const path of ["site/index.html","site/research/index.html","site/sources/in
   if(!(await readFile(path,"utf8")).includes('href="/research/quran-scientific-miracles/"'))
     throw new Error("CI-033 site discovery missing "+path);
 
+
+// CI-012 v0.50.0: Quranic marriage and divorce language, source history and citation checks.
+const ci012 = await readFile("site/research/quran-65-4-and-marriage-age/index.html","utf8");
+const ci012Body = ci012.slice(ci012.indexOf('<article class="prose'),ci012.indexOf('<section id="references">'));
+const ci012Sections = [...ci012Body.matchAll(/<section id="([^"]+)"><span class="section-index">/g)].map(m=>m[1]);
+const ci012Refs = [...ci012.matchAll(/<li id="ref-(\d+)">/g)].map(m=>Number(m[1]));
+const ci012Cites = [...ci012Body.matchAll(/href="#ref-(\d+)"/g)].map(m=>Number(m[1]));
+const ci012Urls = [...ci012.matchAll(/<li id="ref-\d+">[\s\S]*?<a href="([^"]+)" target="_blank"/g)].map(m=>m[1].replaceAll("&amp;","&"));
+const ci012Words = ci012Body.replace(/<[^>]*>/g," ").trim().split(/\s+/).length;
+if(ci012Sections.length<25||ci012Refs.length<30||ci012Words<4900||
+  !ci012Refs.every((n,i)=>n===i+1)||
+  ci012Refs.some(n=>!ci012Cites.includes(n))||
+  ci012Cites.some(n=>!ci012Refs.includes(n))||
+  ci012Urls.length!==ci012Refs.length||new Set(ci012Urls).size!==ci012Urls.length)
+  throw new Error("CI-012 section depth, sources or citation coverage regressed");
+for(const id of ci012Sections)
+  if(!ci012.includes('href="#'+id+'"'))
+    throw new Error("CI-012 missing section navigation "+id);
+for(const term of ["lam yahidna","tamassuhunna","rushdan","amenorrhea",
+  "al-Tabari","al-Qurtubi","Kecia Ali","Judith Tucker","UNICEF",
+  "Falsification criteria:","Historical verdict:","Text-first verdict:"])
+  if(!ci012.toLowerCase().includes(term.toLowerCase()))
+    throw new Error("CI-012 lost key primary-language or historical analysis "+term);
+if(!ci012.includes("<span>25 sections</span><span>30 references</span>"))
+  throw new Error("CI-012 metadata no longer matches the article");
+for(const path of ["site/index.html","site/research/index.html","site/sources/index.html"])
+  if(!(await readFile(path,"utf8")).includes('href="/research/quran-65-4-and-marriage-age/"'))
+    throw new Error("CI-012 missing discovery link "+path);
+
 await import("./check-qiraat.mjs");
 await import("./check-quran-previews.mjs");
 await import("./check-qf.mjs");
