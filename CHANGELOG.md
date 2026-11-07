@@ -2,6 +2,15 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.49.0 - 2026-11-08
+
+- Expanded CI-033 from 13 to 25 substantive analytical sections and 18 to 34 references without changing its URL.
+- Added original Arabic study of the joined cosmos and expansion claims, scientific tests of smoke and primordial plasma, and pre-Islamic Greek medical comparisons using Galen.
+- Scrutinised Quranic claims about reproductive anatomy, mountains, pegs, earth stability and the barrier between two seas against NCBI, British Geological Survey and NOAA research.
+- Added explicit distinctions between earlier conceptual motifs, demonstrable literary dependence, meaningful scientific predictions and retrofitted resemblances, with falsification criteria.
+- Strengthened CI-017 with two additional sections and five references on Quran 2:106, 16:101, technical naskh, and the disputed claim that 9:29 supersedes 2:256, including al-Tabari, Friedmann and al-Khoei.
+- Updated homepage, research catalogue, source register, related research, documentation, README, package version and regression checks. Left Quran explorer, Qiraat corpus, Quran.Foundation API, credentials, dependencies and infrastructure unchanged.
+
 ## v0.48.0 - 2026-11-08
 
 - Expanded CI-017 from 10 to 24 analytical sections and 12 to 34 numbered references while preserving its existing URL.
