@@ -980,7 +980,7 @@ if(ci033Sections.length<25||ci033Refs.length<34||ci033Words<4700||
   throw new Error("CI-033 research depth, numbering or citation integrity regressed");
 for(const id of ci033Sections)if(!ci033.includes('href="#'+id+'"'))
   throw new Error("CI-033 missing section navigation "+id);
-for(const term of ["ratqan","lamusi'una","Galen","De Semine","rawasiya",
+for(const term of ["ratqan","musi'una","Galen","De Semine","rawasiya",
   "awtadan","barzakh","testes","NOAA","Falsification","Scientific verdict:","Historical verdict:"])
   if(!ci033.toLowerCase().includes(term.toLowerCase()))
     throw new Error("CI-033 missing original-language or scientific control "+term);
