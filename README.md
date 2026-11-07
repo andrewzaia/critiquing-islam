@@ -1,10 +1,10 @@
 # Critiquing Islam
 
-A biblical-Christian critique of Islamic scripture, theology, history and claimed divine authority, grounded in original-language primary texts, textual criticism and historical research.
+A Biblical-Christian critique of Islamic scripture, theology, history and claimed divine authority, grounded in original-language primary texts, textual criticism and historical research.
 
 ## Purpose
 
-Critiquing Islam is a public research website working from an expressly biblical-Christian theological framework. The Bible is the doctrinal benchmark for competing claims about Jesus, revelation and salvation. Historical and manuscript claims are independently evaluated rather than presumed true merely because the Christian framework affirms a doctrine. Articles distinguish direct textual observations, historical inference, biblical theological verdicts, disputed interpretation and unresolved questions. Claims are supported by traceable references, and meaningful corrections are documented.
+Critiquing Islam is a public research website working from an expressly Biblical-Christian theological framework. The Bible is the doctrinal benchmark for competing claims about Jesus, revelation and salvation. Historical and manuscript claims are independently evaluated rather than presumed true merely because the Christian framework affirms a doctrine. Articles distinguish direct textual observations, historical inference, Biblical theological verdicts, disputed interpretation and unresolved questions. Claims are supported by traceable references, and meaningful corrections are documented.
 
 **Source priority:** Quranic claims are tested against the Quranic text and context first. Hadith is evidence of attributed reports and later transmitted beliefs, not independent verification of extraordinary events or proof of unwritten Quranic clauses. Tafsir records proposed interpretations, not binding amendments to the text. All source claims, including inconvenient ones, are subjected to the same checks; a convenient conclusion is not a reason to accept a weak source.
 
@@ -20,7 +20,9 @@ The underlying data derive from Corpus Coranicum and Abdul Rahim Nizamani's 2026
 
 ## Latest research
 
-v0.43.0 adds [CI-040, Paul versus Muhammad: who speaks for God?](site/research/paul-vs-muhammad-prophetic-authority/index.html), a standalone biblical-Christian critique with 24 analytical sections and 38 numbered references. It compares Paul's first-person apostleship claims and early contacts with Cephas and James, Muhammad's Quranic prophetic authority, the biblical criteria of Deuteronomy 13 and 18 and Galatians 1, the historically attested crucifixion, Jesus' identity, visionary claims and early Islamic material witnesses. The Christian theological verdict and independent historical verdict are stated separately. The research library now contains **40 published numbered investigations and one research guide**. See the [CI-040 evidence audit](docs/paul-muhammad-biblical-evidence-audit-v0.43.0.md).
+v0.43.1 is an editorial patch standardising capitalisation of **Biblical** across published pages and public documentation without changing research URLs or substantive findings. The case convention is enforced by the existing build checks.
+
+v0.43.0 adds [CI-040, Paul versus Muhammad: who speaks for God?](site/research/paul-vs-muhammad-prophetic-authority/index.html), a standalone Biblical-Christian critique with 24 analytical sections and 38 numbered references. It compares Paul's first-person apostleship claims and early contacts with Cephas and James, Muhammad's Quranic prophetic authority, the Biblical criteria of Deuteronomy 13 and 18 and Galatians 1, the historically attested crucifixion, Jesus' identity, visionary claims and early Islamic material witnesses. The Christian theological verdict and independent historical verdict are stated separately. The research library now contains **40 published numbered investigations and one research guide**. See the [CI-040 evidence audit](docs/paul-muhammad-biblical-evidence-audit-v0.43.0.md).
 
 v0.42.0 expands [CI-001, the Ahmad and Paraclete claim](site/research/quran-61-6-and-paraclete/index.html), from 10 to 25 analytical sections and from 11 to 30 numbered sources. It compares Quran 61:6's Arabic proper name to Greek John 14:16-26 and 16:7-15, manuscript evidence in P66 and P75, the distinct Greek terms parakletos and periklutos, documented textual variants, and the early Islamic adaptation examined by Sean Anthony. The historical verdict distinguishes the surviving Gospel's explicit Holy Spirit identification from an otherwise uncorroborated claimed prophecy. See the [source-critical audit](docs/ahmad-paraclete-evidence-audit-v0.42.0.md).
 
@@ -44,7 +46,7 @@ The v0.34.0 release publishes [CI-038, the first revelation and identification o
 
 The v0.33.0 release adds [CI-037: Quran 5:32 and Mishnah Sanhedrin 4:5](site/research/quran-5-32-mishnah-sanhedrin/index.html), comparing the Cain-Abel life maxim, original Hebrew and Arabic, differing legal contexts, textual variants and chronological claims. See the [source verification audit](docs/quran-5-32-mishnah-audit-v0.33.0.md). The library now contains 37 published investigations and one unnumbered guide.
 
-The v0.32.0 release introduces [CI-036: Abraham's father, Azar or Terah?](site/research/abraham-father-azar-terah/index.html). The article compares Quran 6:74 with Genesis, Joshua, Greek biblical transmission, pre-Islamic Jewish retellings and the source evidence required by competing uncle or second-name hypotheses. See the [evidence audit and limitations](docs/abraham-azar-terah-audit-v0.32.0.md). This release expanded the research collection from 35 to 36 published investigations.
+The v0.32.0 release introduces [CI-036: Abraham's father, Azar or Terah?](site/research/abraham-father-azar-terah/index.html). The article compares Quran 6:74 with Genesis, Joshua, Greek Biblical transmission, pre-Islamic Jewish retellings and the source evidence required by competing uncle or second-name hypotheses. See the [evidence audit and limitations](docs/abraham-azar-terah-audit-v0.32.0.md). This release expanded the research collection from 35 to 36 published investigations.
 
 ## Explore
 

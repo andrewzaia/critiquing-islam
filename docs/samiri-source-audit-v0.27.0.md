@@ -26,7 +26,7 @@ The Quran is primary evidence for the Quran's narrative wording. The earlier Heb
 1. The Quran's narrative assigns instigation to al-Samiri and portrays Aaron as an opponent, materially differing from Exodus 32 on the allocation of responsibility.
 2. If al-Samiri denotes a later Samaritan identity, the traditional dating of Moses produces a serious chronological objection. The Quranic grammatical form alone does not establish that interpretation.
 3. No independently datable Moses-era witness identifying the named Quranic character has been demonstrated by the sources reviewed.
-4. A decisive historical resolution would require source provenance, independent linguistic correspondence and chronology, or evidence of an earlier modified version of the biblical account.
+4. A decisive historical resolution would require source provenance, independent linguistic correspondence and chronology, or evidence of an earlier modified version of the Biblical account.
 5. Automated scripts verify source presence, citation integrity and basic structural properties, not actual historical events or every form of mobile rendering.
 
 ## Homepage decision and retained routes

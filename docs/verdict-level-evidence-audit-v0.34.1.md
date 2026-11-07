@@ -10,7 +10,7 @@ Apply the **balance of probabilities**, not proof beyond reasonable doubt. Choos
 
 - **CI-038:** The text now separates the independent historical evaluation from the conditional Christian theological evaluation. If the earlier apostolic gospel is authoritative and a supernatural visitor is assumed, deceptive agency better fits a contrary gospel than a faithful angel of God. Galatians 1:8 concerns a contradictory message, not the physical pressing itself. No independent proof identifies Satan as a historical visitor.
 - **CI-008:** The dual Aaron/Imran naming correspondence is documented; an imagined first-century family genealogy has no comparable independent attestation.
-- **CI-011:** The principal biblical prophecy claims fail on their original wording; an unspecified lost prediction is not positive counterevidence.
+- **CI-011:** The principal Biblical prophecy claims fail on their original wording; an unspecified lost prediction is not positive counterevidence.
 - **CI-015:** Undocumented Jewish sects and alternative identities for Uzayr do not displace the extant record by logical possibility alone.
 - **Methodology:** Added a formal comparative-evidence standard, disclosure of theological premises, and the requirement to rank theories without invented probability percentages.
 
@@ -43,7 +43,7 @@ Apply the **balance of probabilities**, not proof beyond reasonable doubt. Choos
 | CI-023 | The denial of divine sonship | Consort argument does not directly refute Nicene non-physical eternal sonship. |
 | CI-024 | Jesus: prophet or God? | Early Christian high claims predate the Quran; later correction requires justification. |
 | CI-025 | The crucifixion and substitution | No named substitute or corroborated substitution mechanism appears in early evidence. |
-| CI-026 | Tahrif and biblical corruption | Specific alleged biblical corruption requires dated witnesses, alteration and mechanism. |
+| CI-026 | Tahrif and Biblical corruption | Specific alleged Biblical corruption requires dated witnesses, alteration and mechanism. |
 | CI-027 | The Quran's preservation claim | Written-text stability does not demonstrate complete original recitation preservation. |
 | CI-028 | Muhammad as Seal of the Prophets | Finality is a Quranic doctrine, not independent verification of divine credentials. |
 | CI-029 | Original sin and atonement | Christian doctrines of inherited consequences should not be confused with infants committing Adam's act. |

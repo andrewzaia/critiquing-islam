@@ -33,8 +33,27 @@ async function collect(dir) {
   }
 }
 await collect("site");
+
+// Editorial capitalisation policy: display Biblical with a capital B.
+// Preserve stable slugs, href/src identifiers, and historical file paths.
+function assertBiblicalCapitalisation(content, path) {
+  const segments = content.split(/(<[^>]*>)/g);
+  for (const segment of segments) {
+    if (segment.startsWith("<")) {
+      for (const m of segment.matchAll(/\b(?:content|title|alt|aria-label|data-search|placeholder)="([^"]*)"/g)) {
+        if (/\bbiblical\b/.test(m[1])) {
+          throw new Error(path + " contains a lowercase Biblical display attribute");
+        }
+      }
+    } else if (/\bbiblical\b/.test(segment)) {
+      throw new Error(path + " contains lowercase Biblical display text");
+    }
+  }
+}
+
 for (const path of htmlFiles) {
   const content = await readFile(path, "utf8");
+  assertBiblicalCapitalisation(content, path);
   if (!content.includes("{{VERSION}}")) throw new Error(path + " lacks shared version placeholder");
   if (!content.includes('<main id="main">')) throw new Error(path + " lacks main landmark");
   if (/[\u2010-\u2015\u2212]/.test(content)) throw new Error(path + " contains a typographic dash");
@@ -771,7 +790,7 @@ for (const p of ["site/index.html","site/research/index.html","site/sources/inde
 }
 
 
-// CI-040 v0.43.0: explicit biblical perspective with independent historical evidence.
+// CI-040 v0.43.0: explicit Biblical perspective with independent historical evidence.
 const ci040 = await readFile("site/research/paul-vs-muhammad-prophetic-authority/index.html", "utf8");
 const ci040Body = ci040.slice(ci040.indexOf('<article class="prose'), ci040.indexOf('<section id="references">'));
 const ci040Sections = [...ci040Body.matchAll(/<section id="([^"]+)"><span class="section-index">/g)].map(x=>x[1]);
@@ -802,9 +821,18 @@ for (const p of ["site/index.html","site/research/index.html","site/sources/inde
   }
 }
 const ciFramework = await readFile("site/methodology/index.html", "utf8");
-if (!ciFramework.includes("Our stated biblical-Christian framework") ||
+if (!ciFramework.includes("Our stated Biblical-Christian framework") ||
     !(await readFile("site/about/index.html", "utf8")).includes("Our perspective is stated openly.")) {
-  throw new Error("Project-wide biblical framework must remain explicit");
+  throw new Error("Project-wide Biblical framework must remain explicit");
+}
+
+
+for (const path of ["README.md", "CHANGELOG.md", ...(await readdir("docs")).filter(x=>x.endsWith(".md")).map(x=>"docs/"+x)]) {
+  const markdown = await readFile(path, "utf8");
+  const prose = markdown.replace(/https?:\/\/[^\s)>"']+|(?:site\/research\/|\/research\/|docs\/)[^\s)>"']+|tahrif-and-biblical-corruption/g, "");
+  if (/\bbiblical\b/.test(prose)) {
+    throw new Error(path + " contains lowercase Biblical in editorial prose");
+  }
 }
 
 await import("./check-qiraat.mjs");

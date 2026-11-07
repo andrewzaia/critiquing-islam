@@ -2,13 +2,20 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.43.1 - 2026-11-08
+
+- Standardised capitalisation of "Biblical" throughout publicly displayed site content, page metadata, article navigation and editorial documentation.
+- Preserved existing URLs, filenames, section anchors and script identifiers to avoid breaking established links or behaviour.
+- Added an automated editorial check to detect lowercase "Biblical" in website text and public research prose.
+- No new investigation, content-claim changes, dependencies, API changes or infrastructure changes.
+
 ## v0.43.0 - 2026-11-07
 
 - Published new CI-040, Paul versus Muhammad: who speaks for God?, as a standalone investigation with 24 substantial sections and 38 cited reference entries, increasing the library to 40 numbered studies and one guide.
-- Compared Paul's claimed commission by the risen Jesus with Muhammad's Quranic prophetic and final-messenger claims using explicitly identified biblical criteria in Deuteronomy 13 and 18, Galatians 1, 1 John 4 and 2 Corinthians 11.
+- Compared Paul's claimed commission by the risen Jesus with Muhammad's Quranic prophetic and final-messenger claims using explicitly identified Biblical criteria in Deuteronomy 13 and 18, Galatians 1, 1 John 4 and 2 Corinthians 11.
 - Assessed Paul's early letters, reported contact and disagreement with Cephas and James, later Acts accounts, and disputed authorship alongside Quranic visionary passages, hadith transmission and early Islamic inscription evidence.
-- Gave separate biblical-Christian and historical verdicts concerning the divine Christ, crucifixion, rival gospel and limits of verifying claimed supernatural experiences.
-- Clarified the project's stated biblical-Christian theological framework on the public Methodology, About and README pages while retaining independent historical source tests and corrections.
+- Gave separate Biblical-Christian and historical verdicts concerning the divine Christ, crucifixion, rival gospel and limits of verifying claimed supernatural experiences.
+- Clarified the project's stated Biblical-Christian theological framework on the public Methodology, About and README pages while retaining independent historical source tests and corrections.
 - Updated homepage, research library, source register, cross-links and structural regression checks. Quran explorer, Qira'at corpus, Quran.Foundation API, credentials, dependencies and Cloudflare configuration remain unchanged.
 
 ## v0.42.0 - 2026-11-07
@@ -71,7 +78,7 @@ Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 ## v0.36.0 - 2026-11-07
 
 - Expanded CI-007, Quran 5:116 and the Trinity, from nine to 20 substantive research sections and from 11 to 28 numbered references.
-- Examined the original Arabic of Quran 5:116, 5:73 and 4:171 alongside the Greek Christian creeds of Nicaea (325) and Constantinople (381) and the earlier Christian triadic biblical passages.
+- Examined the original Arabic of Quran 5:116, 5:73 and 4:171 alongside the Greek Christian creeds of Nicaea (325) and Constantinople (381) and the earlier Christian triadic Biblical passages.
 - Compared Epiphanius's pre-Islamic report of Marian offerings with the official Christian distinctions between Mary's honour and divine worship, and investigated the historically proposed cultic target.
 - Incorporated competing published scholarship, including Mohsen Goudarzi's 2025 practice-focused interpretation, without treating modern scholarship as ancient eyewitness evidence.
 - Clarified that the accusation involving Mary's deity does not describe the orthodox Trinity while Quran 5:116 itself does not explicitly list Mary's membership among the three.
@@ -221,7 +228,7 @@ Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 - Revised the inheritance, Trinity and Mary-Aaron investigations to focus their conclusions on the Quran's words and independently dated evidence rather than treating subsequent legal or theological explanations as resolutions.
 - Replaced a modern interpretive source in the Trinity investigation with a pre-Islamic account by Epiphanius and added an early Christian council text for the doctrine being compared.
 - Strengthened the scriptural corruption and crucifixion investigations by separating their direct Quranic assertions from historical details introduced by later traditions.
-- Applied the same source priority to Quranic preservation, final prophethood, salvation, Jesus' return, al-muhaymin and the question of earlier biblical scripture.
+- Applied the same source priority to Quranic preservation, final prophethood, salvation, Jesus' return, al-muhaymin and the question of earlier Biblical scripture.
 - Clarified source use across the ten-doctrine research guide and added automated regression checks for the primary-text findings.
 
 ## v0.21.0 - 2026-11-04
@@ -277,7 +284,7 @@ Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
 - Deepened the separate crucifixion, tahrif and Quran preservation critiques (CI-025 to CI-027) with original Arabic, early manuscript witnesses and source-critical scholarship.
 - Clarified the passive shubbiha in Quran 4:157, differing reports in al-Tabari, Ignatius's early testimony, the non-eyewitness limits of Tacitus and a historically defensible death date range.
-- Anchored the biblical corruption discussion in real Isaiah Scroll variants, the contested long ending of Mark, the uncertain palaeographic dating of P52, and al-Tabari's alternative constructions of Quran 5:47.
+- Anchored the Biblical corruption discussion in real Isaiah Scroll variants, the contested long ending of Mark, the uncertain palaeographic dating of P52, and al-Tabari's alternative constructions of Quran 5:47.
 - Incorporated early written Uthmanic archetype scholarship, the Sanaa palimpsest's distinct lower text, Birmingham's exact manuscript scope and parchment dating, and the meaning-level variation of the canonical qiraat of Quran 1:4.
 - Explicitly rejected both unsupported extremes: arbitrary Uthmanic invention without evidence, and the claim that textual stability automatically establishes perfect preservation or supernatural origin.
 - Expanded independent source registers and made the historical, linguistic and theological burdens distinguishable. Updated the source directory with direct evidence and study links, and added automated depth guards for the three newly expanded studies.
@@ -306,7 +313,7 @@ Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
 - Published CI-020, a source-based comparative evidence audit covering ten disputed Islamic doctrines and their strongest counter-readings.
 - Published CI-021, an independent Al-Muhaymin investigation grounded in Arabic morphology, Lisan al-Arab and the tafsir of al-Tabari, Ibn Kathir and al-Qurtubi.
-- Distinguished internal scriptural authority from independent historical corroboration, and identified the precise burdens for any particular biblical corruption allegation.
+- Distinguished internal scriptural authority from independent historical corroboration, and identified the precise burdens for any particular Biblical corruption allegation.
 - Corrected common overstatements about the Christian Trinity, divine sonship, unnamed crucifixion substitutes, salvation through works, and the Quran versus hadith on Jesus' return.
 - Connected the new studies in the research library, homepage, source register and earlier-scripture analysis; extended required-file checks to cover both articles.
 - Expanded the catalogue from 19 to 21 investigations. Future dedicated deep dives are identified for sonship, prophetic finality, atonement and eschatology.
@@ -332,7 +339,7 @@ Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 - Published two comprehensive studies: attributed witnesses and independent evidence for Muhammad's miracles (CI-013), and Uthman's Quranic standardisation and the limits of authenticity claims (CI-014).
 - Compared the moon-splitting and water-miracle reports with the historical requirements for corroborating extraordinary events.
 - Distinguished Abu Bakr's collection from Uthman's official codex, documented Uthman's committee, dialect rule and destruction of competing material, and compared early written manuscript evidence with oral tradition.
-- Applied the same evidentiary standards to Quranic and biblical transmission, without treating either oral tradition as automatically conclusive.
+- Applied the same evidentiary standards to Quranic and Biblical transmission, without treating either oral tradition as automatically conclusive.
 - Added cross-references, public source register entries and required-page validation, and expanded the library to fourteen published analyses.
 
 ## v0.9.0 - 2026-11-03
@@ -361,13 +368,13 @@ Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
 - Expanded the Gospel authenticity critique with pre-Islamic documentary continuity for specific Johannine passages and a detailed-verses evidentiary test.
 - Added Quran 12:111, 16:89 and 6:114, early papyrus evidence and classical tafsir, distinguishing explanatory adequacy from a formal logical contradiction.
-- Documented the Johannine Comma as a genuine later textual addition rather than suggesting every biblical manuscript is identical.
+- Documented the Johannine Comma as a genuine later textual addition rather than suggesting every Biblical manuscript is identical.
 - Updated the Christology analysis, manuscript source register and editorial methodology.
 
 ## v0.6.1 - 2026-11-03
 
 - Strengthened the pre-Islamic manuscript argument in the earlier-scripture and Jesus' divinity studies.
-- Distinguished documentary proof that biblical texts predate Islam from proof of an unchanged original or theological truth.
+- Distinguished documentary proof that Biblical texts predate Islam from proof of an unchanged original or theological truth.
 - Examined the Quran's instruction to use the Gospel alongside its role as a criterion, setting out the evidentiary burden for specific corruption allegations.
 - Clarified that surviving fourth-century codices do not establish the precise books held by every seventh-century community.
 

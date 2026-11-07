@@ -29,10 +29,10 @@ The Arabic of 5:43, 5:47, 5:48, 2:79 and 3:78 was checked against the Quranic Ar
 
 - **4Q11 (4QpaleoGen-Exod):** Qumran Paleo-Hebrew Genesis/Exodus witness dated by handwriting to the second or first century BCE; Hila Dayfani, *Textus* 30 (2021), DOI 10.1163/2589255X-BJA10017. This source also documents minor exegetical readings, so the existence of an ancient Torah tradition does not imply a single invariant wording.
 - **4Q22 (4QpaleoExodm):** pre-Samaritan Exodus scroll with harmonising expansions, described by Lawrence Schiffman. This is evidence of real textual diversity long before Islam, not evidence of a later global replacement.
-- **Great Isaiah Scroll (1QIsaa):** pre-Christian Hebrew prophetic manuscript, approximately 125 BCE, digitised by the Israel Museum. Isaiah belongs to the Prophets, not the five-book Torah; it independently shows older Jewish biblical transmission.
+- **Great Isaiah Scroll (1QIsaa):** pre-Christian Hebrew prophetic manuscript, approximately 125 BCE, digitised by the Israel Museum. Isaiah belongs to the Prophets, not the five-book Torah; it independently shows older Jewish Biblical transmission.
 - **Codex Vaticanus (GA 03):** fourth-century Greek Bible, with surviving Gospel material and some missing or later-supplied parts. Catalogued at CSNTM and the Vatican Library.
 - **Codex Sinaiticus (GA 01):** fourth-century Greek Bible, with an intact New Testament and corrections. The official Codex Sinaiticus Project transcribes John 20:28 on the physical witness.
-- **Codex Alexandrinus (GA 02):** fifth-century Greek biblical codex catalogued by the British Library.
+- **Codex Alexandrinus (GA 02):** fifth-century Greek Biblical codex catalogued by the British Library.
 - **Papyrus 66 (P. Bodmer II):** late second or third-century extensive manuscript of John, catalogued by CSNTM. It does not establish a precise composition year for John.
 - **Papyrus 52 (P. Rylands 457):** much smaller early John 18 fragment. It should not be invoked to claim direct preservation of the entire Johannine Gospel or of John 1 or John 20.
 - **Septuagint:** ancient Jewish Greek translation tradition with variations compared with Hebrew manuscripts, discussed in the *Oxford Handbook of the Septuagint* (2021).
