@@ -2,6 +2,16 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.51.0 - 2026-11-08
+
+- Expanded CI-014 from 14 to 26 substantive sections and 20 to 28 numbered references, preserving its existing URL.
+- Distinguished Uthmanic consonantal standardisation, orthography, later diacritics, vocalisation, canonical qira'at and the broader claim to preserve every original prophetic recitation.
+- Strengthened manuscript chronology and evidence with Sidky's regional family reconstruction, van Putten's written archetype analysis, the Sanaa palimpsest, Birmingham dating limits, Nasser on readings and Deroche's manuscript synthesis.
+- Expanded CI-021 from 12 to 20 substantive sections and 19 to 27 references. Prioritised the attested lexical gloss *guardian* for *muhaymin*, instead of attributing a claimed supreme authority to the single word.
+- Examined Quran 10:94 as an explicit command to ask earlier-scripture readers if Muhammad is in doubt, together with Quran 5:43-49, 5:68, 2:41 and 3:3 and the proof burden for claims of comprehensive Biblical corruption.
+- Distinguished the clear Quranic commands from the separate historical question of complete preservation of every Biblical manuscript and the Quran's independent judgement clause.
+- Updated homepage, research index, sources register, cross-links, README, source audits and automated CI-014/CI-021 checks. Quran explorer, Qiraat corpus, Quran.Foundation integration, API credentials, dependencies and infrastructure remain unchanged.
+
 ## v0.50.0 - 2026-11-08
 
 - Expanded CI-012 from 10 to 25 analytical sections and 11 to 30 numbered references without changing its URL.
