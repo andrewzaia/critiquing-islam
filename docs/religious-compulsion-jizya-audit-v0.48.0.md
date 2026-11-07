@@ -1,0 +1,33 @@
+# CI-017 - Religious compulsion, jizya and freedom
+Original-language and historical source audit for v0.48.0, 8 November 2026.
+
+## Claim to be tested
+Quran 2:256 rejects compulsion in religion. Quran 9:29 directs fighting a specified group of earlier-scripture recipients until payment of jizya while subdued. The evidence must distinguish belief, forced conversion, public worship, state violence, taxation, civic rights and the much later development of legal institutions. Modern equality and the historical acceptance of minority worship are not identical claims.
+
+## Arabic primary text
+- [Quran 2:256, morphology](https://corpus.quran.com/wordbyword.jsp?chapter=2&verse=256): *la ikraha fi al-din*, with an emphatic negative particle, form IV accusative verbal noun and a prepositional phrase. The grammar does not itself write in a pre-conquest date restriction or a specific protected class. The prescriptive or descriptive sense must be argued from context.
+- [Quran 9:29, morphology](https://corpus.quran.com/wordbyword.jsp?chapter=9&verse=29): *qatilu* (imperative fight), *hatta yu'tu al-jizyata* (until payment of jizya), *an yadin* (contested rendering involving payment by hand, readiness or capacity), *wa hum saghirun* (subdued). [Parallel translations](https://corpus.quran.com/translation.jsp?chapter=9&verse=29) vary over the details while agreeing that fighting, tribute and subordination are stated. No specific tax-collection humiliation ritual appears directly in the Arabic.
+- Quran 9:29's religious descriptions are explicit. A defensive interpretation must substantiate that the actual command refers only to active aggressors from context and history, not merely assert that gloss.
+
+## Countertexts and their precise scope
+- [Quran 9:4](https://corpus.quran.com/translation.jsp?chapter=9&verse=4), [9:6](https://corpus.quran.com/translation.jsp?chapter=9&verse=6), [9:7](https://corpus.quran.com/translation.jsp?chapter=9&verse=7) and [9:13](https://corpus.quran.com/translation.jsp?chapter=9&verse=13) concern treaty integrity, protection and reported aggression, mainly with polytheists. They cannot simply be imported without explanation as the complete qualification of the People of the Book command in 9:29.
+- [Quran 8:61](https://corpus.quran.com/translation.jsp?chapter=8&verse=61), [4:90](https://corpus.quran.com/translation.jsp?chapter=4&verse=90), [60:8](https://corpus.quran.com/translation.jsp?chapter=60&verse=8) and [60:9](https://corpus.quran.com/translation.jsp?chapter=60&verse=9) endorse peace or fair dealings under stated conditions, contradicting a simplistic universal command to fight every non-Muslim.
+- [Quran 10:99](https://corpus.quran.com/translation.jsp?chapter=10&verse=99) and [88:22](https://corpus.quran.com/translation.jsp?chapter=88&verse=22) emphasise the difference between human control and a person's response to belief.
+- [Quran 2:217](https://corpus.quran.com/translation.jsp?chapter=2&verse=217) and [4:137](https://corpus.quran.com/translation.jsp?chapter=4&verse=137) describe apostasy and divine consequences without directly enacting a universal death sentence for private religious change. [Quran 4:89](https://corpus.quran.com/translation.jsp?chapter=4&verse=89) includes lethal force language in a disputed group setting, immediately constrained by the noncombatant and peace exception at 4:90. Late apostasy jurisprudence is distinct source material.
+
+## Historical documentation, not retrospective proof
+- Patricia Crone, [No Compulsion in Religion: Q. 2:256 in Medieval and Modern Interpretation](https://www.ias.edu/sites/default/files/hs/Crone_Articles/Crone_la_ikraha.pdf) (2012), identifies abrogation, specific-event and continuing protected-minority interpretations as competing positions. These are records of reception, not contemporary documentation of Muhammad's original recitation.
+- Yohanan Friedmann, [Tolerance and Coercion in Islam](https://www.cambridge.org/core/books/abs/tolerance-and-coercion-in-islam/introduction/EE0F4494C8BD4FC15F83A027B955E266) (Cambridge University Press, 2003), discusses premodern hierarchy and the development of religious community rules.
+- Milka Levy-Rubin, [Non-Muslims in the Early Islamic Empire](https://www.cambridge.org/core/books/abs/nonmuslims-in-the-early-islamic-empire/conclusion/B575FF4481043007BAFEC6CA23C824FD) (Cambridge University Press, 2011), traces the evolving surrender agreements and later formulation of the Pact of Umar. The canonical pact cannot be assumed to be a contemporary document of the second caliph without establishing its date and textual chain.
+- Niaz A. Shah, [The Use of Force under Islamic Law](https://academic.oup.com/ejil/article/24/1/343/438602), European Journal of International Law 24(1) (2013), advances a defensive reading involving the Tabuk setting. It is a modern historical/legal argument, not an independent seventh-century eyewitness report.
+
+## Biblical theological comparison
+[Luke 6:27-36](https://www.biblegateway.com/passage/?search=Luke%206%3A27-36&version=KJV) and [John 18:36](https://www.biblegateway.com/passage/?search=John%2018%3A36&version=KJV) address enemy love and Jesus' kingdom not being defended through worldly fighting by his followers. The comparison does not claim later Christian imperial states always obeyed those texts.
+
+## Separate verdicts and falsification
+**Text-first:** 2:256's non-compulsion wording is real, while 9:29 demands a coercive tax and political submission.
+**Historical:** later minority policies were varied and developed after conquest; fully equating all later regulations with direct Quranic commands is unjustified.
+**Logical:** compelled inward conversion and political subordination are different predicates, so coexistence does not necessarily produce a formal contradiction. A blanket modern religious equality claim nevertheless fails the texts considered.
+**Biblical theological:** the project's expressly Christian framework evaluates spiritual allegiance and force against the Gospel while honestly disclosing both the Quran's protective limits and actual Christian historical failures.
+
+A clearly demonstrable Quranic rule ordering forced inward conversion for the very class covered by the unqualified protection would strengthen the contradiction hypothesis. A direct primary Quranic establishment of equal fiscal-political rights, or an authenticated chronological cancellation of 2:256, would materially alter the corresponding judgements. Structural automation cannot establish historical occurrence, a manuscript's entire variant history or the supernatural truth of a religion.
