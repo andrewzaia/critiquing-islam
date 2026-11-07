@@ -49,7 +49,7 @@ The hadith literature contains both an attributed restriction on writing non-Qur
 
 ## Report-specific verification and supernatural claims
 
-Bukhari 4986-4987 on Quranic compilation, Bukhari 4992 on readings, and Muslim 2135 on Mary called sister of Aaron are reports within a Muslim transmission network. They document what later narrators attributed to early figures. Quran manuscripts, earlier biblical texts and independently dated historical witnesses are separate forms of corroboration.
+Bukhari 4986-4987 on Quranic compilation, Bukhari 4992 on readings, and Muslim 2135 on Mary called sister of Aaron are reports within a Muslim transmission network. They document what later narrators attributed to early figures. Quran manuscripts, earlier Biblical texts and independently dated historical witnesses are separate forms of corroboration.
 
 Bukhari 3636 preserves a claim about the Moon splitting. The recorded chain or a sound hadith grade can support the conclusion that this account circulated and was accepted in a tradition. It does not constitute independent contemporary astronomical or physical verification of the claimed event. Lack of independent corroboration is not identical to proof of physical impossibility.
 
