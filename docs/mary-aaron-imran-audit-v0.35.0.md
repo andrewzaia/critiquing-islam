@@ -32,7 +32,7 @@ Sahih Muslim 2135 records a reported Najran objection and a response about peopl
 
 **Verified textual observation:** the Quran applies the sister-of-Aaron and daughter-of-Imran designations to Jesus' mother, matching a specific earlier Miriam family pattern.
 
-**Strong comparative inference:** engagement with or reuse of the earlier biblical and Christian Mary/Miriam traditions is much better evidenced than a first-century independently attested family identifying Jesus' mother as the daughter of Imran with a contemporary Aaron brother.
+**Strong comparative inference:** engagement with or reuse of the earlier Biblical and Christian Mary/Miriam traditions is much better evidenced than a first-century independently attested family identifying Jesus' mother as the daughter of Imran with a contemporary Aaron brother.
 
 **Failed historical corroboration:** the claim that this family grouping is independently established first-century genealogy does not meet the evidence test.
 
