@@ -4,7 +4,7 @@ Evidence audit, 7 November 2026. Research release v0.43.0.
 
 ## Project-wide interpretive standard
 
-Critiquing Islam is an expressly biblical-Christian critique of Islamic claims of divine authority. Biblical statements about Jesus and the gospel form the identified theological criteria, not a concealed claim to religious neutrality. Jesus' divinity is the stipulated Christian theological premise of this comparison, and a genuine commission from the risen Jesus would be divine on that premise.
+Critiquing Islam is an expressly Biblical-Christian critique of Islamic claims of divine authority. Biblical statements about Jesus and the gospel form the identified theological criteria, not a concealed claim to religious neutrality. Jesus' divinity is the stipulated Christian theological premise of this comparison, and a genuine commission from the risen Jesus would be divine on that premise.
 
 The study does not label that premise an independently demonstrated historical observation. Document chronology, provenance, independence and textual variants must still be tested with normal historical standards. Neither an ancient believer's testimony nor a later religious text establishes a supernatural encounter without further evidence.
 
