@@ -1019,6 +1019,59 @@ for(const path of ["site/index.html","site/research/index.html","site/sources/in
   if(!(await readFile(path,"utf8")).includes('href="/research/quran-65-4-and-marriage-age/"'))
     throw new Error("CI-012 missing discovery link "+path);
 
+
+// CI-014 v0.51.0: distinguish early standardisation from exhaustive original preservation.
+const ci014 = await readFile("site/research/uthman-and-quranic-authenticity/index.html","utf8");
+const ci014Body = ci014.slice(ci014.indexOf('<article class="prose'),ci014.indexOf('<section id="references">'));
+const ci014Sections = [...ci014Body.matchAll(/<section id="([^"]+)"><span class="section-index">/g)].map(m=>m[1]);
+const ci014Refs = [...ci014.matchAll(/<li id="ref-(\d+)">/g)].map(m=>Number(m[1]));
+const ci014Cites = [...ci014Body.matchAll(/href="#ref-(\d+)"/g)].map(m=>Number(m[1]));
+const ci014Urls = [...ci014.matchAll(/<li id="ref-\d+">[\s\S]*?<a href="([^"]+)" target="_blank"/g)].map(m=>m[1].replaceAll("&amp;","&"));
+const ci014Words = ci014Body.replace(/<[^>]*>/g," ").trim().split(/\s+/).length;
+if(ci014Sections.length<26||ci014Refs.length<28||ci014Words<4800||
+   !ci014Refs.every((n,i)=>n===i+1)||
+   ci014Refs.some(n=>!ci014Cites.includes(n))||
+   ci014Cites.some(n=>!ci014Refs.includes(n))||
+   ci014Urls.length!==ci014Refs.length||new Set(ci014Urls).size!==ci014Urls.length)
+  throw new Error("CI-014 manuscript evidence depth, source register or citations regressed");
+for(const id of ci014Sections)
+  if(!ci014.includes('href="#'+id+'"'))
+    throw new Error("CI-014 missing section navigation "+id);
+for(const phrase of ["consonantal","orthographic","vocalisation","Sanaa","Sidky","Nasser",
+  "Déroche","Birmingham","palimpsest","Falsification test:"])
+  if(!ci014.toLowerCase().includes(phrase.toLowerCase()))
+    throw new Error("CI-014 missing a manuscript or reading test "+phrase);
+if(!ci014.includes("<span>26 sections</span><span>28 references</span>"))
+  throw new Error("CI-014 section or reference metadata drift");
+
+// CI-021 v0.51.0: guardian morphology and explicit Quran 10:94 scripture appeal.
+const ci021 = await readFile("site/research/al-muhaymin-and-quran-5-48/index.html","utf8");
+const ci021Body = ci021.slice(ci021.indexOf('<article class="prose'),ci021.indexOf('<section id="references">'));
+const ci021Sections = [...ci021Body.matchAll(/<section id="([^"]+)"><span class="section-index">/g)].map(m=>m[1]);
+const ci021Refs = [...ci021.matchAll(/<li id="ref-(\d+)">/g)].map(m=>Number(m[1]));
+const ci021Cites = [...ci021Body.matchAll(/href="#ref-(\d+)"/g)].map(m=>Number(m[1]));
+const ci021Urls = [...ci021.matchAll(/<li id="ref-\d+">[\s\S]*?<a href="([^"]+)" target="_blank"/g)].map(m=>m[1].replaceAll("&amp;","&"));
+const ci021Words = ci021Body.replace(/<[^>]*>/g," ").trim().split(/\s+/).length;
+if(ci021Sections.length<20||ci021Refs.length<27||ci021Words<3500||
+   !ci021Refs.every((n,i)=>n===i+1)||
+   ci021Refs.some(n=>!ci021Cites.includes(n))||
+   ci021Cites.some(n=>!ci021Refs.includes(n))||
+   ci021Urls.length!==ci021Refs.length||new Set(ci021Urls).size!==ci021Urls.length)
+  throw new Error("CI-021 guardian, scripture or source coverage regressed");
+for(const id of ci021Sections)
+  if(!ci021.includes('href="#'+id+'"'))
+    throw new Error("CI-021 missing section navigation "+id);
+for(const phrase of ["muhaymin","guardian","fa-s'ali","10:94","5:47","5:68",
+   "explicitly","command","Gospel","earlier-scripture readers"])
+  if(!ci021.toLowerCase().includes(phrase.toLowerCase()))
+    throw new Error("CI-021 lost a primary-text argument "+phrase);
+if(!ci021.includes("<span>20 sections</span><span>27 references</span>"))
+  throw new Error("CI-021 section or reference metadata drift");
+for(const articlePath of ["site/index.html","site/research/index.html","site/sources/index.html"])
+ for(const slug of ["uthman-and-quranic-authenticity","al-muhaymin-and-quran-5-48"])
+  if(!(await readFile(articlePath,"utf8")).includes('href="/research/'+slug+'/"'))
+    throw new Error("Missing CI-014/CI-021 discovery "+articlePath+" "+slug);
+
 await import("./check-qiraat.mjs");
 await import("./check-quran-previews.mjs");
 await import("./check-qf.mjs");
