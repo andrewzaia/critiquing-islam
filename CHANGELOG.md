@@ -2,6 +2,14 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.46.0 - 2026-11-08
+
+- Expanded CI-011 from 13 to 26 analytical sections and 17 to 34 numbered references, preserving its established URL.
+- Examined Quran 7:157's Arabic, Deuteronomy 18 in Hebrew, Deuteronomy 33 and Habakkuk 3's theophanies, Isaiah 42 Kedar/Sela, Isaiah 29's sealed vision, Song of Songs 5:16's Hebrew term, and Greek John 14:16-26.
+- Distinguished context, literary analogy, pre-Islamic transmission and genuine independent identification; added falsification criteria and separate Biblical theological and historical verdicts.
+- Updated homepage, research catalogue, sources register, related study, README and source-critical audit; added CI-011 citation and navigation regression checks.
+- Quran explorer, Qiraat corpus, Quran.Foundation API, secrets, dependencies and infrastructure remain unchanged.
+
 ## v0.45.0 - 2026-11-08
 
 - Expanded CI-010 from 15 to 25 analytical sections and 38 to 50 numbered references without changing its URL.
