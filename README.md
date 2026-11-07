@@ -20,6 +20,8 @@ The underlying data derive from Corpus Coranicum and Abdul Rahim Nizamani's 2026
 
 ## Latest research
 
+v0.45.0 expands [CI-010, Is Jesus God?](site/research/is-jesus-god/index.html) from 15 to 25 analytical sections and from 38 to 50 references. It tests Quranic Arabic, the original Greek of John 1:1 and 20:28, the John 1:18 manuscript variant, Pauline Christology, Hebrews, Ignatius and Pliny, and the evidence required to establish an earlier Gospel corruption. Textual, historical and Biblical theological verdicts are separate. See [the v0.45.0 primary source audit](docs/jesus-divinity-original-language-audit-v0.45.0.md). The library remains at 40 numbered investigations and one guide.
+
 v0.44.0 expands [CI-009, Was Jesus a Muslim?](site/research/was-jesus-a-muslim/index.html) to 24 substantive sections and 44 references. The study examines Quranic Arabic morphology, universal submission, first-century Jewish identity, early Pauline and Jerusalem sources, manuscripts, serious alternatives and falsification criteria. Separate Biblical theological and historical verdicts are provided. See [the v0.44.0 evidence audit](docs/jesus-muslim-original-language-audit-v0.44.0.md). The library remains at 40 numbered investigations and one guide.
 
 v0.43.1 is an editorial patch standardising capitalisation of **Biblical** across published pages and public documentation without changing research URLs or substantive findings. The case convention is enforced by the existing build checks.

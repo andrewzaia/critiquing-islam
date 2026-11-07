@@ -2,6 +2,14 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.45.0 - 2026-11-08
+
+- Expanded CI-010 from 15 to 25 analytical sections and 38 to 50 numbered references without changing its URL.
+- Added Quranic Arabic, original Greek, a documented John 1:18 God/Son variant, Pauline and Hebrews analyses, and pre-Nicene evidence from Ignatius and Pliny.
+- Strengthened competing explanations, falsification criteria, and separate Biblical theological and historical verdicts.
+- Updated homepage, research library, source register, related research, README and source audit; introduced automated section, citation and navigation checks.
+- Left Quran explorer, Qiraat corpus, Quran.Foundation integration, API credentials, dependencies and infrastructure unchanged.
+
 ## v0.44.0 - 2026-11-08
 
 - Expanded CI-009 from 14 to 24 analytical sections and 30 to 44 numbered sources at its established URL.

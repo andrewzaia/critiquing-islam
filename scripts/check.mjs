@@ -856,6 +856,31 @@ for(const term of ["muslimuna","musliman","Galatians 1:18-19","P46","Paula Fredr
 for(const path of ["site/index.html","site/research/index.html","site/sources/index.html"])
   if(!(await readFile(path,"utf8")).includes('href="/research/was-jesus-a-muslim/"'))throw new Error("CI-009 missing discovery "+path);
 
+
+// CI-010 v0.45.0: original languages, pre-Nicene sources and evidence integrity.
+const ci010 = await readFile("site/research/is-jesus-god/index.html","utf8");
+const ci010Body = ci010.slice(ci010.indexOf('<article class="prose'),ci010.indexOf('<section id="references">'));
+const ci010Sections = [...ci010Body.matchAll(/<section id="([^"]+)"><span class="section-index">/g)].map(m=>m[1]);
+const ci010Refs = [...ci010.matchAll(/<li id="ref-(\d+)">/g)].map(m=>Number(m[1]));
+const ci010Citations = [...ci010Body.matchAll(/href="#ref-(\d+)"/g)].map(m=>Number(m[1]));
+const ci010Urls = [...ci010.matchAll(/<li id="ref-\d+">[\s\S]*?<a href="([^"]+)" target="_blank"/g)].map(m=>m[1].replaceAll("&amp;","&"));
+const ci010Words = ci010Body.replace(/<[^>]*>/g," ").trim().split(/\s+/).length;
+if(ci010Sections.length<25||ci010Refs.length<50||ci010Words<4950||
+  !ci010Refs.every((n,i)=>n===i+1)||
+  ci010Refs.some(n=>!ci010Citations.includes(n))||
+  ci010Citations.some(n=>!ci010Refs.includes(n))||
+  ci010Urls.length!==ci010Refs.length||new Set(ci010Urls).size!==ci010Urls.length)
+  throw new Error("CI-010 depth, numbering, bibliography or citation coverage regressed");
+for(const id of ci010Sections)if(!ci010.includes('href="#'+id+'"'))
+  throw new Error("CI-010 missing navigation "+id);
+for(const term of ["kalimatuhu","harpagmon","monogenes theos","P66","P75",
+  "Ignatius","Pliny","Hebrews 1:8","Biblical theological verdict:","Historical verdict:","Falsification"])
+  if(!ci010.toLowerCase().includes(term.toLowerCase()))
+    throw new Error("CI-010 lost critical source or argument: "+term);
+for(const path of ["site/index.html","site/research/index.html","site/sources/index.html"])
+  if(!(await readFile(path,"utf8")).includes('href="/research/is-jesus-god/"'))
+    throw new Error("CI-010 missing discovery from "+path);
+
 await import("./check-qiraat.mjs");
 await import("./check-quran-previews.mjs");
 await import("./check-qf.mjs");
