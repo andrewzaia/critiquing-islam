@@ -905,6 +905,34 @@ for(const path of ["site/index.html","site/research/index.html","site/sources/in
  if(!(await readFile(path,"utf8")).includes('href="/research/muhammad-in-torah-and-gospel/"'))
   throw new Error("CI-011 discovery missing "+path);
 
+
+// CI-016 v0.47.0: salvation, original Arabic, source coverage and navigation regression checks.
+const ci016 = await readFile("site/research/quran-salvation-jews-christians/index.html", "utf8");
+const ci016Body = ci016.slice(ci016.indexOf('<article class="prose'),ci016.indexOf('<section id="references">'));
+const ci016Sections = [...ci016Body.matchAll(/<section id="([^"]+)"><span class="section-index">/g)].map(m=>m[1]);
+const ci016Refs = [...ci016.matchAll(/<li id="ref-(\d+)">/g)].map(m=>Number(m[1]));
+const ci016Cites = [...ci016Body.matchAll(/href="#ref-(\d+)"/g)].map(m=>Number(m[1]));
+const ci016Urls = [...ci016.matchAll(/<li id="ref-\d+">[\s\S]*?<a href="([^"]+)" target="_blank"/g)].map(m=>m[1].replaceAll("&amp;","&"));
+const ci016Words = ci016Body.replace(/<[^>]*>/g," ").trim().split(/\s+/).length;
+if(ci016Sections.length<24 || ci016Refs.length<34 || ci016Words<4400 ||
+    !ci016Refs.every((n,i)=>n===i+1) ||
+    ci016Refs.some(n=>!ci016Cites.includes(n)) ||
+    ci016Cites.some(n=>!ci016Refs.includes(n)) ||
+    ci016Urls.length!==ci016Refs.length ||
+    new Set(ci016Urls).size!==ci016Urls.length)
+  throw new Error("CI-016 depth, citation coverage, source numbering or uniqueness regressed");
+for(const id of ci016Sections)
+  if(!ci016.includes('href="#'+id+'"'))throw new Error("CI-016 missing section navigation: "+id);
+for(const term of ["man amana","al-sabi'una","bracket","Muhammad","5:72","3:199",
+  "4:150-152","7:157-158","abrogation","Falsification",
+  "Historical verdict:","Biblical theological verdict:","formal contradiction"])
+  if(!ci016.toLowerCase().includes(term.toLowerCase()))throw new Error("CI-016 lost evidence: "+term);
+if(!ci016.includes("<span>24 sections</span><span>34 references</span>"))
+  throw new Error("CI-016 article metadata regressed");
+for(const path of ["site/index.html","site/research/index.html","site/sources/index.html"])
+  if(!(await readFile(path,"utf8")).includes('href="/research/quran-salvation-jews-christians/"'))
+    throw new Error("CI-016 missing site discovery: "+path);
+
 await import("./check-qiraat.mjs");
 await import("./check-quran-previews.mjs");
 await import("./check-qf.mjs");
