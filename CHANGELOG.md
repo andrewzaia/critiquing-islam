@@ -2,6 +2,15 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.47.0 - 2026-11-08
+
+- Expanded CI-016, Jewish and Christian salvation, from 9 to 24 substantive sections and from 12 to 34 numbered references, preserving its URL.
+- Compared the Arabic conditions in Quran 2:62 and 5:69 with Quran 3:85, including the case form of Sabians and explicit translator glosses not found in the Arabic text.
+- Examined Quran 4:150-152, 7:157-158, 3:113-115, 3:199 and 5:65-75, distinguishing qualified promises, messenger recognition, Christological objections and different communities.
+- Tested abrogation, specification, chronology and transhistorical submission as distinct explanations, with an evidence matrix, falsification criteria and separate textual, logical, historical and Biblical theological verdicts.
+- Updated homepage discovery, research library, source register, related research, README and a source audit; added automated CI-016 depth, citation, source uniqueness and navigation checks.
+- Left Quran explorer, Qiraat corpus, Quran.Foundation API, secrets, dependencies and infrastructure unchanged.
+
 ## v0.46.0 - 2026-11-08
 
 - Expanded CI-011 from 13 to 26 analytical sections and 17 to 34 numbered references, preserving its established URL.
