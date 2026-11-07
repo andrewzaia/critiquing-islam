@@ -933,6 +933,35 @@ for(const path of ["site/index.html","site/research/index.html","site/sources/in
   if(!(await readFile(path,"utf8")).includes('href="/research/quran-salvation-jews-christians/"'))
     throw new Error("CI-016 missing site discovery: "+path);
 
+
+// CI-017 v0.48.0: original-language compulsion, jizya, law and citation integrity.
+const ci017 = await readFile("site/research/no-compulsion-jizya-and-religious-freedom/index.html","utf8");
+const ci017Body = ci017.slice(ci017.indexOf('<article class="prose'),ci017.indexOf('<section id="references">'));
+const ci017Sections = [...ci017Body.matchAll(/<section id="([^"]+)"><span class="section-index">/g)].map(m=>m[1]);
+const ci017Refs = [...ci017.matchAll(/<li id="ref-(\d+)">/g)].map(m=>Number(m[1]));
+const ci017Cites = [...ci017Body.matchAll(/href="#ref-(\d+)"/g)].map(m=>Number(m[1]));
+const ci017Urls = [...ci017.matchAll(/<li id="ref-\d+">[\s\S]*?<a href="([^"]+)" target="_blank"/g)].map(m=>m[1].replaceAll("&amp;","&"));
+const ci017Words = ci017Body.replace(/<[^>]*>/g," ").trim().split(/\s+/).length;
+if(ci017Sections.length<24 || ci017Refs.length<34 || ci017Words<4350 ||
+    !ci017Refs.every((n,i)=>n===i+1) ||
+    ci017Refs.some(n=>!ci017Cites.includes(n)) ||
+    ci017Cites.some(n=>!ci017Refs.includes(n)) ||
+    ci017Urls.length!==ci017Refs.length ||
+    new Set(ci017Urls).size!==ci017Urls.length)
+  throw new Error("CI-017 depth, numbered sources, citations or uniqueness regressed");
+for(const id of ci017Sections)if(!ci017.includes('href="#'+id+'"'))
+  throw new Error("CI-017 missing section navigation "+id);
+for(const term of ["ikraha","qatilu","saghirun","an yadin","jizya","4:90",
+ "2:217","4:137","Levy-Rubin","Friedmann","Falsification",
+ "Biblical theological verdict:","Historical verdict:","Pact of Umar"])
+ if(!ci017.toLowerCase().includes(term.toLowerCase()))
+   throw new Error("CI-017 lost significant evidence "+term);
+if(!ci017.includes("<span>24 sections</span><span>34 references</span>"))
+  throw new Error("CI-017 metadata drift");
+for(const path of ["site/index.html","site/research/index.html","site/sources/index.html"])
+ if(!(await readFile(path,"utf8")).includes('href="/research/no-compulsion-jizya-and-religious-freedom/"'))
+   throw new Error("CI-017 discovery missing "+path);
+
 await import("./check-qiraat.mjs");
 await import("./check-quran-previews.mjs");
 await import("./check-qf.mjs");

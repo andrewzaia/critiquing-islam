@@ -2,6 +2,15 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.48.0 - 2026-11-08
+
+- Expanded CI-017 from 10 to 24 analytical sections and 12 to 34 numbered references while preserving its existing URL.
+- Examined original Arabic of Quran 2:256 and 9:29, distinguishing rejection of compelled conversion from a coercive fiscal-political settlement and the limits of particular translation choices.
+- Compared treaty, sanctuary, peace and noncombatant passages with Quranic apostasy texts and later legal doctrines; examined the historically evolving agreements governing conquered communities.
+- Tested an academic defensive interpretation of 9:29 against its explicit religious descriptors and compared relevant Biblical passages without conflating scripture with later state practices.
+- Updated homepage, research catalogue, sources register, related articles and README, and added a source-critical audit and automated section, citation and navigation checks.
+- Left Quran explorer, Qiraat corpus, Quran.Foundation API, credentials, dependencies and infrastructure unchanged.
+
 ## v0.47.0 - 2026-11-08
 
 - Expanded CI-016, Jewish and Christian salvation, from 9 to 24 substantive sections and from 12 to 34 numbered references, preserving its URL.
