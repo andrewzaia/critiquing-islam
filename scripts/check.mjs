@@ -835,6 +835,27 @@ for (const path of ["README.md", "CHANGELOG.md", ...(await readdir("docs")).filt
   }
 }
 
+
+// CI-009 v0.44.0: substantive investigation integrity checks.
+const ci009 = await readFile("site/research/was-jesus-a-muslim/index.html","utf8");
+const ci009Body = ci009.slice(ci009.indexOf('<article class="prose'),ci009.indexOf('<section id="references">'));
+const ci009Sections = [...ci009Body.matchAll(/<section id="([^"]+)"><span class="section-index">/g)].map(x=>x[1]);
+const ci009Refs = [...ci009.matchAll(/<li id="ref-(\d+)">/g)].map(x=>Number(x[1]));
+const ci009Cites = [...ci009Body.matchAll(/href="#ref-(\d+)"/g)].map(x=>Number(x[1]));
+const ci009Urls = [...ci009.matchAll(/<li id="ref-\d+">[\s\S]*?<a href="([^"]+)" target="_blank"/g)].map(x=>x[1].replaceAll("&amp;","&"));
+const ci009Words = ci009Body.replace(/<[^>]*>/g," ").trim().split(/\s+/).length;
+if(ci009Sections.length<24 || ci009Refs.length<44 || ci009Words<3800 ||
+  !ci009Refs.every((n,i)=>n===i+1) ||
+  ci009Refs.some(n=>!ci009Cites.includes(n)) ||
+  ci009Cites.some(n=>!ci009Refs.includes(n)) ||
+  ci009Urls.length!==ci009Refs.length || new Set(ci009Urls).size!==ci009Urls.length)
+  throw new Error("CI-009 evidence depth, citations or references regressed");
+for(const id of ci009Sections)if(!ci009.includes('href="#'+id+'"'))throw new Error("CI-009 missing navigation "+id);
+for(const term of ["muslimuna","musliman","Galatians 1:18-19","P46","Paula Fredriksen","Biblical theological verdict:","Historical verdict:","Falsification"])
+  if(!ci009.toLowerCase().includes(term.toLowerCase()))throw new Error("CI-009 lost evidence: "+term);
+for(const path of ["site/index.html","site/research/index.html","site/sources/index.html"])
+  if(!(await readFile(path,"utf8")).includes('href="/research/was-jesus-a-muslim/"'))throw new Error("CI-009 missing discovery "+path);
+
 await import("./check-qiraat.mjs");
 await import("./check-quran-previews.mjs");
 await import("./check-qf.mjs");
