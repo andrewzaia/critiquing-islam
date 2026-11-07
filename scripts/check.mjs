@@ -629,6 +629,42 @@ for (const page of ["site/index.html","site/research/index.html","site/sources/i
   }
 }
 
+
+
+// CI-004 v0.39.0: enforce source-critical hadith depth, original chain comparison and navigation.
+const ci004 = await readFile("site/research/how-is-a-hadith-authenticated/index.html", "utf8");
+const ci004Body = ci004.slice(ci004.indexOf('<article class="prose'), ci004.indexOf('<section id="references">'));
+const ci004Sections = [...ci004Body.matchAll(/<section id="([^"]+)"><span class="section-index">/g)].map(x=>x[1]);
+const ci004References = [...ci004.matchAll(/<li id="ref-(\d+)">/g)].map(x=>Number(x[1]));
+const ci004Cites = [...ci004Body.matchAll(/href="#ref-(\d+)"/g)].map(x=>Number(x[1]));
+const ci004Words = ci004Body.replace(/<[^>]*>/g," ").trim().split(/\s+/).length;
+const ci004Urls = [...ci004.matchAll(/<li id="ref-\d+">[\s\S]*?<a href="([^"]+)" target="_blank"/g)].map(x=>x[1].replaceAll("&amp;","&"));
+if (ci004Sections.length < 25 || ci004References.length < 29 || ci004Words < 3500 ||
+    !ci004References.every((n,i)=>n===i+1) ||
+    ci004References.some(n=>!ci004Cites.includes(n)) ||
+    ci004Cites.some(n=>!ci004References.includes(n)) ||
+    ci004Urls.length !== ci004References.length ||
+    new Set(ci004Urls).size !== ci004Urls.length) {
+  throw new Error("CI-004 depth, citations, sequential references or source URLs regressed");
+}
+for (const id of ci004Sections) if (!ci004.includes('href="#' + id + '"')) {
+  throw new Error("CI-004 missing section navigation: " + id);
+}
+for (const phrase of ["Historical verdict, on the balance of probabilities:",
+  "Yahya ibn Said","Muhammad ibn Ibrahim","Alqama ibn Waqqas",
+  "Sahih al-Bukhari 1","Sahih Muslim 1907a", "Ibn Sirin",
+  "Gregor Schoeler","Harald Motzki","Joshua J. Little",
+  "isnad-cum-matn","Sahih Muslim 3004","common link","Sahih al-Bukhari 3636"]) {
+  if (!ci004.toLowerCase().includes(phrase.toLowerCase())) {
+    throw new Error("CI-004 lost an essential source-critical finding: " + phrase);
+  }
+}
+for (const page of ["site/index.html","site/research/index.html","site/sources/index.html"]) {
+  if (!(await readFile(page,"utf8")).includes('href="/research/how-is-a-hadith-authenticated/"')) {
+    throw new Error("CI-004 discovery link missing from " + page);
+  }
+}
+
 await import("./check-qiraat.mjs");
 await import("./check-quran-previews.mjs");
 await import("./check-qf.mjs");

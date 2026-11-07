@@ -2,6 +2,16 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.39.0 - 2026-11-07
+
+- Expanded CI-004 from 13 to 25 analytical sections and from 13 numbered reference entries to 29, preserving its established URL.
+- Compared original Arabic chains of Sahih al-Bukhari 1 and Sahih Muslim 1907a, documenting their shared upstream transmitters and the limits of treating two collections as two independent eyewitnesses.
+- Examined the Quranic command to verify information, Muslim's early narrator-screening accounts, transmitted disagreements about writing reports, and earlier Muwatta and Musannaf literature.
+- Assessed classical sahih criteria against common-link analysis, contemporary academic methods and specific historical studies, distinguishing an earlier recoverable tradition from independent verification of an attributed event.
+- Added report-specific discussion of the Aisha marital-age tradition, extraordinary miracle reports, doctrinal selection of transmitters and balanced falsification criteria.
+- Integrated homepage, research catalogue, source register, README, evidence audit and automated depth, citations and navigation checks.
+- Left Quran explorer, Qira'at corpus, Quran.Foundation API, dependencies and Cloudflare configuration unchanged.
+
 ## v0.38.0 - 2026-11-07
 
 - Expanded CI-005 under its existing URL from nine to 23 research sections and from 18 to 34 numbered references, preserving primary-text and historical source distinctions.
