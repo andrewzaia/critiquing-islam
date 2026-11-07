@@ -2,6 +2,13 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.43.1 - 2026-11-08
+
+- Standardised capitalisation of "Biblical" throughout publicly displayed site content, page metadata, article navigation and editorial documentation.
+- Preserved existing URLs, filenames, section anchors and script identifiers to avoid breaking established links or behaviour.
+- Added an automated editorial check to detect lowercase "Biblical" in website text and public research prose.
+- No new investigation, content-claim changes, dependencies, API changes or infrastructure changes.
+
 ## v0.43.0 - 2026-11-07
 
 - Published new CI-040, Paul versus Muhammad: who speaks for God?, as a standalone investigation with 24 substantial sections and 38 cited reference entries, increasing the library to 40 numbered studies and one guide.
