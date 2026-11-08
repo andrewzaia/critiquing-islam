@@ -1195,7 +1195,7 @@ for(const term of ["Jubilees", "Jectan", "Nimrod", "Genesis Rabbah", "Pseudo-Phi
   "Daniel 3", "4Q216", "Jerome", "bardan", "37:97", "Text-first verdict:",
   "Historical verdict:", "Biblical verdict:", "Falsification criteria:"])
   if(!ci044.toLowerCase().includes(term.toLowerCase()))throw new Error("CI-044 missing core comparison "+term);
-if(!ci044.includes("<span>22 sections</span><span>28 references</span>"))
+if(!ci044.includes("<span>23 sections</span><span>28 references</span>"))
   throw new Error("CI-044 article metadata inconsistent");
 if(/[\u2010-\u2015\u2212\uFE58\uFE63\uFF0D]/.test(ci044))
   throw new Error("CI-044 non-ASCII dash detected");
