@@ -1095,7 +1095,7 @@ for(const phrase of ["Infancy Gospel of Thomas","Arabic Infancy Gospel","cradle"
   "Falsification criteria:","Text-first verdict:","Historical verdict:"])
   if(!ci041.toLowerCase().includes(phrase.toLowerCase()))
     throw new Error("CI-041 missing a critical primary text or witness "+phrase);
-if(!ci041.includes("<span>23 sections</span><span>28 references</span>"))
+if(!ci041.includes("<span>22 sections</span><span>28 references</span>"))
   throw new Error("CI-041 article metadata regressed");
 if(!(await readFile("site/research/index.html","utf8")).includes("44 published investigations / 1 research guide"))
   throw new Error("CI-041 catalogue count regressed");
