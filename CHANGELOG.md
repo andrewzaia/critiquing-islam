@@ -2,6 +2,16 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.52.0 - 2026-11-08
+
+- Published CI-041 as a substantive standalone investigation with 22 analytical sections and 28 unique numbered references, preserving all existing research URLs.
+- Distinguished the pre-Islamic clay-bird episode in the Infancy Gospel of Thomas from the cradle-speaking claim in the Arabic Infancy Gospel; avoided misidentifying either with the Nag Hammadi sayings Gospel of Thomas or labelling Infancy Thomas conclusively Gnostic.
+- Analysed the original Arabic of Quran 19:29-30, 3:46, 3:49 and 5:110 against the Gospel infancy narratives, including the explicit difference between the infant Jesus as servant and prophet in the Quran and Son of God and Logos in the Arabic text.
+- Examined the peer-reviewed 2024 edition of the Hamburg Greek papyrus P.Hamb.Graec. 1011, its fourth/fifth-century date and its physical limitations; distinguished the later Florence manuscript dated 1299 and other Arabic and Syriac witnesses.
+- Added a manuscript chronology, detailed evidence comparison, competing transmission explanations, textual, historical and Biblical theological verdicts, and falsification criteria.
+- Integrated CI-041 into homepage, research library, source register and related Jesus/Gospel studies; updated README, source audit, version and automated checks for depth, citations, links and navigation.
+- Kept Quran explorer, Qiraat corpus, Quran.Foundation integration, API credentials, dependencies, GitHub Actions configuration and hosting infrastructure unchanged.
+
 ## v0.51.0 - 2026-11-08
 
 - Expanded CI-014 from 14 to 26 substantive sections and 20 to 28 numbered references, preserving its existing URL.
