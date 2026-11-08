@@ -2,6 +2,15 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.54.0 - 2026-11-08
+
+- Added CI-043, a standalone 21-section, 24-reference investigation of Quran 3:35-44, Mary's early guardianship and an earlier Christian Marian narrative.
+- Compared the Quran's direct Arabic wording naming Zechariah and casting pens with Joseph's later selection by rods in the Protevangelium of James.
+- Examined the second-century literary setting, Papyrus Bodmer V and the third-century witness of Origen while distinguishing transmission from historicity.
+- Tested the dedication motif against 1 Samuel and the canonical Gospel annunciations, distinguishing a claimed revelation of the unseen from independent evidence that the reported events occurred.
+- Integrated a source comparison, competing interpretations, falsification criteria, manuscript audit, library navigation, homepage discovery, source register and automated research checks. Updated library count to 43 and version to 0.54.0.
+- Preserved existing URLs, Quran explorer, Qiraat corpus, Quran.Foundation integration, API credentials, dependencies, workflows and hosting settings.
+
 ## v0.53.0 - 2026-11-08
 
 - Added CI-042, a substantive standalone 22-section investigation with 28 unique numbered sources, examining Quran 19:23-26 and earlier palm-tree narratives.
