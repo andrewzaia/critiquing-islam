@@ -463,7 +463,7 @@ for (const route of ["/research/joseph-dirhams-and-coinage/", "/research/al-sami
 for (const doc of [doctrineIndex, v028Sources]) {
   if (!doc.includes('href="/research/joseph-dirhams-and-coinage/"')) throw new Error("CI-035 missing from the library or source register");
 }
-if (!doctrineIndex.includes("41 published investigations / 1 research guide")) {
+if (!doctrineIndex.includes("42 published investigations / 1 research guide")) {
   throw new Error("Published research library count does not match 41 investigations");
 }
 
@@ -1097,11 +1097,42 @@ for(const phrase of ["Infancy Gospel of Thomas","Arabic Infancy Gospel","cradle"
     throw new Error("CI-041 missing a critical primary text or witness "+phrase);
 if(!ci041.includes("<span>22 sections</span><span>28 references</span>"))
   throw new Error("CI-041 article metadata regressed");
-if(!(await readFile("site/research/index.html","utf8")).includes("41 published investigations / 1 research guide"))
+if(!(await readFile("site/research/index.html","utf8")).includes("42 published investigations / 1 research guide"))
   throw new Error("CI-041 catalogue count regressed");
 for(const path of ["site/index.html","site/research/index.html","site/sources/index.html"])
   if(!(await readFile(path,"utf8")).includes('href="/research/jesus-infancy-apocrypha/"'))
     throw new Error("CI-041 missing site discovery "+path);
+
+
+// CI-042 v0.53.0: Quranic palm, manuscript chronology and evidence integrity.
+const ci042 = await readFile("site/research/mary-palm-tree-and-apocrypha/index.html","utf8");
+const ci042Body = ci042.slice(ci042.indexOf('<article class="prose'),ci042.indexOf('<section id="references">'));
+const ci042Sections = [...ci042Body.matchAll(/<section id="([^"]+)"><span class="section-index">/g)].map(m=>m[1]);
+const ci042Refs = [...ci042.matchAll(/<li id="ref-(\d+)">/g)].map(m=>Number(m[1]));
+const ci042Cites = [...ci042Body.matchAll(/href="#ref-(\d+)"/g)].map(m=>Number(m[1]));
+const ci042Urls = [...ci042.matchAll(/<li id="ref-\d+">[\s\S]*?<a href="([^"]+)" target="_blank"/g)].map(m=>m[1].replaceAll("&amp;","&"));
+const ci042Words = ci042Body.replace(/<[^>]*>/g," ").trim().split(/\s+/).length;
+if(ci042Sections.length<22||ci042Refs.length<28||ci042Words<5600||
+    !ci042Refs.every((n,i)=>n===i+1)||
+    ci042Refs.some(n=>!ci042Cites.includes(n))||
+    ci042Cites.some(n=>!ci042Refs.includes(n))||
+    ci042Urls.length!==ci042Refs.length||new Set(ci042Urls).size!==ci042Urls.length)
+  throw new Error("CI-042 primary source depth, reference numbering, or citation coverage regressed");
+for(const id of ci042Sections)
+  if(!ci042.includes('href="#'+id+'"'))
+    throw new Error("CI-042 missing section navigation "+id);
+for(const phrase of ["Pseudo-Matthew","Liber Requiei","Kathisma","Sozomen","Callimachus",
+   "Homeric","Umayyad","sariyyan","rutaban","19:23","19:25","eighth century",
+   "Falsification criteria:","Text-first verdict:","Historical verdict:"])
+  if(!ci042.toLowerCase().includes(phrase.toLowerCase()))
+    throw new Error("CI-042 lost evidence or chronological distinction "+phrase);
+if(!ci042.includes("<span>22 sections</span><span>28 references</span>"))
+  throw new Error("CI-042 metadata no longer matches references and sections");
+if(!(await readFile("site/research/index.html","utf8")).includes("42 published investigations / 1 research guide"))
+  throw new Error("CI-042 library count regressed");
+for(const path of ["site/index.html","site/research/index.html","site/sources/index.html"])
+  if(!(await readFile(path,"utf8")).includes('href="/research/mary-palm-tree-and-apocrypha/"'))
+    throw new Error("CI-042 missing from site discovery "+path);
 
 await import("./check-qiraat.mjs");
 await import("./check-quran-previews.mjs");
