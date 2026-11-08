@@ -1095,7 +1095,7 @@ for(const phrase of ["Infancy Gospel of Thomas","Arabic Infancy Gospel","cradle"
   "Falsification criteria:","Text-first verdict:","Historical verdict:"])
   if(!ci041.toLowerCase().includes(phrase.toLowerCase()))
     throw new Error("CI-041 missing a critical primary text or witness "+phrase);
-if(!ci041.includes("<span>22 sections</span><span>28 references</span>"))
+if(!ci041.includes("<span>23 sections</span><span>28 references</span>"))
   throw new Error("CI-041 article metadata regressed");
 if(!(await readFile("site/research/index.html","utf8")).includes("44 published investigations / 1 research guide"))
   throw new Error("CI-041 catalogue count regressed");
@@ -1184,7 +1184,7 @@ const ci044Refs = [...ci044.matchAll(/<li id="ref-(\d+)">/g)].map(m => Number(m[
 const ci044Cites = [...ci044Body.matchAll(/href="#ref-(\d+)"/g)].map(m => Number(m[1]));
 const ci044Urls = [...ci044.matchAll(/<li id="ref-\d+">[\s\S]*?<a href="([^"]+)" target="_blank"/g)].map(m => m[1].replaceAll("&amp;", "&"));
 const ci044Words = ci044Body.replace(/<[^>]*>/g, " ").trim().split(/\s+/).length;
-if(ci044Sections.length < 22 || ci044Refs.length < 28 || ci044Words < 3000 ||
+if(ci044Sections.length < 23 || ci044Refs.length < 28 || ci044Words < 3000 ||
    !ci044Refs.every((n,i)=>n===i+1) ||
    ci044Refs.some(n=>!ci044Cites.includes(n)) ||
    ci044Cites.some(n=>!ci044Refs.includes(n)) ||
