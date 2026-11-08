@@ -2,6 +2,15 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.56.0 - 2026-11-08
+
+- Added CI-045, a 25-section and 30-reference analysis of Quran 2:259, death and resurrection after a century and earlier Abimelech and Honi narratives.
+- Examined original Quranic Arabic, the bones verb variant, unnamed protagonist and city, and the different periods of one hundred, sixty-six and seventy years.
+- Compared 4 Baruch's pre-Islamic composition and later manuscript witnesses with Abimelech's preserved figs, Palestinian and Babylonian Honi traditions and Biblical Jeremiah, Ezekiel and resurrection texts.
+- Added a source audit, comparison matrix, clearly separated historical and Biblical verdicts and revision criteria.
+- Integrated the investigation across the library, homepage, source register and three related articles, with automated depth, citations and navigation checks.
+- Preserved existing URLs, Quran reader and API workstreams, and avoided unrelated changes.
+
 ## v0.55.0 - 2026-11-08
 
 - Added CI-044, a 23-section and 28-reference investigation of Abraham's miraculous deliverance from fire in Quran 21:51-70, 29:24 and 37:97.

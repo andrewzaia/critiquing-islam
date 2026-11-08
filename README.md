@@ -20,6 +20,9 @@ The underlying data derive from Corpus Coranicum and Abdul Rahim Nizamani's 2026
 
 ## Latest research
 
+v0.56.0 adds [CI-045, Did the Quran turn an earlier long-sleep narrative into a hundred-year resurrection?](site/research/quran-hundred-year-resurrection-and-abimelech/index.html), a 25-section investigation with 30 numbered references. It checks the original Arabic of Quran 2:259, the two documented verb readings for the bones, the Greek and manuscript history of 4 Baruch, Abimelech's sixty-six years and preserved figs, the seventy-year Honi narrative and the separate Biblical Jeremiah and Ezekiel evidence. The Quranic protagonist and city remain unnamed. The source-critical verdict identifies earlier narrative circulation without assuming a precise copying intermediary or a physically authenticated miracle. See the [primary-text and chronology audit](docs/quran-2-259-abimelech-source-audit-v0.56.0.md). The library now has **45 numbered investigations and one research guide**.
+
+
 v0.55.0 adds [CI-044, Abraham and the pre-Islamic fire tradition](site/research/abraham-fire-and-pre-islamic-traditions/index.html), a 23-section investigation with 28 numbered sources. It compares the Quran's direct fire-rescue claim with Jubilees' distinct burning of the idol house, Pseudo-Philo's early Abrahamic furnace narrative and Genesis Rabbah's Nimrod account. It distinguishes the Quran's unnamed persecutors from later identification, manuscript survival from literary dating, and demonstrable narrative priority from unproven eyewitness history. See the [primary-source and chronology audit](docs/abraham-fire-tradition-evidence-audit-v0.55.0.md). The library now contains **44 numbered investigations and one research guide**.
 
 
