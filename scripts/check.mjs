@@ -463,7 +463,7 @@ for (const route of ["/research/joseph-dirhams-and-coinage/", "/research/al-sami
 for (const doc of [doctrineIndex, v028Sources]) {
   if (!doc.includes('href="/research/joseph-dirhams-and-coinage/"')) throw new Error("CI-035 missing from the library or source register");
 }
-if (!doctrineIndex.includes("43 published investigations / 1 research guide")) {
+if (!doctrineIndex.includes("44 published investigations / 1 research guide")) {
   throw new Error("Published research library count does not match 41 investigations");
 }
 
@@ -1097,7 +1097,7 @@ for(const phrase of ["Infancy Gospel of Thomas","Arabic Infancy Gospel","cradle"
     throw new Error("CI-041 missing a critical primary text or witness "+phrase);
 if(!ci041.includes("<span>22 sections</span><span>28 references</span>"))
   throw new Error("CI-041 article metadata regressed");
-if(!(await readFile("site/research/index.html","utf8")).includes("43 published investigations / 1 research guide"))
+if(!(await readFile("site/research/index.html","utf8")).includes("44 published investigations / 1 research guide"))
   throw new Error("CI-041 catalogue count regressed");
 for(const path of ["site/index.html","site/research/index.html","site/sources/index.html"])
   if(!(await readFile(path,"utf8")).includes('href="/research/jesus-infancy-apocrypha/"'))
@@ -1128,7 +1128,7 @@ for(const phrase of ["Pseudo-Matthew","Liber Requiei","Kathisma","Sozomen","Call
     throw new Error("CI-042 lost evidence or chronological distinction "+phrase);
 if(!ci042.includes("<span>22 sections</span><span>28 references</span>"))
   throw new Error("CI-042 metadata no longer matches references and sections");
-if(!(await readFile("site/research/index.html","utf8")).includes("43 published investigations / 1 research guide"))
+if(!(await readFile("site/research/index.html","utf8")).includes("44 published investigations / 1 research guide"))
   throw new Error("CI-042 library count regressed");
 for(const path of ["site/index.html","site/research/index.html","site/sources/index.html"])
   if(!(await readFile(path,"utf8")).includes('href="/research/mary-palm-tree-and-apocrypha/"'))
@@ -1172,8 +1172,42 @@ for (const path of ["site/research/jesus-infancy-apocrypha/index.html",
 for (const path of ["README.md", "CHANGELOG.md", "docs/mary-guardianship-protevangelium-audit-v0.54.0.md"])
   if (!(await readFile(path, "utf8")).includes("CI-043"))
     throw new Error("CI-043 missing release audit documentation " + path);
-if (!(await readFile("site/research/index.html", "utf8")).includes("43 published investigations / 1 research guide"))
+if (!(await readFile("site/research/index.html", "utf8")).includes("44 published investigations / 1 research guide"))
   throw new Error("CI-043 catalogue count regressed");
+
+
+// CI-044 v0.55.0: Abraham's fire rescue and pre-Islamic Jewish material.
+const ci044 = await readFile("site/research/abraham-fire-and-pre-islamic-traditions/index.html", "utf8");
+const ci044Body = ci044.slice(ci044.indexOf('<article class="prose'), ci044.indexOf('<section id="references">'));
+const ci044Sections = [...ci044Body.matchAll(/<section id="([^"]+)"><span class="section-index">/g)].map(m => m[1]);
+const ci044Refs = [...ci044.matchAll(/<li id="ref-(\d+)">/g)].map(m => Number(m[1]));
+const ci044Cites = [...ci044Body.matchAll(/href="#ref-(\d+)"/g)].map(m => Number(m[1]));
+const ci044Urls = [...ci044.matchAll(/<li id="ref-\d+">[\s\S]*?<a href="([^"]+)" target="_blank"/g)].map(m => m[1].replaceAll("&amp;", "&"));
+const ci044Words = ci044Body.replace(/<[^>]*>/g, " ").trim().split(/\s+/).length;
+if(ci044Sections.length < 23 || ci044Refs.length < 28 || ci044Words < 3000 ||
+   !ci044Refs.every((n,i)=>n===i+1) ||
+   ci044Refs.some(n=>!ci044Cites.includes(n)) ||
+   ci044Cites.some(n=>!ci044Refs.includes(n)) ||
+   ci044Urls.length!==ci044Refs.length || new Set(ci044Urls).size!==ci044Urls.length)
+  throw new Error("CI-044 depth, reference number, citation or source uniqueness check failed");
+for(const id of ci044Sections)if(!ci044.includes('href="#'+id+'"'))throw new Error("CI-044 missing section nav: "+id);
+for(const term of ["Jubilees", "Jectan", "Nimrod", "Genesis Rabbah", "Pseudo-Philo",
+  "Daniel 3", "4Q216", "Jerome", "bardan", "37:97", "Text-first verdict:",
+  "Historical verdict:", "Biblical verdict:", "Falsification criteria:"])
+  if(!ci044.toLowerCase().includes(term.toLowerCase()))throw new Error("CI-044 missing core comparison "+term);
+if(!ci044.includes("<span>23 sections</span><span>28 references</span>"))
+  throw new Error("CI-044 article metadata inconsistent");
+if(/[\u2010-\u2015\u2212\uFE58\uFE63\uFF0D]/.test(ci044))
+  throw new Error("CI-044 non-ASCII dash detected");
+for(const p of ["site/index.html","site/research/index.html","site/sources/index.html",
+  "site/research/abraham-father-azar-terah/index.html",
+  "site/research/quran-5-32-mishnah-sanhedrin/index.html",
+  "site/research/mary-guardian-lots-protevangelium/index.html"])
+  if(!(await readFile(p,"utf8")).includes('href="/research/abraham-fire-and-pre-islamic-traditions/"'))throw new Error("CI-044 missing discovery link "+p);
+for(const p of ["README.md","CHANGELOG.md","docs/abraham-fire-tradition-evidence-audit-v0.55.0.md"])
+  if(!(await readFile(p,"utf8")).includes("CI-044"))throw new Error("CI-044 release audit missing "+p);
+if(!(await readFile("site/research/index.html","utf8")).includes("44 published investigations / 1 research guide"))
+  throw new Error("CI-044 research count regressed");
 
 await import("./check-qiraat.mjs");
 await import("./check-quran-previews.mjs");
