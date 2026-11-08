@@ -463,7 +463,7 @@ for (const route of ["/research/joseph-dirhams-and-coinage/", "/research/al-sami
 for (const doc of [doctrineIndex, v028Sources]) {
   if (!doc.includes('href="/research/joseph-dirhams-and-coinage/"')) throw new Error("CI-035 missing from the library or source register");
 }
-if (!doctrineIndex.includes("44 published investigations / 1 research guide")) {
+if (!doctrineIndex.includes("45 published investigations / 1 research guide")) {
   throw new Error("Published research library count does not match 41 investigations");
 }
 
@@ -1097,7 +1097,7 @@ for(const phrase of ["Infancy Gospel of Thomas","Arabic Infancy Gospel","cradle"
     throw new Error("CI-041 missing a critical primary text or witness "+phrase);
 if(!ci041.includes("<span>22 sections</span><span>28 references</span>"))
   throw new Error("CI-041 article metadata regressed");
-if(!(await readFile("site/research/index.html","utf8")).includes("44 published investigations / 1 research guide"))
+if(!(await readFile("site/research/index.html","utf8")).includes("45 published investigations / 1 research guide"))
   throw new Error("CI-041 catalogue count regressed");
 for(const path of ["site/index.html","site/research/index.html","site/sources/index.html"])
   if(!(await readFile(path,"utf8")).includes('href="/research/jesus-infancy-apocrypha/"'))
@@ -1128,7 +1128,7 @@ for(const phrase of ["Pseudo-Matthew","Liber Requiei","Kathisma","Sozomen","Call
     throw new Error("CI-042 lost evidence or chronological distinction "+phrase);
 if(!ci042.includes("<span>22 sections</span><span>28 references</span>"))
   throw new Error("CI-042 metadata no longer matches references and sections");
-if(!(await readFile("site/research/index.html","utf8")).includes("44 published investigations / 1 research guide"))
+if(!(await readFile("site/research/index.html","utf8")).includes("45 published investigations / 1 research guide"))
   throw new Error("CI-042 library count regressed");
 for(const path of ["site/index.html","site/research/index.html","site/sources/index.html"])
   if(!(await readFile(path,"utf8")).includes('href="/research/mary-palm-tree-and-apocrypha/"'))
@@ -1172,7 +1172,7 @@ for (const path of ["site/research/jesus-infancy-apocrypha/index.html",
 for (const path of ["README.md", "CHANGELOG.md", "docs/mary-guardianship-protevangelium-audit-v0.54.0.md"])
   if (!(await readFile(path, "utf8")).includes("CI-043"))
     throw new Error("CI-043 missing release audit documentation " + path);
-if (!(await readFile("site/research/index.html", "utf8")).includes("44 published investigations / 1 research guide"))
+if (!(await readFile("site/research/index.html", "utf8")).includes("45 published investigations / 1 research guide"))
   throw new Error("CI-043 catalogue count regressed");
 
 
@@ -1206,8 +1206,45 @@ for(const p of ["site/index.html","site/research/index.html","site/sources/index
   if(!(await readFile(p,"utf8")).includes('href="/research/abraham-fire-and-pre-islamic-traditions/"'))throw new Error("CI-044 missing discovery link "+p);
 for(const p of ["README.md","CHANGELOG.md","docs/abraham-fire-tradition-evidence-audit-v0.55.0.md"])
   if(!(await readFile(p,"utf8")).includes("CI-044"))throw new Error("CI-044 release audit missing "+p);
-if(!(await readFile("site/research/index.html","utf8")).includes("44 published investigations / 1 research guide"))
+if(!(await readFile("site/research/index.html","utf8")).includes("45 published investigations / 1 research guide"))
   throw new Error("CI-044 research count regressed");
+
+
+// CI-045 v0.56.0: Quran 2:259 and pre-Islamic Abimelech/Honi narratives.
+const ci045 = await readFile("site/research/quran-hundred-year-resurrection-and-abimelech/index.html", "utf8");
+const ci045Body = ci045.slice(ci045.indexOf('<article class="prose'), ci045.indexOf('<section id="references">'));
+const ci045Sections = [...ci045Body.matchAll(/<section id="([^"]+)"><span class="section-index">/g)].map(m => m[1]);
+const ci045Refs = [...ci045.matchAll(/<li id="ref-(\d+)">/g)].map(m => Number(m[1]));
+const ci045Cites = [...ci045Body.matchAll(/href="#ref-(\d+)"/g)].map(m => Number(m[1]));
+const ci045Urls = [...ci045.matchAll(/<li id="ref-\d+">[\s\S]*?<a href="([^"]+)" target="_blank"/g)].map(m => m[1].replaceAll("&amp;", "&"));
+const ci045Words = ci045Body.replace(/<[^>]*>/g, " ").trim().split(/\s+/).length;
+if(ci045Sections.length < 25 || ci045Refs.length < 30 || ci045Words < 3500 ||
+  !ci045Refs.every((n,i)=>n===i+1) ||
+  ci045Refs.some(n=>!ci045Cites.includes(n)) ||
+  ci045Cites.some(n=>!ci045Refs.includes(n)) ||
+  ci045Urls.length!==ci045Refs.length || new Set(ci045Urls).size!==ci045Urls.length)
+  throw new Error("CI-045 depth, reference sequence, source uniqueness or citation coverage failed");
+for (const id of ci045Sections)
+  if (!ci045.includes('href="#'+id+'"')) throw new Error("CI-045 missing navigation "+id);
+for (const term of ["Abimelech","Honi","Jeremiah","Ebed-Melech","sixty-six",
+  "seventy","hundred","4 Baruch","Kraft","Herzer","Hoyland","donkey","figs",
+  "Qira'at","Text-first verdict:","Historical verdict:","Biblical verdict:","Falsification criteria:"])
+  if (!ci045.toLowerCase().includes(term.toLowerCase())) throw new Error("CI-045 lost evidence "+term);
+if(!ci045.includes("<span>25 sections</span><span>30 references</span>"))
+  throw new Error("CI-045 article metadata inconsistent");
+if(/[\u2010-\u2015\u2212\uFE58\uFE63\uFF0D]/.test(ci045))
+  throw new Error("CI-045 prohibited non-ASCII dash");
+for (const path of ["site/index.html","site/research/index.html","site/sources/index.html",
+  "site/research/companions-of-the-cave-seven-sleepers/index.html",
+  "site/research/ezra-son-of-god-claim/index.html",
+  "site/research/quran-and-earlier-scriptures/index.html"])
+  if(!(await readFile(path,"utf8")).includes('href="/research/quran-hundred-year-resurrection-and-abimelech/"'))
+    throw new Error("CI-045 missing discovery link "+path);
+for (const path of ["README.md","CHANGELOG.md","docs/quran-2-259-abimelech-source-audit-v0.56.0.md"])
+  if(!(await readFile(path,"utf8")).includes("CI-045"))
+    throw new Error("CI-045 release documentation missing "+path);
+if(!(await readFile("site/research/index.html","utf8")).includes("45 published investigations / 1 research guide"))
+  throw new Error("CI-045 library count regressed");
 
 await import("./check-qiraat.mjs");
 await import("./check-quran-previews.mjs");
