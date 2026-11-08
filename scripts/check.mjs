@@ -463,8 +463,8 @@ for (const route of ["/research/joseph-dirhams-and-coinage/", "/research/al-sami
 for (const doc of [doctrineIndex, v028Sources]) {
   if (!doc.includes('href="/research/joseph-dirhams-and-coinage/"')) throw new Error("CI-035 missing from the library or source register");
 }
-if (!doctrineIndex.includes("40 published investigations / 1 research guide")) {
-  throw new Error("Research count not updated for v0.28.0");
+if (!doctrineIndex.includes("41 published investigations / 1 research guide")) {
+  throw new Error("Published research library count does not match 41 investigations");
 }
 
 
