@@ -2,6 +2,16 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.53.0 - 2026-11-08
+
+- Added CI-042, a substantive standalone 22-section investigation with 28 unique numbered sources, examining Quran 19:23-26 and earlier palm-tree narratives.
+- Analysed original Quranic Arabic and distinguished Mary's labour and shaking the palm from Pseudo-Matthew 20-21's later flight-to-Egypt story in which Jesus orders the palm to bend and supplies water.
+- Compared the Protevangelium's roadside cave, older Marian Repose traditions, Sozomen's separate Egyptian tree, and the pre-Christian Homeric and Callimachean Leto narratives without claiming a proven verbatim intermediary.
+- Examined the disputed date and manuscript layers of the Latin Pseudo-Matthew, the fifth-century Kathisma church, eighth-century Umayyad palm mosaic, and competing theories of local transmission versus later Quranic redaction.
+- Added source and chronology matrices, competing historical interpretations, precise falsification criteria, and separate Quranic text-first, historical and Biblical theological verdicts.
+- Integrated CI-042 into homepage, research index, source register, related Jesus and Mary studies, README, the public evidence audit and citation-depth regression checks. Updated library counts to 42 and public version to 0.53.0.
+- Preserved URLs, Quran explorer, Qiraat corpus, Quran.Foundation integration, API credentials, dependencies, workflows and hosting infrastructure.
+
 ## v0.52.0 - 2026-11-08
 
 - Published CI-041 as a substantive standalone investigation with 22 analytical sections and 28 unique numbered references, preserving all existing research URLs.
