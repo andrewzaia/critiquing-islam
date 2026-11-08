@@ -2,6 +2,14 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.55.0 - 2026-11-08
+
+- Added CI-044, a 23-section and 28-reference investigation of Abraham's miraculous deliverance from fire in Quran 21:51-70, 29:24 and 37:97.
+- Compared original Arabic with Genesis, Jubilees, Biblical Antiquities of Pseudo-Philo, Genesis Rabbah, Jerome and Daniel, recording substantive narrative differences.
+- Distinguished pre-Islamic composition dates from later surviving manuscripts and qualified the evidence from the 4Q216 Jubilees fragment.
+- Added a source audit, evidence matrix, separate textual, historical and Biblical verdicts and explicit falsification conditions.
+- Linked the new research from the homepage, library, source register and related investigations, and extended automated depth and citation checks.
+
 ## v0.54.0 - 2026-11-08
 
 - Added CI-043, a standalone 21-section, 24-reference investigation of Quran 3:35-44, Mary's early guardianship and an earlier Christian Marian narrative.
