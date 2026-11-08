@@ -20,6 +20,9 @@ The underlying data derive from Corpus Coranicum and Abdul Rahim Nizamani's 2026
 
 ## Latest research
 
+v0.57.0 adds [CI-046, Joseph and the women who cut their hands](site/research/joseph-women-cut-hands-jewish-traditions/index.html), a 21-section, 28-reference original-language study. It compares Quran 12:30-32 with Genesis 39, Genesis Rabbah's earlier female spectators, the Hebrew Midrash Tanhuma injury scene and Aramaic poetic recensions. The article distinguishes Bar-Ilan's proposed pre-Islamic Byzantine composition from Kugel's dating reservations and the later Tanhuma manuscript tradition. It does not insert citrus fruit or the name Zulaykha into Quranic Arabic. See the [source chronology audit](docs/joseph-women-cut-hands-source-audit-v0.57.0.md). The research library now contains **46 numbered investigations and one research guide**.
+
+
 v0.56.0 adds [CI-045, Did the Quran turn an earlier long-sleep narrative into a hundred-year resurrection?](site/research/quran-hundred-year-resurrection-and-abimelech/index.html), a 25-section investigation with 30 numbered references. It checks the original Arabic of Quran 2:259, the two documented verb readings for the bones, the Greek and manuscript history of 4 Baruch, Abimelech's sixty-six years and preserved figs, the seventy-year Honi narrative and the separate Biblical Jeremiah and Ezekiel evidence. The Quranic protagonist and city remain unnamed. The source-critical verdict identifies earlier narrative circulation without assuming a precise copying intermediary or a physically authenticated miracle. See the [primary-text and chronology audit](docs/quran-2-259-abimelech-source-audit-v0.56.0.md). The library now has **45 numbered investigations and one research guide**.
 
 

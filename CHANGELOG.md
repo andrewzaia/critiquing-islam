@@ -2,6 +2,15 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.57.0 - 2026-11-08
+
+- Added CI-046, a 21-section and 28-reference investigation of Quran 12:30-32 and the Egyptian women who cut their hands.
+- Examined Quranic Arabic, the earlier Biblical Joseph account, Genesis Rabbah, Midrash Tanhuma Vayeshev 5:2 and Aramaic banquet poems.
+- Distinguished the proposed early composition of some Aramaic poetry from later Tanhuma recensions and surviving manuscripts, without treating a reconstructed date as a dated papyrus.
+- Tested alternative interpretations of intentional and accidental cutting against Quran 12:50-51.
+- Integrated the article and source audit into the homepage, research library, source register, three related articles, README and automated regression checks.
+- Preserved the Quran explorer, Qira'at, Quran.Foundation API, credentials and existing URLs.
+
 ## v0.56.0 - 2026-11-08
 
 - Added CI-045, a 25-section and 30-reference analysis of Quran 2:259, death and resurrection after a century and earlier Abimelech and Honi narratives.
