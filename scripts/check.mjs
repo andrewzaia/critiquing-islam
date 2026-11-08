@@ -463,7 +463,7 @@ for (const route of ["/research/joseph-dirhams-and-coinage/", "/research/al-sami
 for (const doc of [doctrineIndex, v028Sources]) {
   if (!doc.includes('href="/research/joseph-dirhams-and-coinage/"')) throw new Error("CI-035 missing from the library or source register");
 }
-if (!doctrineIndex.includes("42 published investigations / 1 research guide")) {
+if (!doctrineIndex.includes("43 published investigations / 1 research guide")) {
   throw new Error("Published research library count does not match 41 investigations");
 }
 
@@ -1097,7 +1097,7 @@ for(const phrase of ["Infancy Gospel of Thomas","Arabic Infancy Gospel","cradle"
     throw new Error("CI-041 missing a critical primary text or witness "+phrase);
 if(!ci041.includes("<span>22 sections</span><span>28 references</span>"))
   throw new Error("CI-041 article metadata regressed");
-if(!(await readFile("site/research/index.html","utf8")).includes("42 published investigations / 1 research guide"))
+if(!(await readFile("site/research/index.html","utf8")).includes("43 published investigations / 1 research guide"))
   throw new Error("CI-041 catalogue count regressed");
 for(const path of ["site/index.html","site/research/index.html","site/sources/index.html"])
   if(!(await readFile(path,"utf8")).includes('href="/research/jesus-infancy-apocrypha/"'))
@@ -1128,11 +1128,52 @@ for(const phrase of ["Pseudo-Matthew","Liber Requiei","Kathisma","Sozomen","Call
     throw new Error("CI-042 lost evidence or chronological distinction "+phrase);
 if(!ci042.includes("<span>22 sections</span><span>28 references</span>"))
   throw new Error("CI-042 metadata no longer matches references and sections");
-if(!(await readFile("site/research/index.html","utf8")).includes("42 published investigations / 1 research guide"))
+if(!(await readFile("site/research/index.html","utf8")).includes("43 published investigations / 1 research guide"))
   throw new Error("CI-042 library count regressed");
 for(const path of ["site/index.html","site/research/index.html","site/sources/index.html"])
   if(!(await readFile(path,"utf8")).includes('href="/research/mary-palm-tree-and-apocrypha/"'))
     throw new Error("CI-042 missing from site discovery "+path);
+
+
+// CI-043 v0.54.0: Mary, guardian lots and pre-Islamic Christian literature.
+const ci043 = await readFile("site/research/mary-guardian-lots-protevangelium/index.html", "utf8");
+const ci043Body = ci043.slice(ci043.indexOf('<article class="prose'), ci043.indexOf('<section id="references">'));
+const ci043Sections = [...ci043Body.matchAll(/<section id="([^"]+)"><span class="section-index">/g)].map(m => m[1]);
+const ci043Refs = [...ci043.matchAll(/<li id="ref-(\d+)">/g)].map(m => Number(m[1]));
+const ci043Cites = [...ci043Body.matchAll(/href="#ref-(\d+)"/g)].map(m => Number(m[1]));
+const ci043Urls = [...ci043.matchAll(/<li id="ref-\d+">[\s\S]*?<a href="([^"]+)" target="_blank"/g)].map(m => m[1].replaceAll("&amp;", "&"));
+const ci043Words = ci043Body.replace(/<[^>]*>/g, " ").trim().split(/\s+/).length;
+if (ci043Sections.length < 21 || ci043Refs.length < 24 || ci043Words < 3500 ||
+    !ci043Refs.every((n, i) => n === i + 1) ||
+    ci043Refs.some(n => !ci043Cites.includes(n)) ||
+    ci043Cites.some(n => !ci043Refs.includes(n)) ||
+    ci043Urls.length !== ci043Refs.length || new Set(ci043Urls).size !== ci043Urls.length)
+  throw new Error("CI-043 research depth, citations, numbering or source uniqueness regressed");
+for (const id of ci043Sections)
+  if (!ci043.includes('href="#' + id + '"'))
+    throw new Error("CI-043 missing section navigation " + id);
+for (const phrase of ["3:35", "3:44", "Zechariah", "Joseph", "pens", "rods",
+   "Protevangelium", "Papyrus Bodmer V", "Hannah", "Samuel", "Origen",
+   "Falsification criteria:", "Text-first verdict:", "Historical verdict:", "Biblical verdict:"])
+  if (!ci043.toLowerCase().includes(phrase.toLowerCase()))
+    throw new Error("CI-043 lacks required textual comparison " + phrase);
+if (!ci043.includes("<span>21 sections</span><span>24 references</span>"))
+  throw new Error("CI-043 article metadata regressed");
+if (/[\u2010-\u2015\u2212\uFE58\uFE63\uFF0D]/.test(ci043))
+  throw new Error("CI-043 contains a prohibited non-ASCII dash");
+for (const path of ["site/index.html", "site/research/index.html", "site/sources/index.html"])
+  if (!(await readFile(path, "utf8")).includes('href="/research/mary-guardian-lots-protevangelium/"'))
+    throw new Error("CI-043 missing site discovery " + path);
+for (const path of ["site/research/jesus-infancy-apocrypha/index.html",
+                     "site/research/mary-palm-tree-and-apocrypha/index.html",
+                     "site/research/mary-sister-of-aaron/index.html"])
+  if (!(await readFile(path, "utf8")).includes('href="/research/mary-guardian-lots-protevangelium/"'))
+    throw new Error("CI-043 missing related study link " + path);
+for (const path of ["README.md", "CHANGELOG.md", "docs/mary-guardianship-protevangelium-audit-v0.54.0.md"])
+  if (!(await readFile(path, "utf8")).includes("CI-043"))
+    throw new Error("CI-043 missing release audit documentation " + path);
+if (!(await readFile("site/research/index.html", "utf8")).includes("43 published investigations / 1 research guide"))
+  throw new Error("CI-043 catalogue count regressed");
 
 await import("./check-qiraat.mjs");
 await import("./check-quran-previews.mjs");
