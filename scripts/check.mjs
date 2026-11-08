@@ -463,8 +463,8 @@ for (const route of ["/research/joseph-dirhams-and-coinage/", "/research/al-sami
 for (const doc of [doctrineIndex, v028Sources]) {
   if (!doc.includes('href="/research/joseph-dirhams-and-coinage/"')) throw new Error("CI-035 missing from the library or source register");
 }
-if (!doctrineIndex.includes("40 published investigations / 1 research guide")) {
-  throw new Error("Research count not updated for v0.28.0");
+if (!doctrineIndex.includes("41 published investigations / 1 research guide")) {
+  throw new Error("Published research library count does not match 41 investigations");
 }
 
 
@@ -1071,6 +1071,37 @@ for(const articlePath of ["site/index.html","site/research/index.html","site/sou
  for(const slug of ["uthman-and-quranic-authenticity","al-muhaymin-and-quran-5-48"])
   if(!(await readFile(articlePath,"utf8")).includes('href="/research/'+slug+'/"'))
     throw new Error("Missing CI-014/CI-021 discovery "+articlePath+" "+slug);
+
+
+// CI-041 v0.52.0: Quranic infancy narratives, dated apocrypha and source integrity.
+const ci041 = await readFile("site/research/jesus-infancy-apocrypha/index.html","utf8");
+const ci041Body = ci041.slice(ci041.indexOf('<article class="prose'),ci041.indexOf('<section id="references">'));
+const ci041Sections = [...ci041Body.matchAll(/<section id="([^"]+)"><span class="section-index">/g)].map(m=>m[1]);
+const ci041Refs = [...ci041.matchAll(/<li id="ref-(\d+)">/g)].map(m=>Number(m[1]));
+const ci041Cites = [...ci041Body.matchAll(/href="#ref-(\d+)"/g)].map(m=>Number(m[1]));
+const ci041Urls = [...ci041.matchAll(/<li id="ref-\d+">[\s\S]*?<a href="([^"]+)" target="_blank"/g)].map(m=>m[1].replaceAll("&amp;","&"));
+const ci041Words = ci041Body.replace(/<[^>]*>/g," ").trim().split(/\s+/).length;
+if(ci041Sections.length<22||ci041Refs.length<28||ci041Words<5600||
+    !ci041Refs.every((n,i)=>n===i+1)||
+    ci041Refs.some(n=>!ci041Cites.includes(n))||
+    ci041Cites.some(n=>!ci041Refs.includes(n))||
+    ci041Urls.length!==ci041Refs.length||new Set(ci041Urls).size!==ci041Urls.length)
+  throw new Error("CI-041 analytical depth, source numbering, citation coverage or source uniqueness regressed");
+for(const id of ci041Sections)if(!ci041.includes('href="#'+id+'"'))
+  throw new Error("CI-041 missing section navigation "+id);
+for(const phrase of ["Infancy Gospel of Thomas","Arabic Infancy Gospel","cradle",
+  "clay","P.Hamb.Graec. 1011","Berkes","Nocchi Macedo",
+  "1299","Irenaeus","Gnostic","Son of God","servant",
+  "Falsification criteria:","Text-first verdict:","Historical verdict:"])
+  if(!ci041.toLowerCase().includes(phrase.toLowerCase()))
+    throw new Error("CI-041 missing a critical primary text or witness "+phrase);
+if(!ci041.includes("<span>22 sections</span><span>28 references</span>"))
+  throw new Error("CI-041 article metadata regressed");
+if(!(await readFile("site/research/index.html","utf8")).includes("41 published investigations / 1 research guide"))
+  throw new Error("CI-041 catalogue count regressed");
+for(const path of ["site/index.html","site/research/index.html","site/sources/index.html"])
+  if(!(await readFile(path,"utf8")).includes('href="/research/jesus-infancy-apocrypha/"'))
+    throw new Error("CI-041 missing site discovery "+path);
 
 await import("./check-qiraat.mjs");
 await import("./check-quran-previews.mjs");
