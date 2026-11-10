@@ -20,6 +20,8 @@ The underlying data derive from Corpus Coranicum and Abdul Rahim Nizamani's 2026
 
 ## Latest research
 
+v0.58.0 adds **CI-047, Harut and Marut** ([research article](site/research/harut-marut-angel-magic/index.html); [evidence audit](docs/harut-marut-source-audit-v0.58.0.md)) and **CI-048, The Satanic Verses** ([research article](site/research/satanic-verses-quran-53-22-52/index.html); [evidence audit](docs/satanic-verses-source-audit-v0.58.0.md)). CI-047 evaluates Quran 2:102 alongside pre-Islamic heavenly-teacher and Solomonic traditions while distinguishing Quranic warning angels from later fallen-angel legends. CI-048 evaluates Quran 53:19-23, 22:52 and early attributed reports of an allegedly withdrawn praise of pagan intercession, distinguishing early tradition from independently authenticated history. The library now contains **48 numbered investigations and one research guide**. Both studies preserve the distinction between canonical wording, later attribution and demonstrated historical occurrence.
+
 v0.57.0 adds [CI-046, Joseph and the women who cut their hands](site/research/joseph-women-cut-hands-jewish-traditions/index.html), a 21-section, 28-reference original-language study. It compares Quran 12:30-32 with Genesis 39, Genesis Rabbah's earlier female spectators, the Hebrew Midrash Tanhuma injury scene and Aramaic poetic recensions. The article distinguishes Bar-Ilan's proposed pre-Islamic Byzantine composition from Kugel's dating reservations and the later Tanhuma manuscript tradition. It does not insert citrus fruit or the name Zulaykha into Quranic Arabic. See the [source chronology audit](docs/joseph-women-cut-hands-source-audit-v0.57.0.md). The research library now contains **46 numbered investigations and one research guide**.
 
 
