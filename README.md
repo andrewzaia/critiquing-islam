@@ -18,7 +18,7 @@ An optional live Quran Foundation matrix is displayed separately when server-sid
 
 The underlying data derive from Corpus Coranicum and Abdul Rahim Nizamani's 2026 variant corpus and are adapted under **CC BY-SA 4.0**. Two missing variant CSV positions are flagged explicitly. See [source provenance and limitations](docs/qiraat-source-provenance-v0.29.0.md).
 
-Sitewide Quran verse popups display locally hosted Arabic beside the **Marmaduke Pickthall (1930) English translation**, followed by scholarly transliteration. Both languages use the Hafs/Cairo verse numbering. The English rendering is an attributed translation and does not replace analysis of the Arabic. The English dataset is adapted from [Risan Bagja Pradana's Quran JSON corpus](https://github.com/risan/quran-json/blob/main/data/extra/english_pickthall.json) under CC BY-SA 4.0; Pickthall's English translation is public domain. Hover previews continue to work for Arabic when English data are unavailable.
+Sitewide Quran verse popups display the locally hosted Arabic text, scholarly transliteration, then the **Marmaduke Pickthall (1930) English translation**, stacked in that order for each verse. Both languages use the Hafs/Cairo verse numbering. The English rendering is an attributed translation and does not replace analysis of the Arabic. The English dataset is adapted from [Risan Bagja Pradana's Quran JSON corpus](https://github.com/risan/quran-json/blob/main/data/extra/english_pickthall.json) under CC BY-SA 4.0; Pickthall's English translation is public domain. Hover previews continue to work for Arabic when English data are unavailable.
 
 ## Latest research
 
