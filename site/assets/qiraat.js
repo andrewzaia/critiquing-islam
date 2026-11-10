@@ -4,6 +4,7 @@
   const $ = id => document.getElementById(id);
   const prefix = "/data/qiraat/";
   const cache = new Map();
+  let englishPromise;
   let manifest, indexData, current, serial = 0;
   const make = (tag, className, text) => {
     const node = document.createElement(tag);
@@ -19,6 +20,22 @@
     const response = await fetch(url, { cache: "force-cache" });
     if (!response.ok) throw new Error("Could not load source data (" + response.status + ")");
     return response.json();
+  };
+  const loadEnglish = () => {
+    if (!englishPromise) {
+      englishPromise = fetchJson("/data/quran-english/pickthall.json").then(data => {
+        if (data.translation !== "Marmaduke Pickthall (1930)" ||
+            data.language !== "en" || !Array.isArray(data.chapters) ||
+            data.chapters.length !== manifest.counts.length ||
+            data.chapters.some((chapter, index) =>
+              !Array.isArray(chapter) || chapter.length !== manifest.counts[index] ||
+              chapter.some(verse => typeof verse !== "string" || !verse.trim()))) {
+          throw new Error("English translation does not match the reference numbering");
+        }
+        return data.chapters;
+      }).catch(error => { englishPromise = null; throw error; });
+    }
+    return englishPromise;
   };
   const valid = (s, v) => Number.isInteger(s) && Number.isInteger(v) && s >= 1 && s <= 114 && v >= 1 && v <= manifest.counts[s - 1];
   const getChapter = async s => {
@@ -112,6 +129,7 @@
         if (variant) { changedWords++; Object.keys(w[2]).forEach(r => changedReaders.add(+r)); }
       });
       $("qiraat-baseline-trans").textContent = words.map(w => w[1]).join(" ");
+      $("qiraat-baseline-english").textContent = "Loading English translation...";
       $("qiraat-word-note").textContent = gaps
         ? gaps + " word position(s) have no variant record in the source CSV. They are not treated as matching all readers."
         : "Underlined Arabic reference words have a recorded difference in at least one transmission.";
@@ -127,6 +145,17 @@
       }
       setStatus("Showing " + s + ":" + v + ". Source: local, attributed dataset.");
       document.dispatchEvent(new CustomEvent("qiraat:verse", {detail: {key: s + ":" + v}}));
+      // English is a labelled Hafs-reference translation, not a rendering of the other readings.
+      // Loading must not delay or disable the Arabic text and variant comparison.
+      loadEnglish().then(chapters => {
+        if (current?.s === s && current?.v === v) {
+          $("qiraat-baseline-english").textContent = chapters[s - 1][v - 1];
+        }
+      }).catch(() => {
+        if (current?.s === s && current?.v === v) {
+          $("qiraat-baseline-english").textContent = "English translation unavailable. Open Quran.com for alternatives.";
+        }
+      });
     } catch (e) { if (token === serial) setStatus(e.message, true); }
   }
   function norm(value) {
@@ -142,16 +171,32 @@
       : "No matches for " + term;
     const list = $("qiraat-result-list");
     list.replaceChildren();
+    const englishTargets = [];
     for (const [s, v, arabic, roman] of rows) {
       const item = make("button", "qiraat-result");
       item.type = "button";
       item.append(make("strong", "", s + ":" + v));
       const ar = make("span", "qiraat-result-arabic", arabic);
       ar.dir = "rtl"; ar.lang = "ar"; item.append(ar);
-      item.append(make("small", "", roman));
+      const transliteration = make("small", "qiraat-result-latin", roman);
+      transliteration.lang = "ar-Latn";
+      item.append(transliteration);
+      const english = make("span", "qiraat-result-english", "Loading English translation...");
+      english.lang = "en";
+      item.append(english);
+      englishTargets.push({s, v, english});
       item.addEventListener("click", () => openVerse(s, v));
       list.append(item);
     }
+    loadEnglish().then(chapters => {
+      for (const {s, v, english} of englishTargets) {
+        if (english.isConnected) english.textContent = chapters[s - 1][v - 1];
+      }
+    }).catch(() => {
+      for (const {english} of englishTargets) {
+        if (english.isConnected) english.textContent = "English translation unavailable.";
+      }
+    });
   }
   async function loadSearchIndex() {
     if (indexData) return indexData;

@@ -2,6 +2,13 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.58.3 - 2026-11-11
+
+- Applied the Arabic, scholarly transliteration and attributed English translation sequence to the Quran explorer reference verse and each search-result verse, including range results.
+- Reused the locally hosted Pickthall (1930) English corpus, added verse-alignment validation and an explicit message when English cannot load, without blocking Arabic or Qira'at comparisons.
+- Adjusted results for full-width stacking and removed text truncation. Kept alternate reading comparisons, original reference data, search behaviour and Quran.Foundation integration unchanged.
+- Extended automated checks to guard English source attribution, text order, verse alignment and responsive presentation.
+
 ## v0.58.2 - 2026-11-10
 
 - Changed sitewide Quran verse previews to display Arabic, scholarly transliteration and attributed English translation in that order, as full-width stacked rows for each verse.

@@ -74,6 +74,29 @@ for (const token of ["qiraat-search-form", "qiraat-readings", "qiraat-show-all",
   "CC BY-SA 4.0", "reconstructed scholarly transliteration", "/assets/qiraat.js", "/assets/qiraat.css"]) {
   if (!ui.includes(token)) throw new Error("Quran comparison UI lost " + token);
 }
+// The explorer's Hafs reference and its search rows must follow the same
+// Arabic, scholarly transliteration, then English sequence as verse popups.
+const english = JSON.parse(await readFile("site/data/quran-english/pickthall.json", "utf8"));
+if (english.translation !== "Marmaduke Pickthall (1930)" || english.language !== "en" ||
+    english.chapters.length !== 114 ||
+    english.chapters.some((chapter, i) => chapter.length !== manifest.counts[i]) ||
+    english.chapters.flat().length !== manifest.verses ||
+    !english.chapters[3][156].includes("crucified") ||
+    !english.chapters[4][31].includes("all mankind")) {
+  throw new Error("Local English translation is missing or misaligned");
+}
+const baseMarkup = ui.slice(ui.indexOf('<div class="qiraat-base">'), ui.indexOf("</div>", ui.indexOf('<div class="qiraat-base">')));
+const baseFields = ['id="qiraat-arabic"', 'id="qiraat-baseline-trans"', 'id="qiraat-baseline-english"'];
+if (baseFields.some(value => !baseMarkup.includes(value)) ||
+    baseFields.map(value => baseMarkup.indexOf(value)).some((position, i, positions) => i > 0 && position <= positions[i - 1]) ||
+    !baseMarkup.includes('lang="ar-Latn"') || !baseMarkup.includes('lang="en"') ||
+    !baseMarkup.includes("Marmaduke Pickthall (1930)")) {
+  throw new Error("Quran explorer verse fields are not stacked in the required order");
+}
+if (!ui.includes("Each result shows Arabic, transliteration") ||
+    !ui.includes("This is not a translation of every recorded reading")) {
+  throw new Error("English provenance or reading scope labels are missing");
+}
 if (ui.split("<form ").length - 1 !== 1 || !ui.includes('role="search"') ||
     !ui.includes('id="qiraat-query"') || !ui.includes('id="qiraat-prev"') || !ui.includes('id="qiraat-next"') ||
     ["qiraat-jump-form", "qiraat-surah", "qiraat-ayah", ">Open verse<"].some(token => ui.includes(token))) {
@@ -84,10 +107,26 @@ if (["qiraat-jump-form", "qiraat-surah", "qiraat-ayah"].some(token => browserScr
     !browserScript.includes("searchInput(") || !browserScript.includes("parseRef(")) {
   throw new Error("Quran verse lookup is no longer consolidated");
 }
+const resultFields = ['const ar = make("span", "qiraat-result-arabic"', 'const transliteration = make("small", "qiraat-result-latin"', 'const english = make("span", "qiraat-result-english"'];
+const resultSection = browserScript.slice(browserScript.indexOf("function showMatches("), browserScript.indexOf("async function loadSearchIndex("));
+if (resultFields.some(field => !resultSection.includes(field)) ||
+    resultFields.map(field => resultSection.indexOf(field)).some((pos, i, positions) => i > 0 && pos <= positions[i - 1])) {
+  throw new Error("Quran search result text is not in Arabic, transliteration, English order");
+}
+for (const token of ['"/data/quran-english/pickthall.json"', 'loadEnglish().then(chapters =>',
+  'english.isConnected', 'current?.s === s && current?.v === v',
+  '"English translation unavailable.', 'chapters[s - 1][v - 1]']) {
+  if (!browserScript.includes(token)) throw new Error("English Quran explorer loading or fallback is missing: " + token);
+}
 new Script(browserScript);
 const css = await readFile("site/assets/qiraat.css", "utf8");
 if (!css.includes("@media(max-width:600px)")) throw new Error("Quran mobile CSS missing");
 if (css.includes(".qiraat-jump")) throw new Error("Unused Quran jump layout was retained");
+if (!css.includes(".qiraat-english") || !css.includes(".qiraat-result-english") ||
+    !css.includes(".qiraat-result-list{display:grid;grid-template-columns:minmax(0,1fr)") ||
+    css.includes("max-height:85px") || css.includes("-webkit-line-clamp:2")) {
+  throw new Error("Quran English verse and untruncated stacked results styles regressed");
+}
 const home = await readFile("site/index.html", "utf8");
 if (home.includes('class="wrap editorial-note"')) throw new Error("Old home editorial panels restored");
 if (!home.includes('href="/quran/"')) throw new Error("Quran explorer not linked from home");
