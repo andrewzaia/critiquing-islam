@@ -67,10 +67,16 @@ assert.ok(builder.includes('src="/assets/quran-previews.js"'),
   "Generated pages must install Quran previews sitewide");
 const styles = await readFile("site/assets/site.css", "utf8");
 assert.ok(styles.includes(".quran-preview-card") && styles.includes("@media(max-width:600px)"));
-assert.ok(styles.includes(".quran-preview-pair") && styles.includes('grid-template-areas:"english arabic"'));
-assert.ok(styles.includes('grid-template-areas:"arabic" "english"'), "The popup must stack on narrow screens");
+assert.ok(!styles.includes(".quran-preview-pair"), "Quran previews must not use side-by-side columns");
+assert.ok(!styles.includes('grid-template-areas:"english arabic"'));
+assert.ok(styles.includes(".quran-preview-arabic") &&
+  styles.includes(".quran-preview-latin") && styles.includes(".quran-preview-english"),
+  "All three text rows must retain their styles");
 assert.ok(previewScript.includes('loadEnglish().catch(() => null)'), "English failures must not disable the Arabic preview");
-assert.ok(previewScript.includes('pair.append(arabic, english)'));
+assert.ok(previewScript.includes('section.append(arabic, latin, english)'),
+  "Each verse must show Arabic, transliteration and English in that order");
+assert.ok(!previewScript.includes('pair.append(arabic, english)'));
+assert.ok(previewScript.includes('latin.lang = "ar-Latn"'));
 assert.ok(previewScript.includes('english.lang = "en"'));
 assert.ok(previewScript.includes("if (thisRequest !== serial) return;"), "Do not apply stale hover translations");
 console.log("Sitewide Quran preview references, English alignment, failure fallback, and responsive presentation checks passed.");

@@ -239,11 +239,11 @@ function startPreviews() {
         section.append(make("h3", "", item.key));
         const arabic = make("p", "quran-preview-arabic", words.map(w => w[0]).join(" "));
         arabic.dir = "rtl"; arabic.lang = "ar"; arabic.translate = false;
-        const pair = make("div", "quran-preview-pair");
+        const latin = make("p", "quran-preview-latin", words.map(w => w[1]).join(" "));
+        latin.lang = "ar-Latn";
         const english = make("p", "quran-preview-english", "Loading English translation...");
         english.lang = "en";
-        pair.append(arabic, english);
-        section.append(pair, make("p", "quran-preview-latin", words.map(w => w[1]).join(" ")));
+        section.append(arabic, latin, english);
         englishTargets.push({item, english});
         body.append(section);
       }
