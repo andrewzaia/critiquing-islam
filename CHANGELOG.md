@@ -2,6 +2,13 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.58.1 - 2026-11-10
+
+- Added public-domain Marmaduke Pickthall (1930) English translation alongside Arabic Quran verses in sitewide reference popups, with transliteration retained below.
+- Added a locally hosted 6,236-verse English dataset, with named translator, source provenance, licensing and explicit failure fallback.
+- Added responsive side-by-side Arabic and English layout on wide screens, stacked layout on mobile, and full-coverage alignment regression checks.
+- Left the Quran explorer, Qira'at variant corpus, Quran.Foundation API and credentials unchanged.
+
 ## v0.58.0 - 2026-11-10
 
 - Added CI-047, a 24-section and 20-reference investigation of Harut and Marut in Quran 2:102, Babylonian magic claims and earlier traditions of angelic instruction.
