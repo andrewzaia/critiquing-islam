@@ -2,6 +2,12 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.58.2 - 2026-11-10
+
+- Changed sitewide Quran verse previews to display Arabic, scholarly transliteration and attributed English translation in that order, as full-width stacked rows for each verse.
+- Removed the side-by-side translation grid on desktop and mobile; retained verse ranges, locally hosted translation, error fallback and existing source attribution.
+- Updated regression checks for row order and absence of the previous two-column layout. Quran explorer and API behaviour were not changed.
+
 ## v0.58.1 - 2026-11-10
 
 - Added public-domain Marmaduke Pickthall (1930) English translation alongside Arabic Quran verses in sitewide reference popups, with transliteration retained below.
