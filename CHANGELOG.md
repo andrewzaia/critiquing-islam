@@ -2,6 +2,15 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.58.0 - 2026-11-10
+
+- Added CI-047, a 24-section and 20-reference investigation of Harut and Marut in Quran 2:102, Babylonian magic claims and earlier traditions of angelic instruction.
+- Added CI-048, a 24-section and 24-reference investigation of the Satanic Verses reports, Quran 53:19-23 and 22:52, al-Tabari's attributed accounts, and Bukhari's separate prostration reports.
+- Distinguished the Quran's extant wording from later attributed narratives and from independently verified historical events; examined Biblical tests of claims to revelation.
+- Expanded CI-037 with a clarification of the Mishnah's extinguished-lineage interpretation against the Quran's actual wording about all humanity.
+- Integrated both investigations into the research library, homepage, source register and related citations; added targeted evidence audits and automated integrity checks.
+- Left the Quran explorer, Qira'at corpus, Quran.Foundation integration, API and credentials unchanged.
+
 ## v0.57.0 - 2026-11-08
 
 - Added CI-046, a 21-section and 28-reference investigation of Quran 12:30-32 and the Egyptian women who cut their hands.
