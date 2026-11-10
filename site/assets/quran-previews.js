@@ -51,10 +51,20 @@ export function expandQuranRange(ref, counts, max = MAX_VERSES) {
   return {items, total, omitted: total - items.length};
 }
 
+export function validateEnglishChapters(source, counts) {
+  return source?.translation === "Marmaduke Pickthall (1930)" &&
+    Array.isArray(counts) && counts.length === 114 &&
+    Array.isArray(source.chapters) && source.chapters.length === counts.length &&
+    source.chapters.every((chapter, index) =>
+      Array.isArray(chapter) && chapter.length === counts[index] &&
+      chapter.every(text => typeof text === "string" && text.trim().length > 0));
+}
+
 function startPreviews() {
   const main = document.querySelector("main");
   if (!main) return;
   const dataCache = new Map();
+  let englishPromise;
   const link = (ref) => "/quran/?verse=" + encodeURIComponent(ref.key);
   const identifyLink = (anchor) => {
     try {
@@ -119,7 +129,7 @@ function startPreviews() {
   close.type = "button";
   close.setAttribute("aria-label", "Close Quran verse preview");
   header.append(heading, close);
-  const detail = make("p", "quran-preview-source-note", "Cairo 1924 / Hafs Arabic reference");
+  const detail = make("p", "quran-preview-source-note", "Arabic: Cairo 1924 / Hafs | English: Marmaduke Pickthall (1930)");
   const body = make("div", "quran-preview-body");
   const summary = make("p", "quran-preview-summary");
   const actions = make("div", "quran-preview-actions");
@@ -129,7 +139,12 @@ function startPreviews() {
   translations.rel = "noopener noreferrer";
   actions.append(explore, translations);
   const provenance = make("p", "quran-preview-provenance",
-    "Locally hosted Cairo/Hafs Arabic and scholarly transliteration. Transliteration is not an English translation; other Qira'at may differ.");
+    "Arabic and transliteration are from the local reference corpus. English is Pickthall's 1930 translation, not an authoritative word-for-word gloss. Other Qira'at may differ. ");
+  const englishSource = make("a", "", "English text provenance");
+  englishSource.href = "https://github.com/risan/quran-json/blob/main/data/extra/english_pickthall.json";
+  englishSource.target = "_blank";
+  englishSource.rel = "noopener noreferrer";
+  provenance.append(englishSource);
   popup.append(header, detail, body, summary, actions, provenance);
   document.body.append(popup);
 
@@ -144,6 +159,16 @@ function startPreviews() {
     }
     return dataCache.get(key);
   };
+  function loadEnglish() {
+    if (!englishPromise) {
+      englishPromise = fetch("/data/quran-english/pickthall.json", {cache: "force-cache"})
+        .then(response => {
+          if (!response.ok) throw new Error("English translation could not be loaded");
+          return response.json();
+        }).catch(error => { englishPromise = null; throw error; });
+    }
+    return englishPromise;
+  }
   function reposition() {
     if (!active || popup.hidden || !active.isConnected) return;
     const rect = active.getBoundingClientRect();
@@ -182,6 +207,8 @@ function startPreviews() {
     const ref = parseQuranReference(target.dataset.quranReference);
     if (!ref) { hide(); return; }
     const thisRequest = ++serial;
+    // Start the optional English request in parallel; a failure must not hide Arabic.
+    const englishRequest = loadEnglish().catch(() => null);
     popup.hidden = false;
     heading.textContent = "Quran " + ref.label;
     explore.href = link(ref);
@@ -203,6 +230,7 @@ function startPreviews() {
         .map(async chapter => [chapter, await cacheJson(chapter)])));
       if (thisRequest !== serial) return;
       body.replaceChildren();
+      const englishTargets = [];
       for (const item of expanded.items) {
         const chapter = chapterData.get(item.chapter);
         const words = chapter?.verses?.[item.verse - 1];
@@ -211,13 +239,27 @@ function startPreviews() {
         section.append(make("h3", "", item.key));
         const arabic = make("p", "quran-preview-arabic", words.map(w => w[0]).join(" "));
         arabic.dir = "rtl"; arabic.lang = "ar"; arabic.translate = false;
-        section.append(arabic, make("p", "quran-preview-latin", words.map(w => w[1]).join(" ")));
+        const pair = make("div", "quran-preview-pair");
+        const english = make("p", "quran-preview-english", "Loading English translation...");
+        english.lang = "en";
+        pair.append(arabic, english);
+        section.append(pair, make("p", "quran-preview-latin", words.map(w => w[1]).join(" ")));
+        englishTargets.push({item, english});
         body.append(section);
       }
       summary.textContent = expanded.omitted
         ? "Showing the first " + expanded.items.length + " of " + expanded.total +
           " verses in this range. Follow the source link for the rest."
         : expanded.total > 1 ? expanded.total + " verses in this range." : "";
+      reposition();
+      const englishData = await englishRequest;
+      if (thisRequest !== serial) return;
+      const validEnglish = validateEnglishChapters(englishData, manifest.counts);
+      for (const {item, english} of englishTargets) {
+        english.textContent = validEnglish
+          ? englishData.chapters[item.chapter - 1][item.verse - 1]
+          : "English translation unavailable. See Quran.com for alternatives.";
+      }
       reposition();
     } catch {
       if (thisRequest !== serial) return;
