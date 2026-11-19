@@ -3,7 +3,7 @@ import { resolve, join, dirname } from "node:path";
 import { parseChangelog, renderChangelog } from "./changelog.mjs";
 const pkg = JSON.parse(await readFile("package.json", "utf8"));
 const doctrineStudies = ["tawhid-and-trinity","divine-sonship","jesus-prophet-or-god","crucifixion-substitution-claim","tahrif-and-biblical-corruption","quran-finality-and-preservation","muhammad-seal-of-prophets","original-sin-and-atonement","islamic-salvation-faith-deeds-mercy","jesus-return-eschatology"];
-const required = [...doctrineStudies.map(x => "site/research/" + x + "/index.html"), "site/research/abrogated-quranic-recitation/index.html", "site/research/moon-splitting-quran-54-1/index.html", "site/research/theology-evidence-audit/index.html", "site/research/al-muhaymin-and-quran-5-48/index.html", "site/index.html", "site/404.html", "site/quran/index.html", "site/assets/qiraat.js", "site/assets/quran-previews.js", "site/assets/qiraat.css", "site/assets/qf-live.js", "functions/api/quran.js", "site/research/index.html", "site/research/quran-61-6-and-paraclete/index.html", "site/research/quran-preservation-and-manuscripts/index.html", "site/research/how-is-a-hadith-authenticated/index.html", "site/research/muhammad-miracle-claims-and-witnesses/index.html", "site/research/uthman-and-quranic-authenticity/index.html", "site/research/dhul-qarnayn-alexander-legend/index.html", "site/research/ezra-son-of-god-claim/index.html", "site/research/quran-salvation-jews-christians/index.html", "site/research/no-compulsion-jizya-and-religious-freedom/index.html", "site/research/shooting-stars-and-devils/index.html", "site/sources/index.html", "site/methodology/index.html", "site/about/index.html", "site/changelog/index.html", "site/assets/site.css", "site/assets/site.js", "site/robots.txt", "site/_headers", "CHANGELOG.md", "README.md"];
+const required = [...doctrineStudies.map(x => "site/research/" + x + "/index.html"), "site/research/abrogated-quranic-recitation/index.html", "site/research/moon-splitting-quran-54-1/index.html", "site/research/sun-setting-muddy-spring-quran-18-86/index.html", "site/research/theology-evidence-audit/index.html", "site/research/al-muhaymin-and-quran-5-48/index.html", "site/index.html", "site/404.html", "site/quran/index.html", "site/assets/qiraat.js", "site/assets/quran-previews.js", "site/assets/qiraat.css", "site/assets/qf-live.js", "functions/api/quran.js", "site/research/index.html", "site/research/quran-61-6-and-paraclete/index.html", "site/research/quran-preservation-and-manuscripts/index.html", "site/research/how-is-a-hadith-authenticated/index.html", "site/research/muhammad-miracle-claims-and-witnesses/index.html", "site/research/uthman-and-quranic-authenticity/index.html", "site/research/dhul-qarnayn-alexander-legend/index.html", "site/research/ezra-son-of-god-claim/index.html", "site/research/quran-salvation-jews-christians/index.html", "site/research/no-compulsion-jizya-and-religious-freedom/index.html", "site/research/shooting-stars-and-devils/index.html", "site/sources/index.html", "site/methodology/index.html", "site/about/index.html", "site/changelog/index.html", "site/assets/site.css", "site/assets/site.js", "site/robots.txt", "site/_headers", "CHANGELOG.md", "README.md"];
 if (!/^\d+\.\d+\.\d+$/.test(pkg.version)) throw new Error("Version must use semantic versioning");
 for (const path of required) await access(path);
 const entries = parseChangelog(await readFile("CHANGELOG.md", "utf8"), pkg.version);
@@ -463,7 +463,7 @@ for (const route of ["/research/joseph-dirhams-and-coinage/", "/research/al-sami
 for (const doc of [doctrineIndex, v028Sources]) {
   if (!doc.includes('href="/research/joseph-dirhams-and-coinage/"')) throw new Error("CI-035 missing from the library or source register");
 }
-if (!doctrineIndex.includes("49 published investigations / 1 research guide")) {
+if (!doctrineIndex.includes("50 published investigations / 1 research guide")) {
   throw new Error("Published research library count does not match 41 investigations");
 }
 
@@ -1097,7 +1097,7 @@ for(const phrase of ["Infancy Gospel of Thomas","Arabic Infancy Gospel","cradle"
     throw new Error("CI-041 missing a critical primary text or witness "+phrase);
 if(!ci041.includes("<span>22 sections</span><span>28 references</span>"))
   throw new Error("CI-041 article metadata regressed");
-if(!(await readFile("site/research/index.html","utf8")).includes("49 published investigations / 1 research guide"))
+if(!(await readFile("site/research/index.html","utf8")).includes("50 published investigations / 1 research guide"))
   throw new Error("CI-041 catalogue count regressed");
 for(const path of ["site/index.html","site/research/index.html","site/sources/index.html"])
   if(!(await readFile(path,"utf8")).includes('href="/research/jesus-infancy-apocrypha/"'))
@@ -1128,7 +1128,7 @@ for(const phrase of ["Pseudo-Matthew","Liber Requiei","Kathisma","Sozomen","Call
     throw new Error("CI-042 lost evidence or chronological distinction "+phrase);
 if(!ci042.includes("<span>22 sections</span><span>28 references</span>"))
   throw new Error("CI-042 metadata no longer matches references and sections");
-if(!(await readFile("site/research/index.html","utf8")).includes("49 published investigations / 1 research guide"))
+if(!(await readFile("site/research/index.html","utf8")).includes("50 published investigations / 1 research guide"))
   throw new Error("CI-042 library count regressed");
 for(const path of ["site/index.html","site/research/index.html","site/sources/index.html"])
   if(!(await readFile(path,"utf8")).includes('href="/research/mary-palm-tree-and-apocrypha/"'))
@@ -1172,7 +1172,7 @@ for (const path of ["site/research/jesus-infancy-apocrypha/index.html",
 for (const path of ["README.md", "CHANGELOG.md", "docs/mary-guardianship-protevangelium-audit-v0.54.0.md"])
   if (!(await readFile(path, "utf8")).includes("CI-043"))
     throw new Error("CI-043 missing release audit documentation " + path);
-if (!(await readFile("site/research/index.html", "utf8")).includes("49 published investigations / 1 research guide"))
+if (!(await readFile("site/research/index.html", "utf8")).includes("50 published investigations / 1 research guide"))
   throw new Error("CI-043 catalogue count regressed");
 
 
@@ -1206,7 +1206,7 @@ for(const p of ["site/index.html","site/research/index.html","site/sources/index
   if(!(await readFile(p,"utf8")).includes('href="/research/abraham-fire-and-pre-islamic-traditions/"'))throw new Error("CI-044 missing discovery link "+p);
 for(const p of ["README.md","CHANGELOG.md","docs/abraham-fire-tradition-evidence-audit-v0.55.0.md"])
   if(!(await readFile(p,"utf8")).includes("CI-044"))throw new Error("CI-044 release audit missing "+p);
-if(!(await readFile("site/research/index.html","utf8")).includes("49 published investigations / 1 research guide"))
+if(!(await readFile("site/research/index.html","utf8")).includes("50 published investigations / 1 research guide"))
   throw new Error("CI-044 research count regressed");
 
 
@@ -1243,7 +1243,7 @@ for (const path of ["site/index.html","site/research/index.html","site/sources/i
 for (const path of ["README.md","CHANGELOG.md","docs/quran-2-259-abimelech-source-audit-v0.56.0.md"])
   if(!(await readFile(path,"utf8")).includes("CI-045"))
     throw new Error("CI-045 release documentation missing "+path);
-if(!(await readFile("site/research/index.html","utf8")).includes("49 published investigations / 1 research guide"))
+if(!(await readFile("site/research/index.html","utf8")).includes("50 published investigations / 1 research guide"))
   throw new Error("CI-045 library count regressed");
 
 
@@ -1274,7 +1274,7 @@ for(const p of ["site/index.html","site/research/index.html","site/sources/index
  if(!(await readFile(p,"utf8")).includes('href="/research/joseph-women-cut-hands-jewish-traditions/"')) throw new Error("CI-046 discovery link "+p);
 for(const p of ["README.md","CHANGELOG.md","docs/joseph-women-cut-hands-source-audit-v0.57.0.md"])
  if(!(await readFile(p,"utf8")).includes("CI-046")) throw new Error("CI-046 documentation "+p);
-if(!(await readFile("site/research/index.html","utf8")).includes("49 published investigations / 1 research guide"))
+if(!(await readFile("site/research/index.html","utf8")).includes("50 published investigations / 1 research guide"))
  throw new Error("CI-046 count regressed");
 
 
@@ -1321,7 +1321,7 @@ for(const path of ["docs/harut-marut-source-audit-v0.58.0.md","docs/satanic-vers
 }
 if(!(await readFile("site/research/quran-5-32-mishnah-sanhedrin/index.html","utf8")).includes("Lineage is the earlier explanation"))
   throw new Error("CI-037 lineage explanation regressed");
-if(!(await readFile("site/research/index.html","utf8")).includes("49 published investigations / 1 research guide"))
+if(!(await readFile("site/research/index.html","utf8")).includes("50 published investigations / 1 research guide"))
   throw new Error("v0.58.0 research library count failed");
 
 await import("./check-qiraat.mjs");
@@ -1372,6 +1372,43 @@ console.log("Verified ten standalone doctrine investigations and their research 
       throw new Error("CI-049 missing release documentation: " + p);
   }
   if (!(await readFile("site/research/index.html", "utf8"))
-        .includes("49 published investigations / 1 research guide"))
+        .includes("50 published investigations / 1 research guide"))
     throw new Error("CI-049 library count regression");
+}
+
+// CI-050: research depth, source traceability, navigation and release integration.
+{
+  const slug = "sun-setting-muddy-spring-quran-18-86";
+  const html = await readFile("site/research/" + slug + "/index.html", "utf8");
+  const start = html.indexOf('<article class="prose longform">');
+  const end = html.indexOf('<section id="references">');
+  if (start < 0 || end <= start) throw new Error("CI-050 research body missing");
+  const body = html.slice(start, end);
+  const sections = [...body.matchAll(/<section id="sun(\d+)">/g)].map(m => +m[1]);
+  const references = [...html.matchAll(/<li id="ref-(\d+)">/g)].map(m => +m[1]);
+  const cited = [...body.matchAll(/href="#ref-(\d+)"/g)].map(m => +m[1]);
+  const words = body.replace(/<[^>]+>/g, " ").trim().split(/\s+/).length;
+  if (sections.length !== 22 || references.length !== 20 || words < 2500 ||
+      sections.some((n,i) => n !== i + 1) ||
+      references.some((n,i) => n !== i + 1) ||
+      references.some(n => !cited.includes(n)) ||
+      cited.some(n => !references.includes(n)))
+    throw new Error("CI-050 depth or citation regression");
+  for (const n of sections) if (!html.includes('href="#sun' + n + '"'))
+    throw new Error("CI-050 section navigation missing");
+  for (const term of ["wajadahā", "ḥamiʾatin", "ḥāmiyatin", "Alexander",
+                      "Al-Tabari", "Biblical", "Historical", "observer"]) {
+    if (!html.includes(term)) throw new Error("CI-050 missing analysis: " + term);
+  }
+  for (const p of ["site/index.html","site/research/index.html","site/sources/index.html",
+                   "site/research/dhul-qarnayn-alexander-legend/index.html"]) {
+    if (!(await readFile(p,"utf8")).includes('href="/research/' + slug + '/"'))
+      throw new Error("CI-050 missing cross-link: " + p);
+  }
+  for (const p of ["README.md","CHANGELOG.md","docs/sunset-spring-evidence-audit-v0.60.0.md"])
+    if (!(await readFile(p,"utf8")).includes("CI-050"))
+      throw new Error("CI-050 release documentation missing: " + p);
+  if (!(await readFile("site/research/index.html","utf8"))
+      .includes("50 published investigations / 1 research guide"))
+    throw new Error("CI-050 research count mismatch");
 }
