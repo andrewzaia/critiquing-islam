@@ -2,6 +2,14 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.60.0 - 2026-11-20
+
+- Added CI-050, a 22-section, 20-reference investigation of Quran 18:86, original Arabic, muddy and hot qira'at, observational language and the Syriac Alexander narrative.
+- Tested the western setting-place against Quran 18:90 and the wider Dhul-Qarnayn itinerary; distinguished an unsupported literal astronomical claim from a linguistically plausible horizon interpretation.
+- Documented disputed source chronology and the alternative of a shared late antique Alexander tradition rather than assuming direct manuscript copying.
+- Integrated CI-050 into the homepage, research library, source register and related investigations; added a source audit and structural regression checks.
+- Updated the research count to 50; preserved existing URLs and the separate Quran explorer, Qira'at and API workstreams.
+
 ## v0.59.0 - 2026-11-19
 
 - Added CI-049, a 22-section investigation with 26 numbered primary and scholarly sources examining the Quran 54:1 moon-splitting claim, Quranic Arabic, hadith witness attributions, competing eschatological readings and historical corroboration.
