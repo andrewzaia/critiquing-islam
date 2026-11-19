@@ -33,5 +33,10 @@ jobs:
           node-version: "22"
       - name: Verify content and links
         run: npm run check
+      - name: Audit research evidence and references
+        run: |
+          npm run audit:evidence
+          npm run audit:references
+          npm run audit:claims
       - name: Build static site
         run: npm run build
