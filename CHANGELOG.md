@@ -2,6 +2,14 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.59.0 - 2026-11-19
+
+- Added CI-049, a 22-section investigation with 26 numbered primary and scholarly sources examining the Quran 54:1 moon-splitting claim, Quranic Arabic, hadith witness attributions, competing eschatological readings and historical corroboration.
+- Examined Bukhari and Muslim transmission groups without counting multiple literary routes as independent original observers; distinguished cited claims about Ibn Masud, Ibn Abbas and Anas.
+- Reviewed lunar rille evidence against the claim of scientific confirmation and examined the source chronology of later Malabar king narratives.
+- Integrated the article and source audit into the research library, homepage, source register and related studies, with targeted depth and citation regression checks.
+- Updated library count to 49 investigations and preserved existing URLs, Quran explorer, Qira'at data, Quran.Foundation API, dependencies and deployment configuration.
+
 ## v0.58.3 - 2026-11-11
 
 - Applied the Arabic, scholarly transliteration and attributed English translation sequence to the Quran explorer reference verse and each search-result verse, including range results.
