@@ -11,7 +11,8 @@ async function injectVersion(path) {
     if (item.isDirectory()) await injectVersion(target);
     else if (item.name.endsWith(".html")) {
       const original = await readFile(target, "utf8");
-      const tagged = original.replaceAll("{{VERSION}}", packageData.version)
+      const indexable = path.endsWith("/404.html") ? original : original.replace('<meta name="robots" content="noindex, nofollow">', '<meta name="robots" content="index, follow">');
+      const tagged = indexable.replaceAll("{{VERSION}}", packageData.version)
         .replace("</body>", '<script type="module" src="/assets/quran-previews.js"></script>\n</body>');
       await writeFile(target, tagged);
     }
