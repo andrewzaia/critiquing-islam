@@ -70,10 +70,10 @@ if (!htmlFiles.length) throw new Error("No HTML pages found");
 const robotsPolicy = await readFile("site/robots.txt", "utf8");
 const headerPolicy = await readFile("site/_headers", "utf8");
 const buildScript = await readFile("scripts/build.mjs", "utf8");
-if (/^\\s*Disallow:\\s*\\/\\s*$/mi.test(robotsPolicy) || !/^Allow:\\s*\\/\\s*$/mi.test(robotsPolicy)) throw new Error("robots.txt blocks public crawling");
-if (/X-Robots-Tag:\\s*noindex/i.test(headerPolicy)) throw new Error("Global headers block indexing");
+if (robotsPolicy.includes("Disallow: /") || !robotsPolicy.includes("Allow: /")) throw new Error("robots.txt blocks public crawling");
+if (headerPolicy.includes("X-Robots-Tag: noindex")) throw new Error("Global headers block indexing");
 if (!buildScript.includes('path.endsWith("/404.html")') || !buildScript.includes('content="index, follow"')) throw new Error("Public HTML indexing build policy missing");
-if ((await readFile("README.md", "utf8")).includes(String.raw`\\n\\n`)) throw new Error("README contains literal escaped paragraph breaks");
+if ((await readFile("README.md", "utf8")).includes("\\n\\n")) throw new Error("README contains literal escaped paragraph breaks");
 
 console.log("Checked " + htmlFiles.length + " HTML pages, internal assets, and semantic version v" + pkg.version);
 
