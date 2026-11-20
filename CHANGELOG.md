@@ -2,6 +2,12 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.60.1 - 2026-11-20
+
+- Enabled public search indexing in generated production HTML, robots.txt and HTTP headers while keeping the 404 page noindex.
+- Corrected literal escaped paragraph breaks in README and added indexing regression checks.
+- Preserved all research URLs and separate Quran integration workstreams.
+
 ## v0.60.0 - 2026-11-20
 
 - Added CI-050, a 22-section, 20-reference investigation of Quran 18:86, original Arabic, muddy and hot qira'at, observational language and the Syriac Alexander narrative.
