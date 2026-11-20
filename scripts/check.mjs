@@ -1037,7 +1037,7 @@ const ci014Refs = [...ci014.matchAll(/<li id="ref-(\d+)">/g)].map(m=>Number(m[1]
 const ci014Cites = [...ci014Body.matchAll(/href="#ref-(\d+)"/g)].map(m=>Number(m[1]));
 const ci014Urls = [...ci014.matchAll(/<li id="ref-\d+">[\s\S]*?<a href="([^"]+)" target="_blank"/g)].map(m=>m[1].replaceAll("&amp;","&"));
 const ci014Words = ci014Body.replace(/<[^>]*>/g," ").trim().split(/\s+/).length;
-if(ci014Sections.length<26||ci014Refs.length<28||ci014Words<4800||
+if(ci014Sections.length<30||ci014Refs.length<33||ci014Words<5600||
    !ci014Refs.every((n,i)=>n===i+1)||
    ci014Refs.some(n=>!ci014Cites.includes(n))||
    ci014Cites.some(n=>!ci014Refs.includes(n))||
@@ -1050,8 +1050,29 @@ for(const phrase of ["consonantal","orthographic","vocalisation","Sanaa","Sidky"
   "Déroche","Birmingham","palimpsest","Falsification test:"])
   if(!ci014.toLowerCase().includes(phrase.toLowerCase()))
     throw new Error("CI-014 missing a manuscript or reading test "+phrase);
-if(!ci014.includes("<span>26 sections</span><span>28 references</span>"))
+if(!ci014.includes("<span>30 sections</span><span>33 references</span>"))
   throw new Error("CI-014 section or reference metadata drift");
+
+// CI-014 v0.61.0: NLR Marcel 2 is not an invented reconstructed variant.
+for (const id of ["marcel-catalogue","marcel-verse","marcel-explanations","marcel-verdict"])
+  if(!ci014.includes('<section id="'+id+'">') || !ci014.includes('href="#'+id+'"'))
+    throw new Error("CI-014 Marcel 2 section or navigation is missing: "+id);
+for (const phrase of ["NLR Marcel 2","folio 30v","Quran 30:9","dittography",
+    "erased wording","not established","2021","Corpus Coranicum","Brubaker"])
+  if(!ci014.toLowerCase().includes(phrase.toLowerCase()))
+    throw new Error("CI-014 Marcel 2 evidential qualifier missing: "+phrase);
+for (const ref of [29,30,31,32,33])
+  if(!ci014.includes('href="#ref-'+ref+'"'))
+    throw new Error("CI-014 Marcel 2 source unused: "+ref);
+for(const p of ["site/index.html","site/research/index.html","site/sources/index.html",
+    "site/research/quran-preservation-and-manuscripts/index.html",
+    "site/research/quran-finality-and-preservation/index.html"])
+  if(!(await readFile(p,"utf8")).includes("Marcel 2"))
+    throw new Error("CI-014 Marcel 2 discoverability gap: "+p);
+const marcelAudit = await readFile("docs/marcel-2-quran-30-9-evidence-audit-v0.61.0.md","utf8");
+if(!marcelAudit.includes("dittography") || !marcelAudit.includes("not established") ||
+   !marcelAudit.includes("folio 30v"))
+  throw new Error("CI-014 Marcel 2 evidence audit missing falsification safeguards");
 
 // CI-021 v0.51.0: guardian morphology and explicit Quran 10:94 scripture appeal.
 const ci021 = await readFile("site/research/al-muhaymin-and-quran-5-48/index.html","utf8");
