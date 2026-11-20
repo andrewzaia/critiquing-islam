@@ -2,6 +2,13 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.61.0 - 2026-11-21
+
+- Expanded CI-014 to 30 analytical sections and 33 references with a folio-level examination of NLR Marcel 2 and the reported erasure at Quran 30:9.
+- Distinguished the surviving corrected reading from unreadable erased text, and evaluated scribal duplication against proposed textual alteration using Brubaker and Sidky.
+- Linked the case study from the homepage, research library, source register and related preservation studies; added a manuscript evidence audit and automated citation, navigation and qualification checks.
+- Preserved existing research URLs and separate Quran integration workstreams.
+
 ## v0.60.1 - 2026-11-20
 
 - Enabled public search indexing in generated production HTML, robots.txt and HTTP headers while keeping the 404 page noindex.
