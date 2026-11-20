@@ -1070,8 +1070,8 @@ for(const p of ["site/index.html","site/research/index.html","site/sources/index
   if(!(await readFile(p,"utf8")).includes("Marcel 2"))
     throw new Error("CI-014 Marcel 2 discoverability gap: "+p);
 const marcelAudit = await readFile("docs/marcel-2-quran-30-9-evidence-audit-v0.61.0.md","utf8");
-if(!marcelAudit.includes("dittography") || !marcelAudit.includes("not established") ||
-   !marcelAudit.includes("folio 30v"))
+if(!marcelAudit.toLowerCase().includes("dittography") || !marcelAudit.toLowerCase().includes("not established") ||
+   !marcelAudit.toLowerCase().includes("folio 30v"))
   throw new Error("CI-014 Marcel 2 evidence audit missing falsification safeguards");
 
 // CI-021 v0.51.0: guardian morphology and explicit Quran 10:94 scripture appeal.
