@@ -1037,7 +1037,7 @@ const ci014Refs = [...ci014.matchAll(/<li id="ref-(\d+)">/g)].map(m=>Number(m[1]
 const ci014Cites = [...ci014Body.matchAll(/href="#ref-(\d+)"/g)].map(m=>Number(m[1]));
 const ci014Urls = [...ci014.matchAll(/<li id="ref-\d+">[\s\S]*?<a href="([^"]+)" target="_blank"/g)].map(m=>m[1].replaceAll("&amp;","&"));
 const ci014Words = ci014Body.replace(/<[^>]*>/g," ").trim().split(/\s+/).length;
-if(ci014Sections.length<36||ci014Refs.length<43||ci014Words<5600||
+if(ci014Sections.length<42||ci014Refs.length<55||ci014Words<5600||
    !ci014Refs.every((n,i)=>n===i+1)||
    ci014Refs.some(n=>!ci014Cites.includes(n))||
    ci014Cites.some(n=>!ci014Refs.includes(n))||
@@ -1050,7 +1050,7 @@ for(const phrase of ["consonantal","orthographic","vocalisation","Sanaa","Sidky"
   "Déroche","Birmingham","palimpsest","Falsification test:"])
   if(!ci014.toLowerCase().includes(phrase.toLowerCase()))
     throw new Error("CI-014 missing a manuscript or reading test "+phrase);
-if(!ci014.includes("<span>36 sections</span><span>43 references</span>"))
+if(!ci014.includes("<span>42 sections</span><span>55 references</span>"))
   throw new Error("CI-014 section or reference metadata drift");
 
 // CI-014 v0.61.0: NLR Marcel 2 is not an invented reconstructed variant.
@@ -1460,4 +1460,12 @@ for (const phrase of ["f. 8v l. 21","f. 24v l. 16","f. 36r l. 2","f. 46r l. 6","
 }
 for (const p of ["site/index.html","site/research/index.html","site/sources/index.html","site/research/quran-preservation-and-manuscripts/index.html"]) {
   if (!(await readFile(p,"utf8")).includes("Parisino-petropolitanus")) throw new Error("CI-014 Parisino discovery missing: "+p);
+}
+
+// CI-014 v0.64.0: located Marcel corrections and evidence boundaries.
+for (const id of ["marcel-fustat","marcel-divine-name","marcel-grammar","marcel-hour","marcel-overwriting","marcel-additions-verdict"]) {
+  if (!ci014Sections.includes(id) || !ci014.includes('href="#'+id+'"')) throw new Error("CI-014 missing Marcel section "+id);
+}
+for (const phrase of ["Marcel 11 f. 8r","Marcel 11 f. 10v","Marcel 11 f. 12v","Marcel 21 f. 4v l. 11","f. 20v","f. 23r","f. 26r","Marcel 7 f. 7r","Marcel 5 f. 11r","دعوا إلى ورسوله","أو أتتكم الساعة","the exact erased wording is not demonstrated","not four independent early copies","not independently collated"]) {
+  if (!ci014.includes(phrase)) throw new Error("CI-014 Marcel evidence missing: "+phrase);
 }
