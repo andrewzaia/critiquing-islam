@@ -11,7 +11,13 @@ async function injectVersion(path) {
     if (item.isDirectory()) await injectVersion(target);
     else if (item.name.endsWith(".html")) {
       const original = await readFile(target, "utf8");
-      const indexable = path.endsWith("/404.html") ? original : original.replace('<meta name="robots" content="noindex, nofollow">', '<meta name="robots" content="index, follow">');
+      const isNotFound = item.name === "404.html";
+      const indexable = isNotFound ? original : original.replace('<meta name="robots" content="noindex, nofollow">', '<meta name="robots" content="index, follow">');
+      const expectedRobots = isNotFound ? "noindex, nofollow" : "index, follow";
+      const robotsTags = [...indexable.matchAll(/<meta\s+name="robots"\s+content="([^"]*)"\s*\/?>/gi)];
+      if (robotsTags.length !== 1 || robotsTags[0][1] !== expectedRobots) {
+        throw new Error("Incorrect generated robots policy in " + target + ": expected " + expectedRobots);
+      }
       const tagged = indexable.replaceAll("{{VERSION}}", packageData.version)
         .replace("</body>", '<script type="module" src="/assets/quran-previews.js"></script>\n</body>');
       await writeFile(target, tagged);
