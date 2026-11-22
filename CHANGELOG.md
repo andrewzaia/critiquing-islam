@@ -2,6 +2,12 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.64.0 - 2026-11-22
+
+- Expanded CI-014 to 42 sections and 55 numbered references with ten located Marcel manuscript comparisons, including eight reported insertions and two uncertain overwritten readings.
+- Distinguished related Fustat fragments, grammatical copying errors, earlier standard-text parallels and the limits of reconstructing erased wording.
+- Added source documentation, cross-links and structural checks; preserved research URLs and separate Quran integration workstreams.
+
 ## v0.63.0 - 2026-11-22
 
 - Expanded CI-014 to 36 sections and 43 references with located Parisino-petropolitanus comparisons.
