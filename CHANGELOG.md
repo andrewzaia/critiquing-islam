@@ -2,6 +2,12 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.61.1 - 2026-11-22
+
+- Fixed the 404 indexing exception to use the HTML filename rather than its parent directory.
+- Added build-time validation of robots directives in every generated HTML page and checks for excessive README paragraph breaks.
+- Preserved indexable public pages, research URLs, content and Quran integration.
+
 ## v0.61.0 - 2026-11-21
 
 - Expanded CI-014 to 30 analytical sections and 33 references with a folio-level examination of NLR Marcel 2 and the reported erasure at Quran 30:9.
