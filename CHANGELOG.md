@@ -2,6 +2,12 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.62.0 - 2026-11-22
+
+- Expanded CI-003 to 29 analytical sections and 38 numbered references with folio-level Sanaa and Birmingham comparisons.
+- Examined the relative charity omission in Quran 2:196, shorter prayer in 2:201, and distinct canonical and corrected Birmingham readings.
+- Added a classification matrix, evidence audit, cross-links and regression checks while preserving existing research URLs and Quran integration.
+
 ## v0.61.1 - 2026-11-22
 
 - Fixed the 404 indexing exception to use the HTML filename rather than its parent directory.
