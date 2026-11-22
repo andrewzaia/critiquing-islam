@@ -2,6 +2,12 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.68.0 - 2026-11-22
+
+- Expanded CI-003 to 45 analytical sections and 74 references with further Sanaa lower-text wording, legal context, earlier-scripture references and chapter-order analysis.
+- Added ten located comparisons from the Stanford 2007, David 86/2003 and Bonhams 2000 leaves, expanding the searchable catalogue to 49 records in seven groups.
+- Distinguished reported, inferred and partial readings, especially at Quran 2:218, 2:222 and 5:42; added source audit and regression safeguards without changing Quran integration.
+
 ## v0.67.0 - 2026-11-22
 
 - Expanded CI-003 to 39 analytical sections and 62 references with Tübingen Ma VI 165 and British Library Or. 2165 dating, reading and regional evidence.
