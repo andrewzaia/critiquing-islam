@@ -2,6 +2,13 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.71.0 - 2026-11-22
+
+- Added independent semantic-impact, canonical-status, physical-state and context filters for all 68 existing catalogue comparisons.
+- Added an evidence overview and static same-verse comparisons for 2:196 and 10:22, retaining permanent record anchors and no-JavaScript access.
+- Distinguished folio locators from related manuscript resources; documented editorial classifications and added completeness and combined-filter regression tests.
+- Research totals, manuscript wording, citations and Quran integration remain unchanged.
+
 ## v0.70.0 - 2026-11-22
 
 - Expanded CI-014 to 54 sections and 78 references with noncanonical and unrecorded manuscript readings, cross-manuscript parallels and a preservation-claim evidence matrix.
