@@ -1473,7 +1473,7 @@ for (const phrase of ["Marcel 11 f. 8r","Marcel 11 f. 10v","Marcel 11 f. 12v","M
 // v0.65.0: independent manuscript catalogue, static records and filter logic.
 const manuscriptHtml = await readFile("site/manuscripts/index.html", "utf8");
 const manuscriptMatches = [...manuscriptHtml.matchAll(/<article class="manuscript-record" id="(mv-\d+)" data-family="([^"]+)" data-class="([^"]+)" data-state="([^"]+)" data-verse="([^"]+)">([\s\S]*?)<\/article>/g)];
-const manuscriptRecords = manuscriptMatches.map(m => ({ id:m[1],family:m[2],classification:m[3],state:m[4],verse:m[5],text:m[6].replace(/<[^>]*>/g," ") }));
+const manuscriptRecords = manuscriptMatches.map(m => ({ id:m[1],family:m[2],classification:m[3],state:m[4],verse:m[5],witness:m[6].match(/<p class="manuscript-witness">([^<]+)<\/p>/)?.[1] || "",text:m[6].replace(/<[^>]*>/g," ") }));
 if (manuscriptRecords.length !== 25 || new Set(manuscriptRecords.map(m=>m.id)).size !== 25) throw new Error("Manuscript comparison count or IDs invalid");
 for (const m of manuscriptMatches) {
   const body = m[6];
@@ -1491,7 +1491,8 @@ function manuscriptCount(filters) { return manuscriptRecords.filter(m => matches
 for (const [filters,expected] of [
   [{},25],[{query:"2:196"},3],[{query:"٢:١٩٦"},3],[{query:"Quran 2 : 196"},3],
   [{family:"marcel"},11],[{classification:"orthography"},1],[{state:"unknown"},3],
-  [{query:"Marcel 13",family:"marcel"},3],[{query:"صدقة",family:"sanaa",classification:"legal"},1],
+  [{query:"Marcel 13",family:"marcel"},3],[{query:"Marcel13"},3],[{query:"Marcel 1"},0],[{query:"NLR Marcel 2"},1],
+  [{query:"Marcel 11 33:24"},1],[{query:"صدقة",family:"sanaa",classification:"legal"},1],
   [{query:"2:19"},0],[{query:"2:196",family:"marcel"},0],[{query:"not a manuscript"},0]
 ]) {
   if (manuscriptCount(filters)!==expected) throw new Error("Manuscript filter failed: "+JSON.stringify(filters));
