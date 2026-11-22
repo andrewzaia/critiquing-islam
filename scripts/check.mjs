@@ -703,7 +703,7 @@ const ci003Refs = [...ci003.matchAll(/<li id="ref-(\d+)">/g)].map(x=>Number(x[1]
 const ci003Cites = [...ci003Body.matchAll(/href="#ref-(\d+)"/g)].map(x=>Number(x[1]));
 const ci003Words = ci003Body.replace(/<[^>]*>/g," ").trim().split(/\s+/).length;
 const ci003Urls = [...ci003.matchAll(/<li id="ref-\d+">[\s\S]*?<a href="([^"]+)" target="_blank"/g)].map(x=>x[1].replaceAll("&amp;","&"));
-if (ci003Sections.length < 45 || ci003Refs.length < 74 || ci003Words < 3500 ||
+if (ci003Sections.length < 45 || ci003Refs.length < 79 || ci003Words < 3500 ||
     !ci003Refs.every((n,i)=>n===i+1) ||
     ci003Refs.some(n=>!ci003Cites.includes(n)) ||
     ci003Cites.some(n=>!ci003Refs.includes(n)) ||
@@ -1037,7 +1037,7 @@ const ci014Refs = [...ci014.matchAll(/<li id="ref-(\d+)">/g)].map(m=>Number(m[1]
 const ci014Cites = [...ci014Body.matchAll(/href="#ref-(\d+)"/g)].map(m=>Number(m[1]));
 const ci014Urls = [...ci014.matchAll(/<li id="ref-\d+">[\s\S]*?<a href="([^"]+)" target="_blank"/g)].map(m=>m[1].replaceAll("&amp;","&"));
 const ci014Words = ci014Body.replace(/<[^>]*>/g," ").trim().split(/\s+/).length;
-if(ci014Sections.length<54||ci014Refs.length<78||ci014Words<5600||
+if(ci014Sections.length<54||ci014Refs.length<81||ci014Words<5600||
    !ci014Refs.every((n,i)=>n===i+1)||
    ci014Refs.some(n=>!ci014Cites.includes(n))||
    ci014Cites.some(n=>!ci014Refs.includes(n))||
@@ -1050,7 +1050,7 @@ for(const phrase of ["consonantal","orthographic","vocalisation","Sanaa","Sidky"
   "Déroche","Birmingham","palimpsest","Falsification test:"])
   if(!ci014.toLowerCase().includes(phrase.toLowerCase()))
     throw new Error("CI-014 missing a manuscript or reading test "+phrase);
-if(!ci014.includes("<span>54 sections</span><span>78 references</span>"))
+if(!ci014.includes("<span>54 sections</span><span>81 references</span>"))
   throw new Error("CI-014 section or reference metadata drift");
 
 // CI-014 v0.61.0: NLR Marcel 2 is not an invented reconstructed variant.
@@ -1599,3 +1599,15 @@ if(manuscriptRecords.filter(m=>["inferred","partial","unknown"].includes(m.state
    !manuscriptHtml.includes("image not independently collated."))
   throw new Error("Manuscript evidence boundary or overview regression");
 console.log("Manuscript catalogue: four independent facets, combined filters and complete static repeated-verse groups verified");
+
+ // v0.72.0: provenance and access cross-checks, not independent image collation.
+for(const id of ["mv-006","mv-007","mv-008","mv-009","mv-010","mv-011","mv-012","mv-013","mv-014","mv-035","mv-036","mv-037","mv-038"]){
+  const body=manuscriptMatches.find(m=>m[1]===id)?.[10]||"";
+  if(!body.includes('class="manuscript-resource"')||!body.includes("not independently collated")) throw new Error("Manuscript access boundary missing: "+id);
+}
+for(const [id,folio] of [["mv-036","3v"],["mv-037","11v"],["mv-038","56r"]]){
+  const body=manuscriptMatches.find(m=>m[1]===id)?.[10]||"";
+  if(!body.includes("f. "+folio+" (secondary contents index; line not verified)")||!body.includes("does not by itself verify the vowel or correction"))throw new Error("Tübingen locator qualification missing: "+id);
+}
+if(!ci003.includes("modern Cairo text, not the manuscript transcription")||!ci003.includes("عما تٯولوں")||!ci014.includes("competing catalogue estimates")||!ci014.includes("750 CE for the same 56-folio shelfmark"))throw new Error("Folio access or dating boundary regressed");
+console.log("Manuscript catalogue: institutional access and qualified folio locators verified structurally");
