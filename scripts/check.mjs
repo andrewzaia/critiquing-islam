@@ -1472,11 +1472,11 @@ for (const phrase of ["Marcel 11 f. 8r","Marcel 11 f. 10v","Marcel 11 f. 12v","M
 
 // v0.65.0: independent manuscript catalogue, static records and filter logic.
 const manuscriptHtml = await readFile("site/manuscripts/index.html", "utf8");
-const manuscriptMatches = [...manuscriptHtml.matchAll(/<article class="manuscript-record" id="(mv-\d+)" data-family="([^"]+)" data-class="([^"]+)" data-state="([^"]+)" data-verse="([^"]+)">([\s\S]*?)<\/article>/g)];
-const manuscriptRecords = manuscriptMatches.map(m => ({ id:m[1],family:m[2],classification:m[3],state:m[4],verse:m[5],witness:m[6].match(/<p class="manuscript-witness">([^<]+)<\/p>/)?.[1] || "",text:m[6].replace(/<[^>]*>/g," ") }));
+const manuscriptMatches = [...manuscriptHtml.matchAll(/<article class="manuscript-record" id="(mv-\d+)" data-family="([^"]+)" data-class="([^"]+)" data-state="([^"]+)" data-verse="([^"]+)" data-impact="([^"]+)" data-canon="([^"]+)" data-physical="([^"]+)" data-topic="([^"]+)">([\s\S]*?)<\/article>/g)];
+const manuscriptRecords = manuscriptMatches.map(m => ({ id:m[1],family:m[2],classification:m[3],state:m[4],verse:m[5],impact:m[6],canon:m[7],physical:m[8],topic:m[9],witness:m[10].match(/<p class="manuscript-witness">([^<]+)<\/p>/)?.[1] || "",text:m[10].replace(/<[^>]*>/g," ") }));
 if (manuscriptRecords.length !== 68 || new Set(manuscriptRecords.map(m=>m.id)).size !== 68) throw new Error("Manuscript comparison count or IDs invalid");
 for (const m of manuscriptMatches) {
-  const body = m[6];
+  const body = m[10];
   const link = body.match(/href="(\/research\/[^"#]+\/)#([^"]+)"/);
   if (!link || !body.includes('href="#'+m[1]+'"') || !body.includes('target="_blank"') || !body.includes("Sources and comparison references"))
     throw new Error("Manuscript record missing evidence link: "+m[1]);
@@ -1547,3 +1547,55 @@ for (const phrase of ["Table 5.4","Table 5.5","at least 28","12 instances","f. 1
   if (!ci014.includes(phrase)) throw new Error("CI-014 missing noncanonical evidence: "+phrase);
 }
 if(!manuscriptRecords.some(m=>m.id==="mv-064"&&m.state==="inferred"&&m.classification==="unattested")) throw new Error("Ambiguous Topkapi pointing misclassified");
+
+ // v0.71.0: independent facets, explicit uncertainty and same-verse comparison.
+const evidenceFacetCounts = {
+  impact:{spelling:3,limited:25,meaning:31,uncertain:9},
+  canon:{canonical:8,noncanonical:7,unrecorded:5,unassessed:48},
+  physical:{insertion:17,amendment:7,erasure:6,none:38},
+  topic:{legal:12,theological:30,general:26}
+};
+for (const [key, expected] of Object.entries(evidenceFacetCounts)) {
+  const actual = {};
+  for (const record of manuscriptRecords) actual[record[key]] = (actual[record[key]] || 0) + 1;
+  for (const [value,count] of Object.entries(expected)) {
+    if (actual[value]!==count || manuscriptCount({[key]:value})!==count)
+      throw new Error("Manuscript facet regression: "+key+"="+value);
+    if (!manuscriptHtml.includes('<option value="'+value+'">'))
+      throw new Error("Missing manuscript facet option: "+value);
+  }
+  if(Object.keys(actual).length!==Object.keys(expected).length || Object.values(actual).reduce((a,b)=>a+b,0)!==68)
+    throw new Error("Incomplete or invalid manuscript facet: "+key);
+}
+for(const [filters,expected] of [
+  [{query:"2:196",impact:"meaning",topic:"legal"},1],
+  [{query:"2:196",impact:"spelling"},1],
+  [{query:"10:22",canon:"canonical"},1],
+  [{query:"10:22",canon:"noncanonical"},1],
+  [{query:"10:22",physical:"amendment"},1],
+  [{query:"5:53",canon:"canonical",physical:"insertion"},1],
+  [{query:"5:8",state:"unknown",impact:"uncertain",physical:"erasure"},1],
+  [{query:"7:76",canon:"unrecorded",state:"inferred"},1],
+  [{query:"10:22",family:"amrensis",canon:"canonical"},0]
+]) if(manuscriptCount(filters)!==expected) throw new Error("Combined facet regression: "+JSON.stringify(filters));
+const repeatedVerses = new Map();
+for(const record of manuscriptRecords) {
+  const list = repeatedVerses.get(record.verse)||[];
+  list.push(record.id);
+  repeatedVerses.set(record.verse,list);
+}
+const verseGroups = [...manuscriptHtml.matchAll(/<details class="manuscript-verse-group" id="verse-(\d+)-(\d+)">([\s\S]*?)<\/details>/g)];
+if(verseGroups.length!==[...repeatedVerses.values()].filter(v=>v.length>1).length)throw new Error("Repeated verse group count mismatch");
+for(const m of verseGroups){
+  const verse=m[1]+":"+m[2], actual=[...m[3].matchAll(/href="#(mv-\d+)"/g)].map(x=>x[1]),expected=repeatedVerses.get(verse)||[];
+  if(expected.length<2 || JSON.stringify(actual)!==JSON.stringify(expected) || !m[3].includes('data-show-verse="'+verse+'" hidden'))
+    throw new Error("Repeated verse comparison mismatch: "+verse);
+}
+if(manuscriptRecords.filter(m=>["inferred","partial","unknown"].includes(m.state)).length!==13 ||
+   !manuscriptHtml.includes("<strong>13 records</strong>") ||
+   !manuscriptHtml.includes("not a representative sample") ||
+   !manuscriptHtml.includes("No intervention established is not proof") ||
+   !manuscriptHtml.includes("Not a verified exact folio for this reading.") ||
+   !manuscriptHtml.includes("image not independently collated."))
+  throw new Error("Manuscript evidence boundary or overview regression");
+console.log("Manuscript catalogue: four independent facets, combined filters and complete static repeated-verse groups verified");
