@@ -2,6 +2,12 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.66.0 - 2026-11-22
+
+- Expanded CI-003 to 34 analytical sections and 49 references with Codex Mashhad's reported local readings and physical chapter rearrangement.
+- Added nine located comparisons from manuscripts 18 and 4116 to the searchable catalogue, increasing its collection to 34 records in five groups.
+- Distinguished reconstructed chapter sequence, reported scribal corrections and uncorrected local differences; added source audit, cross-links and regression checks.
+
 ## v0.65.0 - 2026-11-22
 
 - Added an independently navigable Early Quranic Manuscript Variants Catalogue with 25 selected comparisons from CI-003 and CI-014.
