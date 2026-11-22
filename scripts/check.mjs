@@ -1469,3 +1469,34 @@ for (const id of ["marcel-fustat","marcel-divine-name","marcel-grammar","marcel-
 for (const phrase of ["Marcel 11 f. 8r","Marcel 11 f. 10v","Marcel 11 f. 12v","Marcel 21 f. 4v l. 11","f. 20v","f. 23r","f. 26r","Marcel 7 f. 7r","Marcel 5 f. 11r","دعوا إلى ورسوله","أو أتتكم الساعة","the exact erased wording is not demonstrated","not four independent early copies","not independently collated"]) {
   if (!ci014.includes(phrase)) throw new Error("CI-014 Marcel evidence missing: "+phrase);
 }
+
+// v0.65.0: independent manuscript catalogue, static records and filter logic.
+const manuscriptHtml = await readFile("site/manuscripts/index.html", "utf8");
+const manuscriptMatches = [...manuscriptHtml.matchAll(/<article class="manuscript-record" id="(mv-\d+)" data-family="([^"]+)" data-class="([^"]+)" data-state="([^"]+)" data-verse="([^"]+)">([\s\S]*?)<\/article>/g)];
+const manuscriptRecords = manuscriptMatches.map(m => ({ id:m[1],family:m[2],classification:m[3],state:m[4],verse:m[5],text:m[6].replace(/<[^>]*>/g," ") }));
+if (manuscriptRecords.length !== 25 || new Set(manuscriptRecords.map(m=>m.id)).size !== 25) throw new Error("Manuscript comparison count or IDs invalid");
+for (const m of manuscriptMatches) {
+  const body = m[6];
+  const link = body.match(/href="(\/research\/[^"#]+\/)#([^"]+)"/);
+  if (!link || !body.includes('href="#'+m[1]+'"') || !body.includes('target="_blank"') || !body.includes("Sources and comparison references"))
+    throw new Error("Manuscript record missing evidence link: "+m[1]);
+  const article = await readFile("site"+link[1]+"index.html","utf8");
+  if (!article.includes('id="'+link[2]+'"')) throw new Error("Manuscript investigation anchor missing: "+m[1]);
+  if ((m[4]==="unknown") !== body.includes("Not recovered")) throw new Error("Unknown reading boundary regressed: "+m[1]);
+}
+for (const page of ["site/index.html","site/research/index.html","site/sources/index.html","site/research/quran-preservation-and-manuscripts/index.html","site/research/uthman-and-quranic-authenticity/index.html"])
+  if (!(await readFile(page,"utf8")).includes('href="/manuscripts/"')) throw new Error("Manuscript catalogue discoverability missing: "+page);
+const { matchesManuscript, normaliseManuscriptSearch } = await import("../site/assets/manuscripts.mjs");
+function manuscriptCount(filters) { return manuscriptRecords.filter(m => matchesManuscript(m,filters)).length; }
+for (const [filters,expected] of [
+  [{},25],[{query:"2:196"},3],[{query:"٢:١٩٦"},3],[{query:"Quran 2 : 196"},3],
+  [{family:"marcel"},11],[{classification:"orthography"},1],[{state:"unknown"},3],
+  [{query:"Marcel 13",family:"marcel"},3],[{query:"صدقة",family:"sanaa",classification:"legal"},1],
+  [{query:"2:19"},0],[{query:"2:196",family:"marcel"},0],[{query:"not a manuscript"},0]
+]) {
+  if (manuscriptCount(filters)!==expected) throw new Error("Manuscript filter failed: "+JSON.stringify(filters));
+}
+if(normaliseManuscriptSearch("أَوْ صَدَقَة")!=="او صدقة") throw new Error("Manuscript Arabic search normalisation failed");
+if(!manuscriptHtml.includes('id="manuscript-filters" class="manuscript-filters" hidden') || !manuscriptHtml.includes("25 of 25 comparisons displayed") || !manuscriptHtml.includes("not independent manuscripts"))
+  throw new Error("Manuscript static fallback/evidence qualification missing");
+console.log("Manuscript catalogue: 25 static comparisons, evidence links and filter regression tests passed");
