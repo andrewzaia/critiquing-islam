@@ -2,6 +2,12 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.72.0 - 2026-11-23
+
+- Added qualified institutional manuscript access links to 13 existing comparisons; cross-checked the indexed Tübingen 17:43 transcription and identified three further folio locations from a secondary contents index.
+- Expanded CI-003 to 79 references and CI-014 to 81 references, distinguishing current folio locators, Cairo reference text, XML dataset metadata and conflicting catalogue estimates for Arabe 328(a).
+- Added source register links, an access audit and structural safeguards. No new independently collated image readings, variants or investigations were added.
+
 ## v0.71.0 - 2026-11-22
 
 - Added independent semantic-impact, canonical-status, physical-state and context filters for all 68 existing catalogue comparisons.
