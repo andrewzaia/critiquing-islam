@@ -1493,7 +1493,7 @@ for (const [filters,expected] of [
   [{family:"marcel"},11],[{classification:"orthography"},1],[{state:"unknown"},3],
   [{query:"Marcel 13",family:"marcel"},3],[{query:"Marcel13"},3],[{query:"Marcel 1"},0],[{query:"NLR Marcel 2"},1],
   [{query:"Marcel 11 33:24"},1],[{query:"صدقة",family:"sanaa",classification:"legal"},1],
-  [{query:"2:19"},0],[{query:"2:196",family:"marcel"},0],[{query:"not a manuscript"},0]
+  [{query:"2:19"},0],[{query:"2:196",family:"marcel"},0],[{query:"zz-no-matching-shelfmark-zz"},0]
 ]) {
   if (manuscriptCount(filters)!==expected) throw new Error("Manuscript filter failed: "+JSON.stringify(filters));
 }
