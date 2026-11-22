@@ -1037,7 +1037,7 @@ const ci014Refs = [...ci014.matchAll(/<li id="ref-(\d+)">/g)].map(m=>Number(m[1]
 const ci014Cites = [...ci014Body.matchAll(/href="#ref-(\d+)"/g)].map(m=>Number(m[1]));
 const ci014Urls = [...ci014.matchAll(/<li id="ref-\d+">[\s\S]*?<a href="([^"]+)" target="_blank"/g)].map(m=>m[1].replaceAll("&amp;","&"));
 const ci014Words = ci014Body.replace(/<[^>]*>/g," ").trim().split(/\s+/).length;
-if(ci014Sections.length<30||ci014Refs.length<33||ci014Words<5600||
+if(ci014Sections.length<36||ci014Refs.length<43||ci014Words<5600||
    !ci014Refs.every((n,i)=>n===i+1)||
    ci014Refs.some(n=>!ci014Cites.includes(n))||
    ci014Cites.some(n=>!ci014Refs.includes(n))||
@@ -1050,7 +1050,7 @@ for(const phrase of ["consonantal","orthographic","vocalisation","Sanaa","Sidky"
   "Déroche","Birmingham","palimpsest","Falsification test:"])
   if(!ci014.toLowerCase().includes(phrase.toLowerCase()))
     throw new Error("CI-014 missing a manuscript or reading test "+phrase);
-if(!ci014.includes("<span>30 sections</span><span>33 references</span>"))
+if(!ci014.includes("<span>36 sections</span><span>43 references</span>"))
   throw new Error("CI-014 section or reference metadata drift");
 
 // CI-014 v0.61.0: NLR Marcel 2 is not an invented reconstructed variant.
@@ -1449,4 +1449,15 @@ for (const id of ["folio-method","sanaa-legal","sanaa-prayer","birmingham-varian
 }
 for (const phrase of ["Stanford 2007","أو صدقة","من صيم او نسك","رؤوسكم","في الدنيا والآخرة","folio 7r","line 7","line 15","No recoverable variant claimed","not direct laboratory imaging"]) {
   if (!ci003.toLowerCase().includes(phrase.toLowerCase())) throw new Error("CI-003 missing manuscript evidence boundary: "+phrase);
+}
+
+// CI-014 v0.63.0: preserve located manuscript evidence and its limits.
+for (const id of ["parisino-witness","parisino-region","parisino-correction","parisino-inheritance","parisino-matrix","parisino-verdict"]) {
+  if (!ci014Sections.includes(id) || !ci014.includes('href="#'+id+'"')) throw new Error("CI-014 missing Parisino section "+id);
+}
+for (const phrase of ["f. 8v l. 21","f. 24v l. 16","f. 36r l. 2","f. 46r l. 6","f. 31v, l. 24","ولها","وله","والله ملك السماوات والأرض","ولله ملك السماوات والأرض","not fully recoverable","not independently collated"]) {
+  if(!ci014.includes(phrase)) throw new Error("CI-014 Parisino evidence missing: "+phrase);
+}
+for (const p of ["site/index.html","site/research/index.html","site/sources/index.html","site/research/quran-preservation-and-manuscripts/index.html"]) {
+  if (!(await readFile(p,"utf8")).includes("Parisino-petropolitanus")) throw new Error("CI-014 Parisino discovery missing: "+p);
 }
