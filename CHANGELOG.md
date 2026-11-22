@@ -2,6 +2,12 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.65.0 - 2026-11-22
+
+- Added an independently navigable Early Quranic Manuscript Variants Catalogue with 25 selected comparisons from CI-003 and CI-014.
+- Added verse, Arabic and keyword search, manuscript, classification and evidence-status filters, permanent record anchors and source links.
+- Added responsive layouts, static no-JavaScript access and filter and citation-anchor regression checks; retained existing research counts and separate Quran integration.
+
 ## v0.64.0 - 2026-11-22
 
 - Expanded CI-014 to 42 sections and 55 numbered references with ten located Marcel manuscript comparisons, including eight reported insertions and two uncertain overwritten readings.
