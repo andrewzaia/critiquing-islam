@@ -703,7 +703,7 @@ const ci003Refs = [...ci003.matchAll(/<li id="ref-(\d+)">/g)].map(x=>Number(x[1]
 const ci003Cites = [...ci003Body.matchAll(/href="#ref-(\d+)"/g)].map(x=>Number(x[1]));
 const ci003Words = ci003Body.replace(/<[^>]*>/g," ").trim().split(/\s+/).length;
 const ci003Urls = [...ci003.matchAll(/<li id="ref-\d+">[\s\S]*?<a href="([^"]+)" target="_blank"/g)].map(x=>x[1].replaceAll("&amp;","&"));
-if (ci003Sections.length < 29 || ci003Refs.length < 38 || ci003Words < 3500 ||
+if (ci003Sections.length < 34 || ci003Refs.length < 49 || ci003Words < 3500 ||
     !ci003Refs.every((n,i)=>n===i+1) ||
     ci003Refs.some(n=>!ci003Cites.includes(n)) ||
     ci003Cites.some(n=>!ci003Refs.includes(n)) ||
@@ -1474,7 +1474,7 @@ for (const phrase of ["Marcel 11 f. 8r","Marcel 11 f. 10v","Marcel 11 f. 12v","M
 const manuscriptHtml = await readFile("site/manuscripts/index.html", "utf8");
 const manuscriptMatches = [...manuscriptHtml.matchAll(/<article class="manuscript-record" id="(mv-\d+)" data-family="([^"]+)" data-class="([^"]+)" data-state="([^"]+)" data-verse="([^"]+)">([\s\S]*?)<\/article>/g)];
 const manuscriptRecords = manuscriptMatches.map(m => ({ id:m[1],family:m[2],classification:m[3],state:m[4],verse:m[5],witness:m[6].match(/<p class="manuscript-witness">([^<]+)<\/p>/)?.[1] || "",text:m[6].replace(/<[^>]*>/g," ") }));
-if (manuscriptRecords.length !== 25 || new Set(manuscriptRecords.map(m=>m.id)).size !== 25) throw new Error("Manuscript comparison count or IDs invalid");
+if (manuscriptRecords.length !== 34 || new Set(manuscriptRecords.map(m=>m.id)).size !== 34) throw new Error("Manuscript comparison count or IDs invalid");
 for (const m of manuscriptMatches) {
   const body = m[6];
   const link = body.match(/href="(\/research\/[^"#]+\/)#([^"]+)"/);
@@ -1489,8 +1489,8 @@ for (const page of ["site/index.html","site/research/index.html","site/sources/i
 const { matchesManuscript, normaliseManuscriptSearch } = await import("../site/assets/manuscripts.mjs");
 function manuscriptCount(filters) { return manuscriptRecords.filter(m => matchesManuscript(m,filters)).length; }
 for (const [filters,expected] of [
-  [{},25],[{query:"2:196"},3],[{query:"٢:١٩٦"},3],[{query:"Quran 2 : 196"},3],
-  [{family:"marcel"},11],[{classification:"orthography"},1],[{state:"unknown"},3],
+  [{},34],[{query:"2:196"},3],[{query:"٢:١٩٦"},3],[{query:"Quran 2 : 196"},3],
+  [{family:"mashhad"},9],[{query:"26:116",family:"mashhad"},1],[{query:"Mashhad",classification:"legal"},1],[{family:"marcel"},11],[{classification:"orthography"},1],[{state:"unknown"},3],
   [{query:"Marcel 13",family:"marcel"},3],[{query:"Marcel13"},3],[{query:"Marcel 1"},0],[{query:"NLR Marcel 2"},1],
   [{query:"Marcel 11 33:24"},1],[{query:"صدقة",family:"sanaa",classification:"legal"},1],
   [{query:"2:19"},0],[{query:"2:196",family:"marcel"},0],[{query:"zz-no-matching-shelfmark-zz"},0]
@@ -1498,6 +1498,14 @@ for (const [filters,expected] of [
   if (manuscriptCount(filters)!==expected) throw new Error("Manuscript filter failed: "+JSON.stringify(filters));
 }
 if(normaliseManuscriptSearch("أَوْ صَدَقَة")!=="او صدقة") throw new Error("Manuscript Arabic search normalisation failed");
-if(!manuscriptHtml.includes('id="manuscript-filters" class="manuscript-filters" hidden') || !manuscriptHtml.includes("25 of 25 comparisons displayed") || !manuscriptHtml.includes("not independent manuscripts"))
+if(!manuscriptHtml.includes('id="manuscript-filters" class="manuscript-filters" hidden') || !manuscriptHtml.includes("34 of 34 comparisons displayed") || !manuscriptHtml.includes("not independent manuscripts"))
   throw new Error("Manuscript static fallback/evidence qualification missing");
-console.log("Manuscript catalogue: 25 static comparisons, evidence links and filter regression tests passed");
+console.log("Manuscript catalogue: 34 static comparisons, evidence links and filter regression tests passed");
+
+// v0.66.0 - located Mashhad comparisons and order evidence.
+for (const id of ["mashhad-identity","mashhad-order","mashhad-copying","mashhad-omissions","mashhad-verdict"]) {
+  if (!ci003Sections.includes(id) || !ci003.includes('href="#'+id+'"')) throw new Error("CI-003 missing Mashhad section "+id);
+}
+for (const phrase of ["A49v-A50r","A98v","B123r-B129v","B24r","B28r","B60r","B114r","غلام عليم","not counted as an additional lexical entry","not the complete facsimile"]) {
+  if (!ci003.includes(phrase)) throw new Error("CI-003 missing Mashhad evidence: "+phrase);
+}
