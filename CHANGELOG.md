@@ -2,6 +2,12 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.70.0 - 2026-11-22
+
+- Expanded CI-014 to 54 sections and 78 references with noncanonical and unrecorded manuscript readings, cross-manuscript parallels and a preservation-claim evidence matrix.
+- Added eleven comparisons to the catalogue (68 records in nine groups), with separate noncanonical and unrecorded classifications and explicit uncertainty at Quran 7:76.
+- Updated source audit, discovery links and regression checks. Quran integration and research counts remain unchanged.
+
 ## v0.69.0 - 2026-11-22
 
 - Expanded CI-014 to 48 sections and 68 references with Topkapi regional alignment, local corrections, Samarkand attribution and Codex Amrensis textual evidence.
