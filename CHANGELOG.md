@@ -2,6 +2,12 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.73.0 - 2026-11-23
+
+- Added six analytical sections and 24 references to CI-003, covering early Quranic documentary evidence, dated inscriptions, coins, distinct Sanaa parchment and Quranic papyri.
+- Compared selected mosaic and coin wording against the received text, distinguishing quotation adaptations from continuous manuscript variants and patron-name alteration from Quranic textual alteration.
+- Added documentary source links, a dated evidence matrix and regression safeguards. The 68 manuscript comparisons, research totals and Quran integration remain unchanged.
+
 ## v0.72.0 - 2026-11-23
 
 - Added qualified institutional manuscript access links to 13 existing comparisons; cross-checked the indexed Tübingen 17:43 transcription and identified three further folio locations from a secondary contents index.

@@ -703,7 +703,7 @@ const ci003Refs = [...ci003.matchAll(/<li id="ref-(\d+)">/g)].map(x=>Number(x[1]
 const ci003Cites = [...ci003Body.matchAll(/href="#ref-(\d+)"/g)].map(x=>Number(x[1]));
 const ci003Words = ci003Body.replace(/<[^>]*>/g," ").trim().split(/\s+/).length;
 const ci003Urls = [...ci003.matchAll(/<li id="ref-\d+">[\s\S]*?<a href="([^"]+)" target="_blank"/g)].map(x=>x[1].replaceAll("&amp;","&"));
-if (ci003Sections.length < 45 || ci003Refs.length < 79 || ci003Words < 3500 ||
+if (ci003Sections.length < 51 || ci003Refs.length < 103 || ci003Words < 3500 ||
     !ci003Refs.every((n,i)=>n===i+1) ||
     ci003Refs.some(n=>!ci003Cites.includes(n)) ||
     ci003Cites.some(n=>!ci003Refs.includes(n)) ||
@@ -1611,3 +1611,13 @@ for(const [id,folio] of [["mv-036","3v"],["mv-037","11v"],["mv-038","56r"]]){
 }
 if(!ci003.includes("modern Cairo text, not the manuscript transcription")||!ci003.includes("عما تٯولوں")||!ci014.includes("competing catalogue estimates")||!ci014.includes("750 CE for the same 56-folio shelfmark"))throw new Error("Folio access or dating boundary regressed");
 console.log("Manuscript catalogue: institutional access and qualified folio locators verified structurally");
+
+ // v0.73.0: documentary evidence is not conflated with continuous manuscript variants.
+for(const id of ["documentary-method","dome-chronology","dome-wording","documentary-coins","additional-material-witnesses","documentary-verdict"]){
+  if(!ci003.includes('id="'+id+'"')||!ci003.includes('href="#'+id+'"')) throw new Error("Documentary evidence navigation missing: "+id);
+}
+for(const phrase of ["691-692 CE","HCR10005","HCR4814","633-665 CE","653-766 CE","DAM 01-29.1","DAM 01-27.1","P.Duk.inv. 274","not an ink date","not a Quranic word alteration","No original artefact or facsimile was independently collated","excluded from the 68 word-level"]){
+  if(!ci003.includes(phrase)) throw new Error("Documentary evidence qualification missing: "+phrase);
+}
+if(!ci003.includes("<span>51 analytical sections</span><span>103 references</span>")||!manuscriptHtml.includes("Quotation adaptations are not counted as manuscript variants.")||!manuscriptHtml.includes("#documentary-method")) throw new Error("Documentary evidence scope or reference count regressed");
+console.log("Documentary witness scope, navigation and citation safeguards verified");
