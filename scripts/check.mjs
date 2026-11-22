@@ -1037,7 +1037,7 @@ const ci014Refs = [...ci014.matchAll(/<li id="ref-(\d+)">/g)].map(m=>Number(m[1]
 const ci014Cites = [...ci014Body.matchAll(/href="#ref-(\d+)"/g)].map(m=>Number(m[1]));
 const ci014Urls = [...ci014.matchAll(/<li id="ref-\d+">[\s\S]*?<a href="([^"]+)" target="_blank"/g)].map(m=>m[1].replaceAll("&amp;","&"));
 const ci014Words = ci014Body.replace(/<[^>]*>/g," ").trim().split(/\s+/).length;
-if(ci014Sections.length<42||ci014Refs.length<55||ci014Words<5600||
+if(ci014Sections.length<48||ci014Refs.length<68||ci014Words<5600||
    !ci014Refs.every((n,i)=>n===i+1)||
    ci014Refs.some(n=>!ci014Cites.includes(n))||
    ci014Cites.some(n=>!ci014Refs.includes(n))||
@@ -1050,7 +1050,7 @@ for(const phrase of ["consonantal","orthographic","vocalisation","Sanaa","Sidky"
   "Déroche","Birmingham","palimpsest","Falsification test:"])
   if(!ci014.toLowerCase().includes(phrase.toLowerCase()))
     throw new Error("CI-014 missing a manuscript or reading test "+phrase);
-if(!ci014.includes("<span>42 sections</span><span>55 references</span>"))
+if(!ci014.includes("<span>48 sections</span><span>68 references</span>"))
   throw new Error("CI-014 section or reference metadata drift");
 
 // CI-014 v0.61.0: NLR Marcel 2 is not an invented reconstructed variant.
@@ -1474,7 +1474,7 @@ for (const phrase of ["Marcel 11 f. 8r","Marcel 11 f. 10v","Marcel 11 f. 12v","M
 const manuscriptHtml = await readFile("site/manuscripts/index.html", "utf8");
 const manuscriptMatches = [...manuscriptHtml.matchAll(/<article class="manuscript-record" id="(mv-\d+)" data-family="([^"]+)" data-class="([^"]+)" data-state="([^"]+)" data-verse="([^"]+)">([\s\S]*?)<\/article>/g)];
 const manuscriptRecords = manuscriptMatches.map(m => ({ id:m[1],family:m[2],classification:m[3],state:m[4],verse:m[5],witness:m[6].match(/<p class="manuscript-witness">([^<]+)<\/p>/)?.[1] || "",text:m[6].replace(/<[^>]*>/g," ") }));
-if (manuscriptRecords.length !== 49 || new Set(manuscriptRecords.map(m=>m.id)).size !== 49) throw new Error("Manuscript comparison count or IDs invalid");
+if (manuscriptRecords.length !== 57 || new Set(manuscriptRecords.map(m=>m.id)).size !== 57) throw new Error("Manuscript comparison count or IDs invalid");
 for (const m of manuscriptMatches) {
   const body = m[6];
   const link = body.match(/href="(\/research\/[^"#]+\/)#([^"]+)"/);
@@ -1489,8 +1489,8 @@ for (const page of ["site/index.html","site/research/index.html","site/sources/i
 const { matchesManuscript, normaliseManuscriptSearch } = await import("../site/assets/manuscripts.mjs");
 function manuscriptCount(filters) { return manuscriptRecords.filter(m => matchesManuscript(m,filters)).length; }
 for (const [filters,expected] of [
-  [{},49],[{query:"2:196"},3],[{query:"٢:١٩٦"},3],[{query:"Quran 2 : 196"},3],
-  [{family:"sanaa"},15],[{family:"sanaa",state:"inferred"},2],[{query:"2:222",family:"sanaa",state:"partial"},1],[{query:"5:46",family:"sanaa"},1],[{query:"David 86/2003",family:"sanaa"},5],[{family:"mashhad"},9],[{query:"26:116",family:"mashhad"},1],[{query:"Mashhad",classification:"legal"},1],[{family:"marcel"},11],[{classification:"orthography"},3],[{classification:"vocalisation"},2],[{family:"tubingen"},4],[{family:"london"},1],[{family:"london",state:"inferred"},1],[{query:"19:9",family:"tubingen"},1],[{state:"unknown"},3],
+  [{},57],[{query:"2:196"},3],[{query:"٢:١٩٦"},3],[{query:"Quran 2 : 196"},3],
+  [{family:"sanaa"},15],[{family:"sanaa",state:"inferred"},2],[{query:"2:222",family:"sanaa",state:"partial"},1],[{query:"5:46",family:"sanaa"},1],[{query:"David 86/2003",family:"sanaa"},5],[{family:"mashhad"},9],[{query:"26:116",family:"mashhad"},1],[{query:"Mashhad",classification:"legal"},1],[{family:"marcel"},11],[{classification:"orthography"},3],[{classification:"vocalisation"},2],[{family:"tubingen"},4],[{family:"london"},1],[{family:"london",state:"inferred"},1],[{query:"19:9",family:"tubingen"},1],[{state:"unknown"},4],[{family:"topkapi"},6],[{family:"amrensis"},2],[{query:"5:53",family:"topkapi"},1],[{query:"10:22",family:"amrensis"},1],[{family:"topkapi",state:"unknown"},1],
   [{query:"Marcel 13",family:"marcel"},3],[{query:"Marcel13"},3],[{query:"Marcel 1"},0],[{query:"NLR Marcel 2"},1],
   [{query:"Marcel 11 33:24"},1],[{query:"صدقة",family:"sanaa",classification:"legal"},1],
   [{query:"2:19"},0],[{query:"2:196",family:"marcel"},0],[{query:"zz-no-matching-shelfmark-zz"},0]
@@ -1498,9 +1498,9 @@ for (const [filters,expected] of [
   if (manuscriptCount(filters)!==expected) throw new Error("Manuscript filter failed: "+JSON.stringify(filters));
 }
 if(normaliseManuscriptSearch("أَوْ صَدَقَة")!=="او صدقة") throw new Error("Manuscript Arabic search normalisation failed");
-if(!manuscriptHtml.includes('id="manuscript-filters" class="manuscript-filters" hidden') || !manuscriptHtml.includes("49 of 49 comparisons displayed") || !manuscriptHtml.includes("not independent manuscripts"))
+if(!manuscriptHtml.includes('id="manuscript-filters" class="manuscript-filters" hidden') || !manuscriptHtml.includes("57 of 57 comparisons displayed") || !manuscriptHtml.includes("not independent manuscripts"))
   throw new Error("Manuscript static fallback/evidence qualification missing");
-console.log("Manuscript catalogue: 49 static comparisons, evidence links and filter regression tests passed");
+console.log("Manuscript catalogue: 57 static comparisons, evidence links and filter regression tests passed");
 
 // v0.66.0 - located Mashhad comparisons and order evidence.
 for (const id of ["mashhad-identity","mashhad-order","mashhad-copying","mashhad-omissions","mashhad-verdict"]) {
@@ -1529,3 +1529,12 @@ for (const phrase of ["David 86/2003","Bonhams 2000","n. 126","لما أنزلن
 for(const [id,state] of [["mv-044","inferred"],["mv-046","partial"],["mv-047","inferred"]]){
   if(!manuscriptRecords.some(m=>m.id===id&&m.state===state)) throw new Error("Uncertain Sanaa reading misclassified: "+id);
 }
+
+// v0.69.0: regional alignment, unknown erasure and separate provenance assessment.
+for (const id of ["topkapi-attribution","topkapi-regional","topkapi-local","samarkand-attribution","amrensis-readings","monumental-verdict"]) {
+  if (!ci014Sections.includes(id) || !ci014.includes('href="#'+id+'"')) throw new Error("CI-014 missing monumental witness section "+id);
+}
+for (const phrase of ["f. 41r, l. 7","f. 71v, l. 15","f. 117r, ll. 13-14","f. 122v, l. 8","595-855 CE","Marcel 9, f. 1v","Marcel 9, f. 19v","No Samarkand word-level variant","neither the original objects nor the complete facsimiles"]) {
+  if (!ci014.includes(phrase)) throw new Error("CI-014 missing monumental witness evidence: "+phrase);
+}
+if(!manuscriptRecords.some(m=>m.id==="mv-052"&&m.state==="unknown")) throw new Error("Topkapi erased reading misclassified");
