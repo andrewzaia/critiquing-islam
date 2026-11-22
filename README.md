@@ -24,6 +24,8 @@ Sitewide Quran verse popups display the locally hosted Arabic text, scholarly tr
 
 ## Latest research
 
+v0.62.0 expands [CI-003](site/research/quran-preservation-and-manuscripts/index.html) to 29 analytical sections and 38 references, with a located comparison of the Sanaa lower text at Quran 2:194, 2:196 and 2:201 and Birmingham variants at 18:26 and 20:31. It distinguishes legal-list omissions, other wording differences, orthography, canonical readings, corrected forms and the unreadable Marcel 2 erasure. See the [folio-level source audit](docs/early-manuscript-variant-audit-v0.62.0.md). The library remains at 50 numbered investigations and one guide; further Parisino-petropolitanus and Marcel comparisons require located editions. Quran integration is unchanged.
+
 v0.61.1 corrects the production 404 indexing exception, validates robots directives in each generated HTML page and removes excess README paragraph spacing. Research content and Quran integration are unchanged.
 
 v0.61.0 expands **CI-014, Uthmanic manuscript authenticity** ([article](site/research/uthman-and-quranic-authenticity/index.html); [Marcel 2 source audit](docs/marcel-2-quran-30-9-evidence-audit-v0.61.0.md)) to 30 analytical sections and 33 numbered references. A new folio-specific study of the National Library of Russia's Marcel 2 examines the reported erasure at Quran 30:9, the modern Arabic comparison, Brubaker's publication, Sidky's duplicated-word explanation and the evidence required to recover the erased text. The material shows a scribal intervention, not a demonstrably different original revelation. Existing Quran explorer and API workstreams are unchanged. The research library remains at 50 numbered investigations and one guide.

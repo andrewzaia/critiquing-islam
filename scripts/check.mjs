@@ -703,7 +703,7 @@ const ci003Refs = [...ci003.matchAll(/<li id="ref-(\d+)">/g)].map(x=>Number(x[1]
 const ci003Cites = [...ci003Body.matchAll(/href="#ref-(\d+)"/g)].map(x=>Number(x[1]));
 const ci003Words = ci003Body.replace(/<[^>]*>/g," ").trim().split(/\s+/).length;
 const ci003Urls = [...ci003.matchAll(/<li id="ref-\d+">[\s\S]*?<a href="([^"]+)" target="_blank"/g)].map(x=>x[1].replaceAll("&amp;","&"));
-if (ci003Sections.length < 23 || ci003Refs.length < 31 || ci003Words < 3500 ||
+if (ci003Sections.length < 29 || ci003Refs.length < 38 || ci003Words < 3500 ||
     !ci003Refs.every((n,i)=>n===i+1) ||
     ci003Refs.some(n=>!ci003Cites.includes(n)) ||
     ci003Cites.some(n=>!ci003Refs.includes(n)) ||
@@ -1441,4 +1441,12 @@ console.log("Verified ten standalone doctrine investigations and their research 
   if (!(await readFile("site/research/index.html","utf8"))
       .includes("50 published investigations / 1 research guide"))
     throw new Error("CI-050 research count mismatch");
+}
+
+// CI-003 v0.62.0: retain located comparisons and distinction between variant classes.
+for (const id of ["folio-method","sanaa-legal","sanaa-prayer","birmingham-variants","variant-locus-matrix","variant-verdict"]) {
+  if (!ci003Sections.includes(id) || !ci003.includes('href="#'+id+'"')) throw new Error("CI-003 missing folio comparison "+id);
+}
+for (const phrase of ["Stanford 2007","أو صدقة","من صيم او نسك","رؤوسكم","في الدنيا والآخرة","folio 7r","line 7","line 15","No recoverable variant claimed","not direct laboratory imaging"]) {
+  if (!ci003.toLowerCase().includes(phrase.toLowerCase())) throw new Error("CI-003 missing manuscript evidence boundary: "+phrase);
 }
