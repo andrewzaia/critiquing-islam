@@ -2,6 +2,12 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.63.0 - 2026-11-22
+
+- Expanded CI-014 to 36 sections and 43 references with located Parisino-petropolitanus comparisons.
+- Distinguished regional readings, the above-line conjunction at Quran 7:43, the correction at 3:189 and incomplete earlier legal wording at 4:12.
+- Added a comparison matrix, evidence audit, cross-links and regression checks; preserved research URLs and separate Quran integration workstreams.
+
 ## v0.62.0 - 2026-11-22
 
 - Expanded CI-003 to 29 analytical sections and 38 numbered references with folio-level Sanaa and Birmingham comparisons.
