@@ -13,7 +13,12 @@ export function matchesManuscript(record, { query = "", family = "all", classifi
   const normal = normaliseManuscriptSearch(query).replace(/\b(\d+)\s*[:.]\s*(\d+)\b/g, "$1:$2");
   const verse = normal.match(/\b\d+:\d+\b/);
   if (verse && record.verse !== verse[0]) return false;
-  const terms = normal.split(/\s+/).filter(Boolean);
+  const shelfmark = normal.match(/\bmarcel\s*(\d+)\b/);
+  if (shelfmark) {
+    const witnessShelfmark = normaliseManuscriptSearch(record.witness || "").match(/\bmarcel\s*(\d+)\b/);
+    if (witnessShelfmark?.[1] !== shelfmark[1]) return false;
+  }
+  const terms = normal.replace(/\bmarcel\s*\d+\b/, "").split(/\s+/).filter(Boolean);
   const haystack = normaliseManuscriptSearch(record.text + " " + record.verse);
   return terms.every(term => term === verse?.[0] || haystack.includes(term));
 }
@@ -28,7 +33,8 @@ if (typeof document !== "undefined") {
     const empty = document.querySelector("#manuscript-empty");
     const cards = [...document.querySelectorAll(".manuscript-record")].map(element => ({
       element, family: element.dataset.family, classification: element.dataset.class,
-      state: element.dataset.state, verse: element.dataset.verse, text: element.textContent
+      state: element.dataset.state, verse: element.dataset.verse,
+      witness: element.querySelector(".manuscript-witness").textContent, text: element.textContent
     }));
     const update = () => {
       let visible = 0;
