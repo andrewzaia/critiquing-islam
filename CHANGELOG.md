@@ -2,6 +2,12 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.69.0 - 2026-11-22
+
+- Expanded CI-014 to 48 sections and 68 references with Topkapi regional alignment, local corrections, Samarkand attribution and Codex Amrensis textual evidence.
+- Added eight located comparisons, including an explicitly unknown erased reading, to the catalogue (57 records across nine groups).
+- Added source audit, discovery links and regression checks; retained the existing research counts and Quran integration.
+
 ## v0.68.0 - 2026-11-22
 
 - Expanded CI-003 to 45 analytical sections and 74 references with further Sanaa lower-text wording, legal context, earlier-scripture references and chapter-order analysis.
