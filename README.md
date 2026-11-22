@@ -24,6 +24,8 @@ Sitewide Quran verse popups display the locally hosted Arabic text, scholarly tr
 
 ## Latest research
 
+v0.63.0 expands [CI-014](site/research/uthman-and-quranic-authenticity/index.html) to 36 sections and 43 numbered references. Located Parisino-petropolitanus regional variants, an above-line conjunction at Quran 7:43, the correction at 3:189 and partly recoverable earlier wording at 4:12 are distinguished. See the [evidence audit](docs/parisino-petropolitanus-variant-audit-v0.63.0.md). The library remains at 50 investigations and one guide. Quran integration is unchanged. Next manuscript priority: additional individually identified Marcel loci.
+
 v0.62.0 expands [CI-003](site/research/quran-preservation-and-manuscripts/index.html) to 29 analytical sections and 38 references, with a located comparison of the Sanaa lower text at Quran 2:194, 2:196 and 2:201 and Birmingham variants at 18:26 and 20:31. It distinguishes legal-list omissions, other wording differences, orthography, canonical readings, corrected forms and the unreadable Marcel 2 erasure. See the [folio-level source audit](docs/early-manuscript-variant-audit-v0.62.0.md). The library remains at 50 numbered investigations and one guide; further Parisino-petropolitanus and Marcel comparisons require located editions. Quran integration is unchanged.
 
 v0.61.1 corrects the production 404 indexing exception, validates robots directives in each generated HTML page and removes excess README paragraph spacing. Research content and Quran integration are unchanged.
