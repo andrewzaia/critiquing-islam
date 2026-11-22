@@ -2,6 +2,12 @@
 
 Changes are recorded by release using MAJOR.MINOR.PATCH versioning.
 
+## v0.67.0 - 2026-11-22
+
+- Expanded CI-003 to 39 analytical sections and 62 references with Tübingen Ma VI 165 and British Library Or. 2165 dating, reading and regional evidence.
+- Added four Tübingen comparisons and one explicitly inferred London spelling comparison, expanding the manuscript catalogue to 39 records in seven groups.
+- Added a vocalisation classification, source audit and evidence-boundary checks; retained existing research counts and separate Quran integration.
+
 ## v0.66.0 - 2026-11-22
 
 - Expanded CI-003 to 34 analytical sections and 49 references with Codex Mashhad's reported local readings and physical chapter rearrangement.
