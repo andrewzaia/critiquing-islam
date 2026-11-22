@@ -703,7 +703,7 @@ const ci003Refs = [...ci003.matchAll(/<li id="ref-(\d+)">/g)].map(x=>Number(x[1]
 const ci003Cites = [...ci003Body.matchAll(/href="#ref-(\d+)"/g)].map(x=>Number(x[1]));
 const ci003Words = ci003Body.replace(/<[^>]*>/g," ").trim().split(/\s+/).length;
 const ci003Urls = [...ci003.matchAll(/<li id="ref-\d+">[\s\S]*?<a href="([^"]+)" target="_blank"/g)].map(x=>x[1].replaceAll("&amp;","&"));
-if (ci003Sections.length < 39 || ci003Refs.length < 62 || ci003Words < 3500 ||
+if (ci003Sections.length < 45 || ci003Refs.length < 74 || ci003Words < 3500 ||
     !ci003Refs.every((n,i)=>n===i+1) ||
     ci003Refs.some(n=>!ci003Cites.includes(n)) ||
     ci003Cites.some(n=>!ci003Refs.includes(n)) ||
@@ -1474,7 +1474,7 @@ for (const phrase of ["Marcel 11 f. 8r","Marcel 11 f. 10v","Marcel 11 f. 12v","M
 const manuscriptHtml = await readFile("site/manuscripts/index.html", "utf8");
 const manuscriptMatches = [...manuscriptHtml.matchAll(/<article class="manuscript-record" id="(mv-\d+)" data-family="([^"]+)" data-class="([^"]+)" data-state="([^"]+)" data-verse="([^"]+)">([\s\S]*?)<\/article>/g)];
 const manuscriptRecords = manuscriptMatches.map(m => ({ id:m[1],family:m[2],classification:m[3],state:m[4],verse:m[5],witness:m[6].match(/<p class="manuscript-witness">([^<]+)<\/p>/)?.[1] || "",text:m[6].replace(/<[^>]*>/g," ") }));
-if (manuscriptRecords.length !== 39 || new Set(manuscriptRecords.map(m=>m.id)).size !== 39) throw new Error("Manuscript comparison count or IDs invalid");
+if (manuscriptRecords.length !== 49 || new Set(manuscriptRecords.map(m=>m.id)).size !== 49) throw new Error("Manuscript comparison count or IDs invalid");
 for (const m of manuscriptMatches) {
   const body = m[6];
   const link = body.match(/href="(\/research\/[^"#]+\/)#([^"]+)"/);
@@ -1489,8 +1489,8 @@ for (const page of ["site/index.html","site/research/index.html","site/sources/i
 const { matchesManuscript, normaliseManuscriptSearch } = await import("../site/assets/manuscripts.mjs");
 function manuscriptCount(filters) { return manuscriptRecords.filter(m => matchesManuscript(m,filters)).length; }
 for (const [filters,expected] of [
-  [{},39],[{query:"2:196"},3],[{query:"٢:١٩٦"},3],[{query:"Quran 2 : 196"},3],
-  [{family:"mashhad"},9],[{query:"26:116",family:"mashhad"},1],[{query:"Mashhad",classification:"legal"},1],[{family:"marcel"},11],[{classification:"orthography"},3],[{classification:"vocalisation"},2],[{family:"tubingen"},4],[{family:"london"},1],[{family:"london",state:"inferred"},1],[{query:"19:9",family:"tubingen"},1],[{state:"unknown"},3],
+  [{},49],[{query:"2:196"},3],[{query:"٢:١٩٦"},3],[{query:"Quran 2 : 196"},3],
+  [{family:"sanaa"},15],[{family:"sanaa",state:"inferred"},2],[{query:"2:222",family:"sanaa",state:"partial"},1],[{query:"5:46",family:"sanaa"},1],[{query:"David 86/2003",family:"sanaa"},5],[{family:"mashhad"},9],[{query:"26:116",family:"mashhad"},1],[{query:"Mashhad",classification:"legal"},1],[{family:"marcel"},11],[{classification:"orthography"},3],[{classification:"vocalisation"},2],[{family:"tubingen"},4],[{family:"london"},1],[{family:"london",state:"inferred"},1],[{query:"19:9",family:"tubingen"},1],[{state:"unknown"},3],
   [{query:"Marcel 13",family:"marcel"},3],[{query:"Marcel13"},3],[{query:"Marcel 1"},0],[{query:"NLR Marcel 2"},1],
   [{query:"Marcel 11 33:24"},1],[{query:"صدقة",family:"sanaa",classification:"legal"},1],
   [{query:"2:19"},0],[{query:"2:196",family:"marcel"},0],[{query:"zz-no-matching-shelfmark-zz"},0]
@@ -1498,9 +1498,9 @@ for (const [filters,expected] of [
   if (manuscriptCount(filters)!==expected) throw new Error("Manuscript filter failed: "+JSON.stringify(filters));
 }
 if(normaliseManuscriptSearch("أَوْ صَدَقَة")!=="او صدقة") throw new Error("Manuscript Arabic search normalisation failed");
-if(!manuscriptHtml.includes('id="manuscript-filters" class="manuscript-filters" hidden') || !manuscriptHtml.includes("39 of 39 comparisons displayed") || !manuscriptHtml.includes("not independent manuscripts"))
+if(!manuscriptHtml.includes('id="manuscript-filters" class="manuscript-filters" hidden') || !manuscriptHtml.includes("49 of 49 comparisons displayed") || !manuscriptHtml.includes("not independent manuscripts"))
   throw new Error("Manuscript static fallback/evidence qualification missing");
-console.log("Manuscript catalogue: 39 static comparisons, evidence links and filter regression tests passed");
+console.log("Manuscript catalogue: 49 static comparisons, evidence links and filter regression tests passed");
 
 // v0.66.0 - located Mashhad comparisons and order evidence.
 for (const id of ["mashhad-identity","mashhad-order","mashhad-copying","mashhad-omissions","mashhad-verdict"]) {
@@ -1518,3 +1518,14 @@ for (const phrase of ["649-675 CE","17:43","17:90","19:9","29:31","Fig. 4","f. 4
   if (!ci003.includes(phrase)) throw new Error("CI-003 missing Tübingen/London evidence: "+phrase);
 }
 if (!manuscriptHtml.includes("folio not verified") || !manuscriptHtml.includes("spelling inferred from published pattern")) throw new Error("Catalogue evidence boundary missing");
+
+// v0.68.0 - further Sanaa lower-text comparisons and distinct order evidence.
+for (const id of ["sanaa-additional-witnesses","sanaa-parallel","sanaa-david-law","sanaa-bonhams","sanaa-chapter-order","sanaa-substantive-verdict"]) {
+  if (!ci003Sections.includes(id) || !ci003.includes('href="#'+id+'"')) throw new Error("CI-003 missing additional Sanaa section "+id);
+}
+for (const phrase of ["David 86/2003","Bonhams 2000","n. 126","لما أنزلنا من التوراة","جاءكم الهدى","11 to 8","9 to 19","62 to 89","not proof that jihad was wholly absent","not counted as another word-level catalogue entry"]) {
+  if (!ci003.includes(phrase)) throw new Error("CI-003 missing Sanaa evidence: "+phrase);
+}
+for(const [id,state] of [["mv-044","inferred"],["mv-046","partial"],["mv-047","inferred"]]){
+  if(!manuscriptRecords.some(m=>m.id===id&&m.state===state)) throw new Error("Uncertain Sanaa reading misclassified: "+id);
+}
