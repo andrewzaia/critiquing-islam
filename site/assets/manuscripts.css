@@ -4,7 +4,7 @@
 .manuscript-intro strong{font-size:20px;color:var(--ink)}
 .manuscript-intro p,.manuscript-caveat{color:var(--muted);line-height:1.7;margin:10px 0}
 .manuscript-caveat{margin:24px 0}
-.manuscript-filters{display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) auto;align-items:end;gap:12px}
+.manuscript-filters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));align-items:end;gap:12px}
 .manuscript-filters[hidden],.manuscript-record[hidden],#manuscript-empty[hidden]{display:none}
 .manuscript-search{grid-column:1/-1}
 .manuscript-filters label{display:flex;flex-direction:column;gap:7px;color:var(--muted);font-size:13px;min-width:0}
@@ -31,3 +31,26 @@
 .manuscript-catalogue :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 @media(max-width:850px){.manuscript-filters{grid-template-columns:repeat(2,minmax(0,1fr))}.manuscript-records{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:540px){.manuscript-intro,.manuscript-filters{grid-template-columns:minmax(0,1fr)}.manuscript-record,.manuscript-intro{padding:15px}.manuscript-comparison{grid-template-columns:minmax(0,1fr)}}
+
+/* Independent evidence facets and static repeated-verse comparison. */
+.manuscript-overview,.manuscript-verse-index{margin:24px 0;padding:20px;border:1px solid var(--line);background:var(--panel)}
+.manuscript-overview h2,.manuscript-verse-index h2{font-size:20px;margin:0 0 10px}
+.manuscript-overview p,.manuscript-verse-index p{color:var(--muted);line-height:1.65;margin:10px 0}
+.manuscript-totals,.manuscript-facets{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:12px 0}
+.manuscript-totals{grid-template-columns:repeat(4,minmax(0,1fr))}
+.manuscript-totals>div,.manuscript-facets>div,.manuscript-verse-grid>div{border:1px solid var(--line);background:var(--panel2);padding:10px;min-width:0;overflow-wrap:anywhere}
+.manuscript-facets dt,.manuscript-totals dt,.manuscript-mini dt{font-size:12px;color:var(--muted)}
+.manuscript-facets dd,.manuscript-totals dd,.manuscript-mini dd{margin:5px 0 0;color:var(--ink)}
+.manuscript-facets dd{font-size:13px;font-weight:600}
+.manuscript-totals dd{font-size:26px;font-weight:700}
+.manuscript-verse-group{padding:12px 0;border-top:1px solid var(--line)}
+.manuscript-overview summary,.manuscript-verse-group summary{cursor:pointer;color:var(--ink);font-weight:600}
+.manuscript-verse-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:12px 0}
+.manuscript-verse-grid a,.manuscript-resource a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+.manuscript-mini .manuscript-arabic{font-size:18px}
+.manuscript-mini>div+div{margin-top:10px}
+.manuscript-resource{font-size:13px}
+.manuscript-resource span{display:block}
+.manuscript-show-verse[hidden],#manuscript-filter-note[hidden]{display:none}
+@media(max-width:850px){.manuscript-totals,.manuscript-verse-grid,.manuscript-filters{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:540px){.manuscript-overview,.manuscript-verse-index{padding:15px}.manuscript-verse-grid,.manuscript-filters{grid-template-columns:minmax(0,1fr)}.manuscript-facets{grid-template-columns:repeat(2,minmax(0,1fr))}}
